@@ -1,0 +1,27 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# CL21C181JBANNNC-SamacSys_Parts-Temp_sub-system-FIT
+#
+DEF CL21C181JBANNNC-SamacSys_Parts-Temp_sub-system-FIT C 0 30 Y Y 1 F N
+F0 "C" 350 250 50 H V L CNN
+F1 "CL21C181JBANNNC-SamacSys_Parts-Temp_sub-system-FIT" 350 150 50 H V L CNN
+F2 "CAPC2012X75N" 350 50 50 H I L CNN
+F3 "http://media.digikey.com/pdf/Data%20Sheets/Samsung%20PDFs/CL_Series_MLCC_ds.pdf" 350 -50 50 H I L CNN
+F4 "Samsung Electro-Mechanics 0805 CL 180pF Ceramic Multilayer Capacitor, 50 V, +125C, C0G Dielectric, +/-5% SMD" 350 -150 50 H I L CNN "Description"
+F5 "0.75" 350 -250 50 H I L CNN "Height"
+F6 "Samsung Electro-Mechanics" 350 -350 50 H I L CNN "Manufacturer_Name"
+F7 "CL21C181JBANNNC" 350 -450 50 H I L CNN "Manufacturer_Part_Number"
+F8 "7665900" 350 -750 50 H I L CNN "RS Part Number"
+F9 "http://uk.rs-online.com/web/p/products/7665900" 350 -850 50 H I L CNN "RS Price/Stock"
+DRAW
+P 2 0 1 6 200 0 220 0 N
+P 2 0 1 6 220 100 220 -100 N
+P 2 0 1 6 280 0 300 0 N
+P 2 0 1 6 280 100 280 -100 N
+X ~ 1 0 0 200 R 50 50 0 0 P
+X ~ 2 500 0 200 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+#End Library
