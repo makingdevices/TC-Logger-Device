@@ -406,7 +406,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QCheckBox" name="tc1_graph_3">
+              <widget class="QCheckBox" name="tc2_graph_2">
                <property name="text">
                 <string>Plot External T2</string>
                </property>

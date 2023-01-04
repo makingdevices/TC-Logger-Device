@@ -90,7 +90,7 @@ def bin2tempext(binary, binary2):
     return temperature
 
 # -------------------------
-#   TASK CONTROL   --   VARIABLES GLOBALES
+#   TASK CONTROL   --   GLOBAL VARIABLES
 # -------------------------
 event = '_IDLE_'
 Loop_number = 0
@@ -209,7 +209,11 @@ class MyMainWindow(QMainWindow):
         super().__init__()
 
         uic.loadUi("gui_app.ui", self)
-        self.tc1_graph.stateChanged.connect(self.graph1_activation_checkbox) # CheckBox for the graph
+        self.tc1_graph.stateChanged.connect(self.graph1_activation_checkbox) # CheckBox for the graph tc1 Internal
+        self.tc2_graph.stateChanged.connect(self.graph2_activation_checkbox) # CheckBox for the graph tc1 External
+        self.tc1_graph_2.stateChanged.connect(self.graph3_activation_checkbox) # CheckBox for the graph tc2 Internal
+        self.tc2_graph_2.stateChanged.connect(self.graph4_activation_checkbox) # CheckBox for the graph tc2 External
+
         self.com_port_bt.clicked.connect(self.fn_com_port_bt)
 
         self.graph1_activation = 0  #Var to know if the graph is activated
@@ -238,7 +242,6 @@ class MyMainWindow(QMainWindow):
             connection_avail = 0
             self.com_port_bt.setText("Connect!")
 
-
     def update_COM(self):
         global COMS
         if(len(COMS) > 0):
@@ -252,29 +255,38 @@ class MyMainWindow(QMainWindow):
     def graph1_activation_checkbox(self, state):
         global x_axis
         ###
-        ## En cualquier momento que el checkbox cambia de estado, este codigo se ejecuta:
+        ## If the checkbox change of the state, the following code execute:
         #
-        if state == QtCore.Qt.Checked:  #Si está check
+        if state == QtCore.Qt.Checked:  #If checked
             # make a new figure
-            self.fig, self.ax = plt.subplots()            #Creamos nueva ventana de gráfica
-            self.ax.set_ylim(0,100)                  #Eje Y de 0 a 200
-            self.ax.set_xlim(0, x_axis)                #Eje X de 0 a 1000
+            self.fig, self.ax = plt.subplots()            #New graph
+            self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
+            self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
             #self.ax.get_xaxis().set_animated(True)
-            self.ax.set_title("Temperature Plot")   #Titulo grafica
+            self.ax.set_title("Temperature Plot")   #Title
 
             (self.ln,) = self.ax.plot(self.xdata_1, self.ydata_1, animated=True, label="Internal T1")   #We create the lines with the data
             (self.ln_2,) = self.ax.plot(self.xdata_1, self.ydata_2, animated=True, label="External T1")             
             (self.ln_3,) = self.ax.plot(self.xdata_1, self.ydata_3, animated=True, label="Internal T2")   
             (self.ln_4,) = self.ax.plot(self.xdata_1, self.ydata_4, animated=True, label="External T2")  
-            self.bm = BlitManager(self.fig.canvas, [self.ln,self.ln_2,self.ln_3,self.ln_4 ])      #Ejecutamos la clase BlitManager para que tome el control de la linea y la imprima en la ventada de grafica
+            self.bm = BlitManager(self.fig.canvas, [self.ln,self.ln_2,self.ln_3,self.ln_4 ])      #Execute the class BlitManager to take control over the lines
             plt.legend()
-            plt.show(block=False)    #Enseñamos al usuario la ventana de grafica
-            plt.pause(.1)            #Una pequeña pausa para arrancar
-            self.graph1_activation = 1  #Cambiamos la variable de la grafica a activa
+            plt.show(block=False)    #We show to the user the plot
+            plt.pause(.1)            
+            self.graph1_activation = 1  #We change the variable to activated
         else:
-            self.graph1_activation = 0  #Cambiamos la variable de la grafica a desactivada
+            self.graph1_activation = 0  #We change the variable to desactivated
 
-    def update_gui(self):  #Funcion que actualiza la GUI de forma automatica (SIN NECESIDAD DE INTERACTUAR CON EL HUMANO)
+    def graph2_activation_checkbox(self, state):
+        pass
+
+    def graph3_activation_checkbox(self, state):
+        pass
+
+    def graph4_activation_checkbox(self, state):
+        pass
+
+    def update_gui(self):  #Update GUI (Without human interaction)
         global COMS, tc1_internal,tc1_external, x_axis, interrupt_data,tc2_internal,tc2_external,tic_sample,toc_sample,connection_avail
         if (connection_avail==0):
             self.update_COM()
@@ -282,12 +294,39 @@ class MyMainWindow(QMainWindow):
         tic_sample = time.perf_counter()
         if(interrupt_data == 1):
             self.xdata_1.append(self.xdata_1[-1] + 1)  #We load the new data
-            self.ydata_1.append(tc1_internal)         
-            self.ydata_2.append(tc1_external)
-            self.ydata_3.append(tc2_internal)
-            self.ydata_4.append(tc2_external)
+            if(tc1_internal > -100):
+                self.ydata_1.append(tc1_internal)         
+                self.ydata_2.append(tc1_external)
+                self.tc1_int_temperature.setEnabled(True)
+                self.tc1_ext_temperature.setEnabled(True)
+                self.tc1_graph.setEnabled(True)
+                self.tc2_graph.setEnabled(True)
+            else:
+                self.ydata_1.append(0) 
+                self.ydata_2.append(0) 
+                self.tc1_int_temperature.setEnabled(False)
+                self.tc1_ext_temperature.setEnabled(False)
+                self.tc1_graph.setEnabled(False)
+                self.tc2_graph.setEnabled(False)
+            
+            if(tc2_internal > -100):
+                self.ydata_3.append(tc2_internal)
+                self.ydata_4.append(tc2_external)
+                self.tc2_int_temperature.setEnabled(True)
+                self.tc2_ext_temperature.setEnabled(True)
+                self.tc1_graph.setEnabled(True)
+                self.tc2_graph.setEnabled(True)
+            else:
+                self.ydata_3.append(0)
+                self.ydata_4.append(0)
+                self.tc2_int_temperature.setEnabled(False)
+                self.tc2_ext_temperature.setEnabled(False)
+                self.tc1_graph_2.setEnabled(False)
+                self.tc2_graph_2.setEnabled(False)
             interrupt_data = 0
+
             print(f"Sampling time {tic_sample - toc_sample:0.4f} seconds")
+
             toc_sample = time.perf_counter()
             if(tc1_internal == -1000):
                 self.tc1_status.setText("Not connected")
@@ -312,21 +351,21 @@ class MyMainWindow(QMainWindow):
             self.tc2_int_temperature.setText(str(tc2_internal))           #print internal Temp
             self.tc2_ext_temperature.setText(str(tc2_external))           #print external Temp
 
-        if (self.graph1_activation == 1):                  #Si la grafica está activada...
+        if (self.graph1_activation == 1):                  #If the graph is activated...
             self.ln.set_xdata(self.xdata_1)
-            self.ln.set_ydata(self.ydata_1)                #Cargamos los nuevos valores de Y a la linea.
+            self.ln.set_ydata(self.ydata_1)                #Load the new values of Y...
             self.ln_2.set_xdata(self.xdata_1)
-            self.ln_2.set_ydata(self.ydata_2)                #Cargamos los nuevos valores de Y a la linea.
+            self.ln_2.set_ydata(self.ydata_2)                
             self.ln_3.set_xdata(self.xdata_1)
             self.ln_3.set_ydata(self.ydata_3)
             self.ln_4.set_xdata(self.xdata_1)
-            self.ln_4.set_ydata(self.ydata_4)                #Cargamos los nuevos valores de Y a la linea.
+            self.ln_4.set_ydata(self.ydata_4)                
             if(self.xdata_1[-1] + 20 > x_axis):
                 x_axis = x_axis + 100
                 self.ax.set_xlim(0, x_axis)
                 self.fig.canvas.resize_event()
                     # tell the blitting manager to do its thing
-            self.bm.update()                               #Y que la clase BlitManager se encargue de graficar.
+            self.bm.update()                               #BlitManager class prints everything
             self.fig.canvas.mpl_connect('close_event', self.handle_close)
 
     def handle_close(self, evt):
@@ -334,11 +373,11 @@ class MyMainWindow(QMainWindow):
         print('Closed Figure')
     def timer1_start(self):  #TIMER
         self.timer1 = QtCore.QTimer(self)
-        self.timer1.timeout.connect(self.timer1_timeout) #Se ejecuta esta funcion cuando el tiempo se agota
-        self.timer1.start(25) #50ms
+        self.timer1.timeout.connect(self.timer1_timeout) #The function is call when the time is over
+        self.timer1.start(25) #ms
 
-    def timer1_timeout(self): #Cuando el tiempo se agota, ejecuto update_gui.
-        self.update_gui() #OJO!, es "self" por que si no, no podria acceder a la GUI
+    def timer1_timeout(self): #When the time is over...
+        self.update_gui() #Watch out! it is "self" so it can access the GUI
 
 class AThread(QThread):  #Thread en paralelo a la actualizacion del GUI
     def run(self):
@@ -378,10 +417,6 @@ def Event_Task():
                 device = None
                 print("Trying to reconnect...")
             
-
-        
-
-
 # -----------------
 #   MAIN PROGRAM
 # -----------------
