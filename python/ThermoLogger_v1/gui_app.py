@@ -1,5 +1,5 @@
-### Thermo Couple Device
-## Ruben Garcia Segovia - 2022
+### Thermo Couple Logger Device
+## MakingDevices - 2022/23
 #
 
 import sys, time
@@ -16,11 +16,17 @@ COMS = []
 def bin2tempint(binary, binary2):
     temperature = 0
     if(binary&0b00000001 == 1):
-        print("thermocouple is open circuit")
+        #print("thermocouple is open circuit")
+        temperature = -1000
+        return temperature
     elif(binary&0b00000010 == 0b10):
-        print("thermocouple is short-circuit to GND")
+        #print("thermocouple is short-circuit to GND")
+        temperature = -1001
+        return temperature
     elif(binary&0b00000100 == 0b100):
-        print("thermocouple is short-circuit to Vcc")
+        #print("thermocouple is short-circuit to Vcc")
+        temperature = -1002
+        return temperature
     if(binary&0b00010000 == 0b10000):
         temperature += 0.0625
     if(binary&0b00100000 == 0b100000):
@@ -50,7 +56,9 @@ def bin2tempint(binary, binary2):
 def bin2tempext(binary, binary2):
     temperature = 0
     if(binary&0b00000001 == 1):
-        print("Thermocouple error")
+        #print("Thermocouple error")
+        temperature = -10003
+        return temperature
     if(binary&0b00000100 == 0b100):
         temperature += 0.25
     if(binary&0b00001000 == 0b1000):
@@ -90,6 +98,7 @@ tc1_internal = 0
 tc1_external = 0
 tc2_internal = 0
 tc2_external = 0
+comport = 0
 x_axis = 100
 interrupt_data = 0
 tic = 0
@@ -200,29 +209,28 @@ class MyMainWindow(QMainWindow):
         super().__init__()
 
         uic.loadUi("gui_app.ui", self)
-        self.tc1_graph.stateChanged.connect(self.graph1_activation_checkbox) # CheckBox para la grafica. Excepción cuando cambia de estado.
+        self.tc1_graph.stateChanged.connect(self.graph1_activation_checkbox) # CheckBox for the graph
         self.com_port_bt.clicked.connect(self.fn_com_port_bt)
 
-        self.graph1_activation = 0  #Variable para saber si la grafica está activada o no.
+        self.graph1_activation = 0  #Var to know if the graph is activated
 
-        n_data = 1      #Numero de samples para graficar
+        n_data = 1      #Number of samples to graph
 
-        self.xdata_1 = [1]  #Cogemos samples para el valor de X. (x=0 para todas las muestras)
+        self.xdata_1 = [1]  #Get the X data. (x=0 at the beggining)
         self.ydata_1 = [0]  #internal T1
         self.ydata_2 = [0] #External T1
         self.ydata_3 = [0] #Internal T2
         self.ydata_4 = [0] #External T2
 
-        self.timer1_start()   #Inicio el timer
-        self.update_gui()     #Actualizo la GUI
+        self.timer1_start()   #Start the timer
+        self.update_gui()     #Update the GUI
 
     def fn_com_port_bt(self):
-        global connection_avail, device
+        global connection_avail, device,comport
         if(connection_avail == 0):
             self.com_port_bt.setText("Disconnect!")
-            com_port = self.com_port_usb.currentText()
-            print(com_port)
-            device = serial.Serial(port=com_port, baudrate=115200, timeout=0.001, write_timeout=0.001)
+            comport = self.com_port_usb.currentText()
+            device = serial.Serial(port=comport, baudrate=115200, timeout=0.001, write_timeout=0.001)
             connection_avail = 1
             return
 
@@ -267,8 +275,10 @@ class MyMainWindow(QMainWindow):
             self.graph1_activation = 0  #Cambiamos la variable de la grafica a desactivada
 
     def update_gui(self):  #Funcion que actualiza la GUI de forma automatica (SIN NECESIDAD DE INTERACTUAR CON EL HUMANO)
-        global COMS, tc1_internal,tc1_external, x_axis, interrupt_data,tc2_internal,tc2_external,tic_sample,toc_sample
-        self.update_COM()
+        global COMS, tc1_internal,tc1_external, x_axis, interrupt_data,tc2_internal,tc2_external,tic_sample,toc_sample,connection_avail
+        if (connection_avail==0):
+            self.update_COM()
+
         tic_sample = time.perf_counter()
         if(interrupt_data == 1):
             self.xdata_1.append(self.xdata_1[-1] + 1)  #We load the new data
@@ -279,10 +289,26 @@ class MyMainWindow(QMainWindow):
             interrupt_data = 0
             print(f"Sampling time {tic_sample - toc_sample:0.4f} seconds")
             toc_sample = time.perf_counter()
-            self.tc1_status.setText("Working")
+            if(tc1_internal == -1000):
+                self.tc1_status.setText("Not connected")
+            elif(tc1_internal == -1001):
+                self.tc1_status.setText("Short to GND")
+            elif(tc1_internal == -1002):
+                self.tc1_status.setText("Short to Vcc")
+            else:
+                self.tc1_status.setText("Working")
+
             self.tc1_int_temperature.setText(str(tc1_internal))           #print internal Temp
             self.tc1_ext_temperature.setText(str(tc1_external))           #print external Temp
-            self.tc2_status.setText("Working")
+
+            if(tc2_internal == -1000):
+                self.tc2_status.setText("Not connected")
+            elif(tc2_internal == -1001):
+                self.tc2_status.setText("Short to GND")
+            elif(tc2_internal == -1002):
+                self.tc2_status.setText("Short to Vcc")
+            else:
+                self.tc2_status.setText("Working")
             self.tc2_int_temperature.setText(str(tc2_internal))           #print internal Temp
             self.tc2_ext_temperature.setText(str(tc2_external))           #print external Temp
 
@@ -321,8 +347,8 @@ class AThread(QThread):  #Thread en paralelo a la actualizacion del GUI
             Event_Task()  #Lanzamos funcion Event_Task cada 10ms EN PARALELO.
 
 def Event_Task():
-    global COMS,Loop_number, interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal, tic, toc, connection_avail 
-    if(Loop_number > 3):
+    global COMS,Loop_number,comport, interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal, tic, toc, connection_avail, device, connection_avail
+    if(Loop_number > 3 and connection_avail==0):
         COMS = serial_ports()
         Loop_number = 0
     toc = time.perf_counter()
@@ -331,16 +357,26 @@ def Event_Task():
         tic = time.perf_counter()
         if(connection_avail == 1):
             try:
+                if(device == None):
+                    device = serial.Serial(port=comport, baudrate=115200, timeout=0.001, write_timeout=0.001)
+                
                 device.write('getValue'.encode('utf-8'))
+
                 raw_string_b = device.readline()
+
                 tc1_internal= bin2tempint(raw_string_b[4],raw_string_b[3])
                 tc1_external = bin2tempext(raw_string_b[2],raw_string_b[1])
                 tc2_internal = bin2tempint(raw_string_b[8],raw_string_b[7])
                 tc2_external = bin2tempext(raw_string_b[6],raw_string_b[5])
+                
+                if(device!= None):device.close()
+                device = None
+
                 interrupt_data = 1
             except:
-                print("Exception occurred, somthing wrong...")
-                connection_avail = 0
+                if(device!= None):device.close()
+                device = None
+                print("Trying to reconnect...")
             
 
         
