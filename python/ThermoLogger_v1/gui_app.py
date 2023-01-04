@@ -105,8 +105,8 @@ tic = 0
 toc = 0
 tic_sample = 0
 toc_sample = 0
-com_port = "COM9"
 connection_avail = 0
+remove_line = [1,1,1,1]
 device = serial.Serial()
 
 ## ---------------------------
@@ -236,10 +236,18 @@ class MyMainWindow(QMainWindow):
             comport = self.com_port_usb.currentText()
             device = serial.Serial(port=comport, baudrate=115200, timeout=0.001, write_timeout=0.001)
             connection_avail = 1
+            self.tc1_graph.setEnabled(True)
+            self.tc2_graph.setEnabled(True)
+            self.tc1_graph_2.setEnabled(True)
+            self.tc2_graph_2.setEnabled(True)
             return
 
         if(connection_avail == 1):
             connection_avail = 0
+            self.tc1_graph.setEnabled(False)
+            self.tc2_graph.setEnabled(False)
+            self.tc1_graph_2.setEnabled(False)
+            self.tc2_graph_2.setEnabled(False)
             self.com_port_bt.setText("Connect!")
 
     def update_COM(self):
@@ -253,41 +261,196 @@ class MyMainWindow(QMainWindow):
                     self.com_port_usb.addItem(COMS[i])
 
     def graph1_activation_checkbox(self, state):
-        global x_axis
+        global x_axis,remove_line
         ###
         ## If the checkbox change of the state, the following code execute:
         #
         if state == QtCore.Qt.Checked:  #If checked
-            # make a new figure
-            self.fig, self.ax = plt.subplots()            #New graph
-            self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
-            self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
-            #self.ax.get_xaxis().set_animated(True)
-            self.ax.set_title("Temperature Plot")   #Title
+            remove_line[0] = 0
+            if(self.graph1_activation==0):
+                # make a new figure
+                self.fig, self.ax = plt.subplots()            #New graph
+                self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
+                self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
+                #self.ax.get_xaxis().set_animated(True)
+                self.ax.set_title("Temperature Plot")   #Title
+                self.graph1_activation = 1  #We change the variable to activated
 
-            (self.ln,) = self.ax.plot(self.xdata_1, self.ydata_1, animated=True, label="Internal T1")   #We create the lines with the data
-            (self.ln_2,) = self.ax.plot(self.xdata_1, self.ydata_2, animated=True, label="External T1")             
-            (self.ln_3,) = self.ax.plot(self.xdata_1, self.ydata_3, animated=True, label="Internal T2")   
-            (self.ln_4,) = self.ax.plot(self.xdata_1, self.ydata_4, animated=True, label="External T2")  
-            self.bm = BlitManager(self.fig.canvas, [self.ln,self.ln_2,self.ln_3,self.ln_4 ])      #Execute the class BlitManager to take control over the lines
+            (self.ln,) = self.ax.plot(self.xdata_1, self.ydata_1, animated=True, label="Internal T1")   #We create the lines with the data 
+            plot_list = [self.ln]
+            if(remove_line[1]==0):
+                plot_list.append(self.ln_2)
+            if(remove_line[2]==0):
+                plot_list.append(self.ln_3)
+            if(remove_line[3]==0):
+                plot_list.append(self.ln_4)  
+            #(self.ln_2,) = self.ax.plot(self.xdata_1, self.ydata_2, animated=True, label="External T1")        
+            #(self.ln_3,) = self.ax.plot(self.xdata_1, self.ydata_3, animated=True, label="Internal T2")   
+            #(self.ln_4,) = self.ax.plot(self.xdata_1, self.ydata_4, animated=True, label="External T2")  
+            self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
             plt.legend()
             plt.show(block=False)    #We show to the user the plot
             plt.pause(.1)            
-            self.graph1_activation = 1  #We change the variable to activated
         else:
-            self.graph1_activation = 0  #We change the variable to desactivated
+            remove_line[0] = 1
+            self.ln.remove()
+            plot_list = []
+            if(remove_line[1]==0):
+                plot_list.append(self.ln_2)
+            if(remove_line[2]==0):
+                plot_list.append(self.ln_3)
+            if(remove_line[3]==0):
+                plot_list.append(self.ln_4)  
+            self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
+            plt.legend()
+            plt.show(block=False)    #We show to the user the plot
+            plt.pause(.1)   
+            self.bm.update()   
+            self.fig.canvas.resize_event()
+            #if(remove_line[0]==1 and remove_line[1] ==1 and remove_line[2]==1 and remove_line[3]==1):
+                #self.graph1_activation = 0  #We change the variable to desactivated
 
     def graph2_activation_checkbox(self, state):
-        pass
+        global remove_line
+        if state == QtCore.Qt.Checked:  #If checked
+            remove_line[1] = 0
+            if(self.graph1_activation==0):
+                # make a new figure
+                self.fig, self.ax = plt.subplots()            #New graph
+                self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
+                self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
+                #self.ax.get_xaxis().set_animated(True)
+                self.ax.set_title("Temperature Plot")   #Title
+                self.graph1_activation = 1
 
+            (self.ln_2,) = self.ax.plot(self.xdata_1, self.ydata_2, animated=True, label="External T1")
+            plot_list = [self.ln_2]
+            if(remove_line[0]==0):
+                plot_list.append(self.ln)
+            if(remove_line[2]==0):
+                plot_list.append(self.ln_3)
+            if(remove_line[3]==0):
+                plot_list.append(self.ln_4)  
+
+            self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
+            plt.legend()
+            plt.show(block=False)    #We show to the user the plot
+            plt.pause(.1)   
+            self.bm.update()   
+            self.fig.canvas.resize_event()
+        else:
+            remove_line[1] = 1
+            self.ln_2.remove()
+            plot_list = []
+            if(remove_line[0]==0):
+                plot_list.append(self.ln)
+            if(remove_line[2]==0):
+                plot_list.append(self.ln_3)
+            if(remove_line[3]==0):
+                plot_list.append(self.ln_4)  
+            self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
+            plt.legend()
+            plt.show(block=False)    #We show to the user the plot
+            plt.pause(.1)   
+            self.bm.update()   
+            self.fig.canvas.resize_event()
+            #if(remove_line[0]==1 and remove_line[1] ==1 and remove_line[2]==1 and remove_line[3]==1):
+                #self.graph1_activation = 0  #We change the variable to desactivated
+            
     def graph3_activation_checkbox(self, state):
-        pass
+            global remove_line
+            if state == QtCore.Qt.Checked:  #If checked
+                remove_line[2] = 0
+                if(self.graph1_activation==0):
+                    # make a new figure
+                    self.fig, self.ax = plt.subplots()            #New graph
+                    self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
+                    self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
+                    self.ax.set_title("Temperature Plot")   #Title
+                    self.graph1_activation = 1
+
+                (self.ln_3,) = self.ax.plot(self.xdata_1, self.ydata_3, animated=True, label="Internal T2")
+                plot_list = [self.ln_3]
+                if(remove_line[0]==0):
+                    plot_list.append(self.ln)
+                if(remove_line[1]==0):
+                    plot_list.append(self.ln_2)
+                if(remove_line[3]==0):
+                    plot_list.append(self.ln_4)  
+
+                self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
+                plt.legend()
+                plt.show(block=False)    #We show to the user the plot
+                plt.pause(.1)   
+                self.bm.update()   
+                self.fig.canvas.resize_event()
+            else:
+                remove_line[2] = 1
+                self.ln_3.remove()
+                plot_list = []
+                if(remove_line[0]==0):
+                    plot_list.append(self.ln)
+                if(remove_line[1]==0):
+                    plot_list.append(self.ln_2)
+                if(remove_line[3]==0):
+                    plot_list.append(self.ln_4)  
+                self.bm = BlitManager(self.fig.canvas, plot_list)   #Execute the class BlitManager to take control over the lines
+                plt.legend()
+                plt.show(block=False)   #We show to the user the plot
+                plt.pause(.1)   
+                self.bm.update()   
+                self.fig.canvas.resize_event()
+                #if(remove_line[0]==1 and remove_line[1] ==1 and remove_line[2]==1 and remove_line[3]==1):
+                    #self.graph1_activation = 0  #We change the variable to desactivated
 
     def graph4_activation_checkbox(self, state):
-        pass
+                global remove_line
+                if state == QtCore.Qt.Checked:  #If checked
+                    remove_line[3] = 0
+                    if(self.graph1_activation==0):
+                        # make a new figure
+                        self.fig, self.ax = plt.subplots()            #New graph
+                        self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
+                        self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
+                        self.ax.set_title("Temperature Plot")   #Title
+                        self.graph1_activation = 1
+
+                    (self.ln_4,) = self.ax.plot(self.xdata_1, self.ydata_4, animated=True, label="External T2")  
+                    plot_list = [self.ln_4]
+                    if(remove_line[0]==0):
+                        plot_list.append(self.ln)
+                    if(remove_line[1]==0):
+                        plot_list.append(self.ln_2)
+                    if(remove_line[2]==0):
+                        plot_list.append(self.ln_3)  
+
+                    self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
+                    plt.legend()
+                    plt.show(block=False)    #We show to the user the plot
+                    plt.pause(.1)   
+                    self.bm.update()   
+                    self.fig.canvas.resize_event()
+                else:
+                    remove_line[3] = 1
+                    self.ln_4.remove()
+                    plot_list = []
+                    if(remove_line[0]==0):
+                        plot_list.append(self.ln)
+                    if(remove_line[1]==0):
+                        plot_list.append(self.ln_2)
+                    if(remove_line[2]==0):
+                        plot_list.append(self.ln_3)  
+                    self.bm = BlitManager(self.fig.canvas, plot_list)   #Execute the class BlitManager to take control over the lines
+                    plt.legend()
+                    plt.show(block=False)   #We show to the user the plot
+                    plt.pause(.1)   
+                    self.bm.update()   
+                    self.fig.canvas.resize_event()
+                    #if(remove_line[0]==1 and remove_line[1] ==1 and remove_line[2]==1 and remove_line[3]==1):
+                        #self.graph1_activation = 0  #We change the variable to desactivated
 
     def update_gui(self):  #Update GUI (Without human interaction)
-        global COMS, tc1_internal,tc1_external, x_axis, interrupt_data,tc2_internal,tc2_external,tic_sample,toc_sample,connection_avail
+        global COMS, tc1_internal,tc1_external, x_axis, interrupt_data,tc2_internal,tc2_external,tic_sample,toc_sample,connection_avail,remove_line
         if (connection_avail==0):
             self.update_COM()
 
@@ -352,14 +515,18 @@ class MyMainWindow(QMainWindow):
             self.tc2_ext_temperature.setText(str(tc2_external))           #print external Temp
 
         if (self.graph1_activation == 1):                  #If the graph is activated...
-            self.ln.set_xdata(self.xdata_1)
-            self.ln.set_ydata(self.ydata_1)                #Load the new values of Y...
-            self.ln_2.set_xdata(self.xdata_1)
-            self.ln_2.set_ydata(self.ydata_2)                
-            self.ln_3.set_xdata(self.xdata_1)
-            self.ln_3.set_ydata(self.ydata_3)
-            self.ln_4.set_xdata(self.xdata_1)
-            self.ln_4.set_ydata(self.ydata_4)                
+            if(remove_line[0]==0):
+                self.ln.set_xdata(self.xdata_1)
+                self.ln.set_ydata(self.ydata_1)                #Load the new values of Y...
+            if(remove_line[1]==0):
+                self.ln_2.set_xdata(self.xdata_1)
+                self.ln_2.set_ydata(self.ydata_2)
+            if(remove_line[2]==0):                
+                self.ln_3.set_xdata(self.xdata_1)
+                self.ln_3.set_ydata(self.ydata_3)
+            if(remove_line[3]==0):
+                self.ln_4.set_xdata(self.xdata_1)
+                self.ln_4.set_ydata(self.ydata_4)                
             if(self.xdata_1[-1] + 20 > x_axis):
                 x_axis = x_axis + 100
                 self.ax.set_xlim(0, x_axis)
@@ -369,8 +536,17 @@ class MyMainWindow(QMainWindow):
             self.fig.canvas.mpl_connect('close_event', self.handle_close)
 
     def handle_close(self, evt):
+        global remove_line
         self.tc1_graph.setChecked(False)
+        self.tc2_graph.setChecked(False)
+        self.tc1_graph_2.setChecked(False)
+        self.tc2_graph_2.setChecked(False)
+        remove_line[0] = 1
+        remove_line[1] = 1
+        remove_line[2] = 1
+        remove_line[3] = 1
         print('Closed Figure')
+        self.graph1_activation = 0  #We change the variable to desactivated
     def timer1_start(self):  #TIMER
         self.timer1 = QtCore.QTimer(self)
         self.timer1.timeout.connect(self.timer1_timeout) #The function is call when the time is over
@@ -379,14 +555,14 @@ class MyMainWindow(QMainWindow):
     def timer1_timeout(self): #When the time is over...
         self.update_gui() #Watch out! it is "self" so it can access the GUI
 
-class AThread(QThread):  #Thread en paralelo a la actualizacion del GUI
+class AThread(QThread):  #Thread in parallel
     def run(self):
         while True:
-            time.sleep(0.01)
-            Event_Task()  #Lanzamos funcion Event_Task cada 10ms EN PARALELO.
+            time.sleep(0.001) # Seconds
+            Event_Task()  #We launch Event_Task every 10ms in parallel
 
 def Event_Task():
-    global COMS,Loop_number,comport, interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal, tic, toc, connection_avail, device, connection_avail
+    global COMS,Loop_number,comport, interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal, tic, toc, connection_avail, device
     if(Loop_number > 3 and connection_avail==0):
         COMS = serial_ports()
         Loop_number = 0
@@ -397,7 +573,7 @@ def Event_Task():
         if(connection_avail == 1):
             try:
                 if(device == None):
-                    device = serial.Serial(port=comport, baudrate=115200, timeout=0.001, write_timeout=0.001)
+                    device = serial.Serial(port=comport, baudrate=115200, timeout=0.0001, write_timeout=0.0001)
                 
                 device.write('getValue'.encode('utf-8'))
 

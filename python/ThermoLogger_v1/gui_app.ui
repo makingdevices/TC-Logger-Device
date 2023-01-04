@@ -231,6 +231,9 @@
              </item>
              <item>
               <widget class="QCheckBox" name="tc1_graph">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="text">
                 <string>Plot Internal T1</string>
                </property>
@@ -238,6 +241,9 @@
              </item>
              <item>
               <widget class="QCheckBox" name="tc2_graph">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="text">
                 <string>Plot External T1</string>
                </property>
@@ -284,6 +290,9 @@
                  <layout class="QHBoxLayout" name="horizontalLayout_40">
                   <item>
                    <widget class="QLabel" name="tc2_int_temperature">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
                     <property name="minimumSize">
                      <size>
                       <width>38</width>
@@ -400,6 +409,9 @@
              </item>
              <item>
               <widget class="QCheckBox" name="tc1_graph_2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="text">
                 <string>Plot Internal T2</string>
                </property>
@@ -407,6 +419,9 @@
              </item>
              <item>
               <widget class="QCheckBox" name="tc2_graph_2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
                <property name="text">
                 <string>Plot External T2</string>
                </property>
