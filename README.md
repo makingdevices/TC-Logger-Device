@@ -36,7 +36,7 @@
 <h3 align="center">Making Devices</h3>
 
   <p align="center">
-    Open Source projects where we struggle with engineering, electronics, coding and who knows what else... In this case, Bytes Counter is a very simple digital tally counter, so hopefully you may find it interesting ;)
+    Open Source projects where we struggle with engineering, electronics, coding and who knows what else... In this case, TC Logger Device is a very simple USB thermocouple reader, so hopefully you may find it interesting ;)
   </p>
 </div>
 
@@ -74,7 +74,7 @@
 
 TC Logger Device is a simple thermocouple USB reader: help you to measure any proccess you need using the USB protocol an a simple software developed in Python. The project was chosen to test the USB communication, explore the interface PC-Embedded system. The project is able to use two thermocouple at the same time and share the data to the computer at a speed of 5Hz. (5 samples per second). The main microprocessor is the PIC18F14K50.
 
-This device is under development, so I encourage you to not assembly, order any PCB or use nay software of this repository until the project is finished.
+This device is under development, so I does encourage you to not assembly, order any PCB or use any software from this repository until the project is finished.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -94,10 +94,6 @@ NOT RECOMMENDED AS THE DEVICE IS UNDER DEVELOPMENT
 
 1. Get the gerber files for the latest version: [V1.2](https://github.com/makingdevices/Thermo-device-logger/tree/main/Gerber/v1.2) 
 2. Send them to a PCB manufacturer ([Our Sponsor is PCBWAY][sponsor-url])
-### 3. Buy all the components from the (Not yet) [Bill Of Materials](-)
-### 4. Solder everything with the help of the [schematic](https://github.com/makingdevices/Bytes-Counter/blob/main/v1/schematicv1.pdf)
-### 5. Burn the [latest firmware](https://github.com/makingdevices/Bytes-Counter/blob/main/v1/Simulation/Bytes_Counter.hex)
-### 6. Give us a Star to the respository ;)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -146,7 +142,7 @@ Distributed under three licenses:
 
 Making Devices - [@MakingDevices](https://www.instagram.com/makingdevices/)
 
-Project Link: [https://github.com/makingdevices/Bytes-Counter](https://github.com/makingdevices/Bytes-Counter)
+Project Link: [https://github.com/makingdevices/Bytes-Counter](https://github.com/makingdevices/Thermo-device-logger/)
 
 Other Links: [LinkTree](https://makingdevices.com/links/)
 
