@@ -142,7 +142,7 @@ Distributed under three licenses:
 
 Making Devices - [@MakingDevices](https://www.instagram.com/makingdevices/)
 
-Project Link: [https://github.com/makingdevices/Bytes-Counter](https://github.com/makingdevices/Thermo-device-logger/)
+Project Link: [https://github.com/makingdevices/Thermo-device-logger](https://github.com/makingdevices/Thermo-device-logger/)
 
 Other Links: [LinkTree](https://makingdevices.com/links/)
 
