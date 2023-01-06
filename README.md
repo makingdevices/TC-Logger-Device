@@ -162,16 +162,16 @@ PCBWay is the most professional PCB manufacturer for prototyping and low-volume 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/makingdevices/Bytes-Counter.svg?style=for-the-badge
-[contributors-url]: https://github.com/makingdevices/Bytes-Counter/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/makingdevices/Bytes-Counter.svg?style=for-the-badge
-[forks-url]: https://github.com/makingdevices/Bytes-Counter/network/members
-[stars-shield]: https://img.shields.io/github/stars/makingdevices/Bytes-Counter.svg?style=for-the-badge
-[stars-url]: https://github.com/makingdevices/Bytes-Counter/stargazers
-[issues-shield]: https://img.shields.io/github/issues/makingdevices/Bytes-Counter.svg?style=for-the-badge
-[issues-url]: https://github.com/makingdevices/Bytes-Counter/issues
+[contributors-shield]: https://img.shields.io/github/contributors/makingdevices/Thermo-device-logger.svg?style=for-the-badge
+[contributors-url]: https://github.com/makingdevices/Thermo-device-logger/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/makingdevices/Thermo-device-logger.svg?style=for-the-badge
+[forks-url]: https://github.com/makingdevices/Thermo-device-logger/network/members
+[stars-shield]: https://img.shields.io/github/stars/makingdevices/Thermo-device-logger.svg?style=for-the-badge
+[stars-url]: https://github.com/makingdevices/Thermo-device-logger/stargazers
+[issues-shield]: https://img.shields.io/github/issues/makingdevices/Thermo-device-logger.svg?style=for-the-badge
+[issues-url]: https://github.com/makingdevices/Thermo-device-logger/issues
 [license-shield]: /images/license.png
-[license-url]: https://github.com/makingdevices/Bytes-Counter/tree/main/License
+[license-url]: https://github.com/makingdevices/Thermo-device-logger/tree/main/License
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/making-devices/
 [sponsor-shield]: https://img.shields.io/badge/SPONSOR-PCBWAY-black.svg?style=for-the-badge&colorB=1200
