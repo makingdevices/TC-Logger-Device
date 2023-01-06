@@ -74,7 +74,7 @@
 
 TC Logger Device is a simple thermocouple USB reader: help you to measure any proccess you need using the USB protocol an a simple software developed in Python. The project was chosen to test the USB communication, explore the interface PC-Embedded system. The project is able to use two thermocouple at the same time and share the data to the computer at a speed of 5Hz. (5 samples per second). The main microprocessor is the PIC18F14K50.
 
-This device is under development, so I does encourage you to not assembly, order any PCB or use any software from this repository until the project is finished.
+This device is under development, so I do encourage you to not assembly, order any PCB or use any software from this repository until the project is finished.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
