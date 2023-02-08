@@ -576,14 +576,16 @@ def Event_Task():
                     device = serial.Serial(port=comport, baudrate=115200, timeout=0.0001, write_timeout=0.0001)
                 
                 device.write(':MEAS:TC1:EXT?'.encode('utf-8'))
+                tc1_external = float(device.readline())
 
-                raw_string_b = device.readline()
-                print(str(raw_string_b))
+                device.write(':MEAS:TC1:INT?'.encode('utf-8'))
+                tc1_internal = float(device.readline())
 
-                tc1_internal= bin2tempint(raw_string_b[4],raw_string_b[3])
-                tc1_external = bin2tempext(raw_string_b[2],raw_string_b[1])
-                tc2_internal = bin2tempint(raw_string_b[8],raw_string_b[7])
-                tc2_external = bin2tempext(raw_string_b[6],raw_string_b[5])
+                device.write(':MEAS:TC2:EXT?'.encode('utf-8'))
+                tc2_external = float(device.readline())
+
+                device.write(':MEAS:TC2:INT?'.encode('utf-8'))
+                tc2_internal = float(device.readline())
                 
                 if(device!= None):device.close()
                 device = None
