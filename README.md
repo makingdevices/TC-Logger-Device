@@ -133,17 +133,19 @@ Priority: <b>High</b>
     - :EXTernal?
     - :LED?
   - :TC2
-    - INTernal?
+    - :INTernal?
     - :EXTernal?
     - :LED?
 - :SET
   - :TC1
-    - :LED [-1|0|1] 
+    - :LED [AUTO|0|1] 
   - :TC2
-    - :LED [-1|0|1] 
+    - :LED [AUTO|0|1] 
 - :STATus
-  - :LED1?
-  - :LED2?
+  - :TC1
+    - :LED1?
+  - :TC2
+    - :LED2?
 - :CONFig
     - :APPversion?
     - :HWversion?

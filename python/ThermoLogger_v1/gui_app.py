@@ -13,82 +13,6 @@ import serial, time
 
 COMS = []
 
-def bin2tempint(binary, binary2):
-    temperature = 0
-    if(binary&0b00000001 == 1):
-        #print("thermocouple is open circuit")
-        temperature = -1000
-        return temperature
-    elif(binary&0b00000010 == 0b10):
-        #print("thermocouple is short-circuit to GND")
-        temperature = -1001
-        return temperature
-    elif(binary&0b00000100 == 0b100):
-        #print("thermocouple is short-circuit to Vcc")
-        temperature = -1002
-        return temperature
-    if(binary&0b00010000 == 0b10000):
-        temperature += 0.0625
-    if(binary&0b00100000 == 0b100000):
-        temperature += 0.125
-    if(binary&0b01000000 == 0b1000000):
-        temperature += 0.25
-    if(binary&0b10000000 == 0b10000000):
-        temperature += 0.5
-    if(binary2&0b0000001 == 0b1):
-        temperature += 1
-    if(binary2&0b0000010 == 0b10):
-        temperature += 2
-    if(binary2&0b00000100 == 0b100):
-        temperature += 4
-    if(binary2&0b00001000 == 0b1000):
-        temperature += 8
-    if(binary2&0b00010000 == 0b10000):
-        temperature += 16
-    if(binary2&0b00100000 == 0b100000):
-        temperature += 32
-    if(binary2&0b01000000 == 0b1000000):
-        temperature += 64
-    if(binary2&0b10000000 == 0b10000000):
-        temperature = temperature*(-1)
-    return temperature
-
-def bin2tempext(binary, binary2):
-    temperature = 0
-    if(binary&0b00000001 == 1):
-        #print("Thermocouple error")
-        temperature = -10003
-        return temperature
-    if(binary&0b00000100 == 0b100):
-        temperature += 0.25
-    if(binary&0b00001000 == 0b1000):
-        temperature += 0.5
-    if(binary&0b00010000 == 0b10000):
-        temperature += 1
-    if(binary&0b00100000 == 0b100000):
-        temperature += 2
-    if(binary&0b01000000 == 0b1000000):
-        temperature += 4
-    if(binary&0b10000000 == 0b10000000):
-        temperature += 8
-    if(binary2&0b0000001 == 0b1):
-        temperature += 16
-    if(binary2&0b0000010 == 0b10):
-        temperature += 32
-    if(binary2&0b00000100 == 0b100):
-        temperature += 64
-    if(binary2&0b00001000 == 0b1000):
-        temperature += 128
-    if(binary2&0b00010000 == 0b10000):
-        temperature += 256
-    if(binary2&0b00100000 == 0b100000):
-        temperature += 512
-    if(binary2&0b01000000 == 0b1000000):
-        temperature += 1024
-    if(binary2&0b10000000 == 0b10000000):
-        temperature = temperature*(-1)
-    return temperature
-
 # -------------------------
 #   TASK CONTROL   --   GLOBAL VARIABLES
 # -------------------------
@@ -491,11 +415,11 @@ class MyMainWindow(QMainWindow):
             print(f"Sampling time {tic_sample - toc_sample:0.4f} seconds")
 
             toc_sample = time.perf_counter()
-            if(tc1_internal == -1000):
+            if(tc1_internal == -300):
                 self.tc1_status.setText("Not connected")
-            elif(tc1_internal == -1001):
+            elif(tc1_internal == -301):
                 self.tc1_status.setText("Short to GND")
-            elif(tc1_internal == -1002):
+            elif(tc1_internal == -302):
                 self.tc1_status.setText("Short to Vcc")
             else:
                 self.tc1_status.setText("Working")
@@ -503,11 +427,11 @@ class MyMainWindow(QMainWindow):
             self.tc1_int_temperature.setText(str(tc1_internal))           #print internal Temp
             self.tc1_ext_temperature.setText(str(tc1_external))           #print external Temp
 
-            if(tc2_internal == -1000):
+            if(tc2_internal == -300):
                 self.tc2_status.setText("Not connected")
-            elif(tc2_internal == -1001):
+            elif(tc2_internal == -301):
                 self.tc2_status.setText("Short to GND")
-            elif(tc2_internal == -1002):
+            elif(tc2_internal == -302):
                 self.tc2_status.setText("Short to Vcc")
             else:
                 self.tc2_status.setText("Working")
@@ -583,6 +507,9 @@ def Event_Task():
 
                 device.write(':MEAS:TC2:EXT?'.encode('utf-8'))
                 tc2_external = float(device.readline())
+
+                device.write(':IDN?'.encode('utf-8'))
+                print(device.readline())
 
                 device.write(':MEAS:TC1:INT?'.encode('utf-8'))
                 tc2_internal = float(device.readline())
