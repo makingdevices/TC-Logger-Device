@@ -112,9 +112,9 @@ Instructions of use:
 
 - [ ] Finish the firmware for the PIC18F14K50
 - [ ] Finish PC software
-    - [ ] Implement SCPI commands 
+    - [X] Implement SCPI commands 
     - [ ] Add data records 
-    - [ ] Improve thermocouple graphs
+    - [X] Improve thermocouple graphs
     - [ ] Add Device Info page
 
 
@@ -128,22 +128,22 @@ Priority: <b>High</b>
 ## SCPI Commands
 
 - :MEASure
-    - :TC1
+  - :TC1
     - :INTernal?
     - :EXTernal?
     - :LED?
   - :TC2
-      - INTernal?
-      - :EXTernal?
-      - :LED?
+    - INTernal?
+    - :EXTernal?
+    - :LED?
 - :SET
-    - :TC1
-      - :LED [-1|0|1] 
-    - :TC2
-      - :LED [-1|0|1] 
+  - :TC1
+    - :LED [-1|0|1] 
+  - :TC2
+    - :LED [-1|0|1] 
 - :STATus
-    - :TC1?
-    - :TC2?
+  - :LED1?
+  - :LED2?
 - :CONFig
     - :APPversion?
     - :HWversion?

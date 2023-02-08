@@ -584,9 +584,9 @@ def Event_Task():
                 device.write(':MEAS:TC2:EXT?'.encode('utf-8'))
                 tc2_external = float(device.readline())
 
-                device.write(':MEAS:TC2:INT?'.encode('utf-8'))
+                device.write(':MEAS:TC1:INT?'.encode('utf-8'))
                 tc2_internal = float(device.readline())
-                
+
                 if(device!= None):device.close()
                 device = None
 
