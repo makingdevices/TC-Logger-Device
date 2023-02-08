@@ -111,9 +111,7 @@ Instructions of use:
 ## Roadmap
 
 - [ ] Finish the firmware for the PIC18F14K50
-- [ ] Enable debug mode on PC software
 - [ ] Finish PC software
-    - [ ] Program debug mode
     - [ ] Implement SCPI commands 
     - [ ] Add data records 
     - [ ] Improve thermocouple graphs
@@ -125,6 +123,37 @@ See the [open issues](https://github.com/makingdevices/Thermo-device-logger/issu
 State: Project <b>UNFINISHED</b> - 06/01/2023
 
 Priority: <b>High</b>
+
+<!-- SCPI -->
+## SCPI Commands
+
+- :MEASure
+    :TC1
+        :INTernal?
+        :EXTernal?
+        :LED?
+    :TC2
+        :INTernal?
+        :EXTernal?
+        :LED?
+- :SET
+    :TC1
+        :LED [0|1] 
+    :TC2
+        :LED [0|1] 
+- :STATus
+    :TC1?
+    :TC2?
+- :CONFig
+    :APPversion?
+    :HWversion?
+
+See the [open issues](https://github.com/makingdevices/Thermo-device-logger/issues) for a full list of proposed features (and known issues).
+
+State: Project <b>UNFINISHED</b> - 06/01/2023
+
+Priority: <b>High</b>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

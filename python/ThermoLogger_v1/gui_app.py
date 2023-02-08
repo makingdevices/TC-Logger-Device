@@ -575,9 +575,10 @@ def Event_Task():
                 if(device == None):
                     device = serial.Serial(port=comport, baudrate=115200, timeout=0.0001, write_timeout=0.0001)
                 
-                device.write('getValue'.encode('utf-8'))
+                device.write(':MEAS:TC1:EXT?'.encode('utf-8'))
 
                 raw_string_b = device.readline()
+                print(str(raw_string_b))
 
                 tc1_internal= bin2tempint(raw_string_b[4],raw_string_b[3])
                 tc1_external = bin2tempext(raw_string_b[2],raw_string_b[1])
