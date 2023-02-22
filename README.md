@@ -110,9 +110,10 @@ Instructions of use:
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Finish the firmware for the PIC18F14K50
+- [x] Finish the firmware for the PIC18F14K50
+- [ ] Validate firmware
 - [ ] Finish PC software
-    - [X] Implement SCPI commands 
+    - [ ] Implement SCPI commands 
     - [ ] Add data records 
     - [X] Improve thermocouple graphs
     - [ ] Add Device Info page
