@@ -8,6 +8,7 @@ from PyQt5.QtCore import QThread
 import matplotlib.pyplot as plt
 from PyQt5.QtWidgets import QMainWindow, QApplication
 import serial.tools.list_ports
+import pyvisa
 
 import serial, time
 
@@ -29,6 +30,7 @@ tic = 0
 toc = 0
 tic_sample = 0
 toc_sample = 0
+TC_LOGGER = None
 connection_avail = 0
 remove_line = [1,1,1,1]
 device = serial.Serial()
@@ -156,9 +158,15 @@ class MyMainWindow(QMainWindow):
     def fn_com_port_bt(self):
         global connection_avail, device,comport
         if(connection_avail == 0):
+            global TC_LOGGER
             self.com_port_bt.setText("Disconnect!")
             comport = self.com_port_usb.currentText()
-            device = serial.Serial(port=comport, baudrate=115200, timeout=0.001, write_timeout=0.001)
+            #device = serial.Serial(port=comport, baudrate=115200, timeout=0.001, write_timeout=0.001)
+            rm = pyvisa.ResourceManager()
+            TC_LOGGER = rm.open_resource(comport)
+            TC_LOGGER.baudrate=115200
+            TC_LOGGER.write_termination = ''
+            TC_LOGGER.read_termination = ''
             connection_avail = 1
             self.tc1_graph.setEnabled(True)
             self.tc2_graph.setEnabled(True)
@@ -496,26 +504,26 @@ def Event_Task():
         tic = time.perf_counter()
         if(connection_avail == 1):
             try:
-                if(device == None):
-                    device = serial.Serial(port=comport, baudrate=115200, timeout=0.0001, write_timeout=0.0001)
+                #if(device == None):
+                #    device = serial.Serial(port=comport, baudrate=115200, timeout=0.0001, write_timeout=0.0001)
                 
-                device.write(':MEAS:TC1:EXT?'.encode('utf-8'))
-                tc1_external = float(device.readline())
+                #device.write(':MEAS:TC1:EXT?'.encode('utf-8'))
+                #tc1_external = float(device.readline())
 
-                device.write(':MEAS:TC1:INT?'.encode('utf-8'))
-                tc1_internal = float(device.readline())
+                TC_LOGGER.write(":SET:TC1:LED 0")
+                print(TC_LOGGER.read())
+                print(TC_LOGGER.query(':MEAS:TC1:EXT?'))
+                
+                #device.write(':MEAS:TC1:INT?'.encode('utf-8'))
+                #tc1_internal = float(device.readline())
 
-                device.write(':MEAS:TC2:EXT?'.encode('utf-8'))
-                tc2_external = float(device.readline())
+                #device.write(':MEAS:TC2:EXT?'.encode('utf-8'))
+                #tc2_external = float(device.readline())
+                #device.write(':SET:TC1:LED 1'.encode('utf-8'))
+                #tc2_internal = float(device.readline())
 
-                device.write(':IDN?'.encode('utf-8'))
-                print(device.readline())
-
-                device.write(':MEAS:TC1:INT?'.encode('utf-8'))
-                tc2_internal = float(device.readline())
-
-                if(device!= None):device.close()
-                device = None
+                #if(device!= None):device.close()
+                #device = None
 
                 interrupt_data = 1
             except:
