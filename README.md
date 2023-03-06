@@ -128,30 +128,29 @@ Priority: <b>High</b>
 <!-- SCPI -->
 ## SCPI Commands
 
-- :MEAS
+- :MEAS  /*DONE IN SCPI
   - :TC1
     - :INT?
     - :EXT?
     - :LED?
-  - :TC2
+  - :TC2 /*DONE IN SCPI
     - :INT?
     - :EXT?
     - :LED?
-- :SET
+- :SET   /*DONE IN SCPI
   - :TC1
     - :LED [AUTO|0|1] 
   - :TC2
     - :LED [AUTO|0|1] 
-- :STAT
-  - :TC1
-    - :LED?
-  - :TC2
-    - :LED?
-- :CONF
+- :MODE   /*Yet not implemmented in SCPI code
+  - :LED
+    - :TC1?
+    - :TC2?
+- :CONF  /*DONE IN SCPI
     - :APP?
     - :HW?
-- *IDN?
-- :hello?
+- *IDN?  /*Nope in SCPI
+- :hello? /*Yet not implemmented in SCPI
 
 See the [open issues](https://github.com/makingdevices/Thermo-device-logger/issues) for a full list of proposed features (and known issues).
 
