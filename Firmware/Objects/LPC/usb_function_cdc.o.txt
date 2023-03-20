@@ -1,6 +1,0 @@
-Coff-Dump Utility V1.2
-Copyright (c) 2003 Custom Computer Services, Inc.
--------------------------------------------------
-
-Error while creating the coff object:
-Coff file 'C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\Objects\LPC\usb_function_cdc.o' does not appear to be a valid COFF file.

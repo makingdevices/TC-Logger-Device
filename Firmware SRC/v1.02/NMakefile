@@ -1,6 +1,6 @@
 # MPLAB IDE generated this makefile for use with Microsoft `nmake'.
 # Project: USB Device - CDC - Basic Demo -  C18 - Low Pin Count USB Development Kit.mcp
-# Date: Sun Feb 05 21:38:02 2023
+# Date: Mon Mar 06 19:59:16 2023
 
 AS = MPASMWIN.exe
 CC = mcc18.exe

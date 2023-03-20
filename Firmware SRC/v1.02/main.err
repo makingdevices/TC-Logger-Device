@@ -1,0 +1,6 @@
+Warning[2054] C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c 616 : suspicious pointer conversion
+Warning[2058] C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c 620 : call of function without prototype
+Warning[2058] C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c 645 : call of function without prototype
+Warning[2058] C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c 656 : call of function without prototype
+Warning[2058] C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c 670 : call of function without prototype
+Warning[2058] C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c 864 : call of function without prototype

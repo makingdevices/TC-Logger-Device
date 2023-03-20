@@ -78,19 +78,32 @@ https://makingdevices.com/links/
     #pragma udata				
 #endif
 
-char USB_In_Buffer[64];         //USB IN BUFFER
-char USB_IDN_Buffer[] = {'C','D','C',' ','T','C',' ','L','O','G','G','E','R',' ','D','E','V','I','C','E',' ','B','Y',' ','M','A','K','I','N','G',' ','D','E','V','I','C','E','S',' ','H','W',':','1','.','2',' ','F','W',':','1','.','0','2',' ','\n'};
-char USB_Out_Buffer[16];		//USB OUT BUFFER
+char USB_In_Buffer[34];         //USB IN BUFFER
+char USB_In_Buffer_2[8];         //USB IN BUFFER TWO
+char index_data = 0; //Number of data to send
+char USB_IDN_Buffer[55] = {'C','D','C',' ','T','C',' ','L','O','G','G','E','R',' ','D','E','V','I','C','E',' ','B','Y',' ','M','A','K','I','N','G',' ','D','E','V','I','C','E','S',' ','H','W',':','1','.','2',' ','F','W',':','1','.','0','2','b','\n'};
+char USB_Out_Buffer[64];		//USB OUT BUFFER
 char SPI_response[8];  
 char SPI_lastmessage[8];
 char spi_state = 0;
 char length;
-int LED1 = 0;
-int LED2 = 0;
+char LED[2] = {0,0};
 float convtemperature = 0;
+unsigned int rem;
 char com_var = 0;
+char index = 0;
+char index_two = 0;
+char meas_1 = 0;
+char meas_2 = 0;
+char meas_3 = 0;
+int i;
+char loop = 0;
+char length_first = 0;
+char length_second = 0;
+char offset,module;
 
 /** P R I V A T E  P R O T O T Y P E S ***************************************/
+
 static void InitializeSystem(void);
 void ProcessIO(void);
 void USBDeviceTasks(void);
@@ -98,7 +111,9 @@ void YourHighPriorityISRCode();
 void YourLowPriorityISRCode();
 void USBCBSendResume(void);
 void UserInit(void);
-/*
+void Interrupts_enable(void);
+void bin2temp(unsigned char binary,unsigned char binary2, char mode);
+
 /** VECTOR REMAPPING ***********************************************/
 #if defined(__18CXX)
 	//On PIC18 devices, addresses 0x00, 0x08, and 0x18 are used for
@@ -169,22 +184,17 @@ void UserInit(void);
 	#pragma interrupt YourHighPriorityISRCode
 	void YourHighPriorityISRCode()
 	{
-		int i;
-		//Check which interrupt flag caused the interrupt.
-		//Service the interrupt
-		//Clear the interrupt flag
-		//Etc.
         #if defined(USB_INTERRUPT)
 	        USBDeviceTasks();
         #endif
 		
 		if(INTCONbits.TMR0IF) //Timer0 interrupt
 			{
-
 				//We set the timer0 again
 				TMR0H = 0x50;
 				TMR0L = 0x38;
 				INTCONbits.TMR0IF = 0; // reset overflow bit (for timer0).
+
 				if(spi_state==0){  //If state == 0 we read first thermocouple
 					LATCbits.LATC1=0;
 					
@@ -202,15 +212,15 @@ void UserInit(void);
 						}
 					}
 					
-					if(LED1 < 2){
+					if(LED[0] < 2){
 						if(((SPI_response[3]&0b00000111) > 0) || ((SPI_response[1]&0b00000001) > 0) ){ //LED brights if TC has an error
 							LATCbits.LATC2=1;
-							LED1 = 1;
+							LED[0] = 1;
 						} else {
 							LATCbits.LATC2=0;
-							LED1 = 0;
+							LED[0] = 0;
 						}
-					} else if(LED1 == 2) {
+					} else if(LED[0] == 2) {
 						LATCbits.LATC2=1;
 					} else LATCbits.LATC2=0;
 					
@@ -229,15 +239,15 @@ void UserInit(void);
 							SPI_lastmessage[i] = SPI_response[i];
 						}
 					}
-					if(LED2 < 2){
+					if(LED[1] < 2){
 						if(((SPI_response[7]&0b00000111) > 0) || ((SPI_response[5]&0b00000001) > 0) ){   //LED brights if TC has an error
 							LATCbits.LATC3=1;
-							LED2 = 1;
+							LED[1] = 1;
 						} else {
 							LATCbits.LATC3=0;
-							LED2 = 0;
+							LED[1] = 0;
 						}
-					} else if(LED2 == 2) {
+					} else if(LED[1] == 2) {
 						LATCbits.LATC3=1;
 					} else LATCbits.LATC3=0;
 				}
@@ -352,47 +362,46 @@ int main(void)
  * Note:            None
  *******************************************************************/
 
-float bin2temp(unsigned char binary,unsigned char binary2, int mode){
-    float temperature = 0;
+void bin2temp(unsigned char binary,unsigned char binary2, char mode){
+    convtemperature = 0;
 	if(mode == 1) {
 	    if((binary&0b00000001) == 0b00000001){
 	    //thermocouple is open circuit
-	        temperature = -300;
-	        return temperature;
+	        convtemperature = -300;
+	        return;
 		}
 		if((binary&0b00000010) == 0b00000010){
 	    //thermocouple is short-circuit to GND
-	        temperature = -301;
-	        return temperature;
+	        convtemperature = -301;
+			return;
 		}
 		if((binary&0b00000100) == 0b00000100){
 	        //thermocouple is short-circuit to Vcc
-	        temperature = -302;
-	        return temperature;
+	        convtemperature = -302;
+			return;
 		}
 	} else {
 	    if((binary&0b00000001) == 1){
-	        temperature = -303;
-	        return temperature;
+	        convtemperature = -303;
+			return;
 		}
-
 		mode = 16;
-	    if((binary&0b00000100) == 0b100) temperature += 0.25;
-	    if((binary&0b00001000) == 0b1000)temperature += 0.5;
+	    if((binary&0b00000100) == 0b100) convtemperature += 0.25;
+	    if((binary&0b00001000) == 0b1000)convtemperature += 0.5;
 	}   //MODE SHOULD BE 1 OR 2
-	    if((binary&0b00010000) == 0b00010000)temperature += (0.0625*mode);
-	    if((binary&0b00100000) == 0b00100000)temperature += (0.125*mode);
-	    if((binary&0b01000000) == 0b01000000)temperature += (0.25*mode);
-	    if((binary&0b10000000) == 0b10000000)temperature += (0.5*mode);
-		if((binary2&0b00000001)  == 0b00000001) temperature += (1*mode);
-	    if((binary2&0b00000010) == 0b00000010)temperature += (2*mode);
-	    if((binary2&0b00000100) == 0b00000100)temperature += (4*mode);
-	    if((binary2&0b00001000) == 0b00001000)temperature += (8*mode);
-	    if((binary2&0b00010000) == 0b00010000)temperature += (16*mode);
-	    if((binary2&0b00100000) == 0b00100000)temperature += (32*mode);
-	    if((binary2&0b01000000) == 0b01000000)temperature += (64*mode);
-	    if((binary2&0b10000000) == 0b10000000)temperature = temperature*(-1);
-		return temperature;
+
+	    if((binary&0b00010000) == 0b00010000)convtemperature += (0.0625*mode);
+	    if((binary&0b00100000) == 0b00100000)convtemperature += (0.125*mode);
+	    if((binary&0b01000000) == 0b01000000)convtemperature += (0.25*mode);
+	    if((binary&0b10000000) == 0b10000000)convtemperature += (0.5*mode);
+		if((binary2&0b00000001) == 0b00000001)convtemperature += (1*mode);
+	    if((binary2&0b00000010) == 0b00000010)convtemperature += (2*mode);
+	    if((binary2&0b00000100) == 0b00000100)convtemperature += (4*mode);
+	    if((binary2&0b00001000) == 0b00001000)convtemperature += (8*mode);
+	    if((binary2&0b00010000) == 0b00010000)convtemperature += (16*mode);
+	    if((binary2&0b00100000) == 0b00100000)convtemperature += (32*mode);
+	    if((binary2&0b01000000) == 0b01000000)convtemperature += (64*mode);
+	    if((binary2&0b10000000) == 0b10000000)convtemperature = convtemperature*(-1);
 }
 /********************************************************************
  * Function:        ftoa(unsigned char *buf, float f)
@@ -407,12 +416,11 @@ float bin2temp(unsigned char binary,unsigned char binary2, int mode){
  * Note:            None
  *******************************************************************/
 
-char ftoa(unsigned char *buf, float f) {
-        unsigned int rem;
+char ftoa(unsigned char *buf) {
         unsigned char *s,length=0;
-        int i,j;
- 
-        i = (int)((float)f*100);
+
+		rem = 0;
+        i = (int)((float)convtemperature*100);
  
         s = buf;
         if (i == 0){            //print 0.0 with null termination here
@@ -423,7 +431,7 @@ char ftoa(unsigned char *buf, float f) {
                 *s=0;                   //null terminate the string
         } else {       
                 if (i < 0) {
-                        *buf++ = '-';
+                        *buf++ = '+';
                         s = buf;
                         i = -i;
                 }
@@ -473,6 +481,7 @@ char ftoa(unsigned char *buf, float f) {
  *******************************************************************/
 static void InitializeSystem(void)
 {
+/*
     #if (defined(__18CXX) & !defined(PIC18F87J50_PIM) & !defined(PIC18F97J94_FAMILY))
         ADCON1 |= 0x0F;                 // Default all pins to digital
 
@@ -493,7 +502,7 @@ static void InitializeSystem(void)
         ANSELD = 0x00;
         ANSELE = 0x00;
     #endif
-    
+*/
 //	The USB specifications require that USB peripheral devices must never source
 //	current onto the Vbus pin.  Additionally, USB peripherals should not source
 //	current on D+ or D- when the host/hub is not actively powering the Vbus line.
@@ -563,195 +572,301 @@ void UserInit(void)
  *
  * Note:            None
  *******************************************************************/
-void ProcessIO(void)
-{   
-	int x, i,meas_1,meas_2,meas_3,g;
-    BYTE numBytesRead;
-    // User Application USB tasks
-    if((USBDeviceState < CONFIGURED_STATE)||(USBSuspendControl==1)) return;
+void sendmessage(char size){
+	if(index==99) putUSBUSART(USB_In_Buffer,size);
+	com_var = 9;
+}
+void bufffer_transfer(){
+	USB_In_Buffer[0] = USB_In_Buffer_2[0];
+	USB_In_Buffer[1] = USB_In_Buffer_2[1];
+	USB_In_Buffer[2] = USB_In_Buffer_2[2];
+	USB_In_Buffer[3] = USB_In_Buffer_2[3];
+	USB_In_Buffer[4] = USB_In_Buffer_2[4];
+	USB_In_Buffer[5] = USB_In_Buffer_2[5];
+}
+void concadenatewords(char *first_word,char *second_word)
+{
+	for(i=0;i<30;i++){
+		if(first_word[i]=='\n') break;
+		length_first = i;
+	}
+	for(i=0;i<30;i++){
+		if(second_word[i]=='\n') break;
+		length_second = i;
+	}
+	for(i=0;i<(length_first+length_second);i++)
+	{
+		if(i>length_first)first_word[i] = second_word[i];
+	}
 
-    if(USBUSARTIsTxTrfReady())
+	first_word[length_first+1] = ',';
+	for(i=(length_first+2);i<(length_first+length_second+3);i++){
+		first_word[i] = second_word[i - (length_first+2)];
+	}
+	first_word[(length_first+length_second+3)] = '\n';
+	length = (length_first+length_second+4);
+}
+
+void SendDatatoUSB()
+{
+    switch( com_var )
     {
-		numBytesRead = getsUSBUSART(USB_Out_Buffer,32);
-		if(numBytesRead != 0)
-		{
-			com_var=9;
-			if(USB_Out_Buffer[0]==':' && USB_Out_Buffer[1]=='M' && USB_Out_Buffer[2]=='E' && USB_Out_Buffer[3]=='A'&& USB_Out_Buffer[4]=='S'){
-				if(USB_Out_Buffer[5]==':' && USB_Out_Buffer[6]=='T' && USB_Out_Buffer[7]=='C' && USB_Out_Buffer[8]=='1'){
-					if(USB_Out_Buffer[9]==':' && USB_Out_Buffer[10]=='I' && USB_Out_Buffer[11]=='N' && USB_Out_Buffer[12]=='T' && USB_Out_Buffer[13]=='?'&& USB_Out_Buffer[14]=='\n'){
-						meas_1 = 3;
-						meas_2 = 2;
-						meas_3 = 1;
-						com_var = 0;
-					} else if(USB_Out_Buffer[9]==':' && USB_Out_Buffer[10]=='E' && USB_Out_Buffer[11]=='X' && USB_Out_Buffer[12]=='T' && USB_Out_Buffer[13]=='?' && USB_Out_Buffer[14]=='\n'){
-						meas_1 = 1;
-						meas_2 = 0;
-						meas_3 = 2;
-						com_var = 0;
-					} else if(USB_Out_Buffer[9]==':' && USB_Out_Buffer[10]=='L' && USB_Out_Buffer[11]=='E' && USB_Out_Buffer[12]=='D' && USB_Out_Buffer[13]=='?'&& USB_Out_Buffer[14]=='\n'){
-						com_var = 1;
-						if(LED1 == 1 || LED1 == 2){
-							USB_In_Buffer[0] = '1';
-						}else USB_In_Buffer[0] = '0';
-					}
-						
-				} else if(USB_Out_Buffer[5]==':' && USB_Out_Buffer[6]=='T' && USB_Out_Buffer[7]=='C' && USB_Out_Buffer[8]=='2'){
-					if(USB_Out_Buffer[9]==':' && USB_Out_Buffer[10]=='I' && USB_Out_Buffer[11]=='N' && USB_Out_Buffer[12]=='T' && USB_Out_Buffer[13]=='?'&& USB_Out_Buffer[14]=='\n'){
-						meas_1 = 7;
-						meas_2 = 6;
-						meas_3 = 1;
-						com_var = 0;
-					} else if(USB_Out_Buffer[9]==':' && USB_Out_Buffer[10]=='E' && USB_Out_Buffer[11]=='X' && USB_Out_Buffer[12]=='T' && USB_Out_Buffer[13]=='?'&& USB_Out_Buffer[14]=='\n'){
-						meas_1 = 5;
-						meas_2 = 4;
-						meas_3 = 2;
-						com_var = 0;
-					} else if(USB_Out_Buffer[9]==':' && USB_Out_Buffer[10]=='L' && USB_Out_Buffer[11]=='E' && USB_Out_Buffer[12]=='D' && USB_Out_Buffer[13]=='?'&& USB_Out_Buffer[14]=='\n'){
-						com_var = 1;
-						if(LED2 == 1 || LED2 == 2){
-							USB_In_Buffer[0] = '1';
-						}else USB_In_Buffer[0] = '0';
-					}
-				}
+		case 0:
+			bin2temp(SPI_lastmessage[meas_1],SPI_lastmessage[meas_2],meas_3);
+			length = ftoa(USB_In_Buffer_2);
+			if(index_data==1){
+				//bin2temp(SPI_lastmessage[meas_1],SPI_lastmessage[meas_2],meas_3);
+				//length = ftoa(USB_In_Buffer_2);
+				bufffer_transfer();
+				USB_In_Buffer[length++] = '\n';
+				//sendmessage(length);
+			} else {
+				//bin2temp(SPI_lastmessage[meas_1],SPI_lastmessage[meas_2],meas_3);
+				//length = ftoa(USB_In_Buffer_2);
+				USB_In_Buffer_2[length] = '\n';
+				concadenatewords(USB_In_Buffer,USB_In_Buffer_2);
+				//sendmessage(length);
 			}
-			if(USB_Out_Buffer[0]==':' && USB_Out_Buffer[1]=='S' && USB_Out_Buffer[2]=='E' && USB_Out_Buffer[3]=='T'){
-				if(USB_Out_Buffer[4]==':' && USB_Out_Buffer[5]=='T' && USB_Out_Buffer[6]=='C' && USB_Out_Buffer[7]=='1'){
-					if(USB_Out_Buffer[8]==':' && USB_Out_Buffer[9]=='L' && USB_Out_Buffer[10]=='E' && USB_Out_Buffer[11]=='D'&& USB_Out_Buffer[12]==' '){
-						if(USB_Out_Buffer[13]=='A' && USB_Out_Buffer[14]=='U' && USB_Out_Buffer[15]=='T' && USB_Out_Buffer[16]=='O'&& USB_Out_Buffer[17]=='\n'){
-							LED1 = 0;
-							USB_In_Buffer[0] = 'A';
-							USB_In_Buffer[1] = 'U';
-							USB_In_Buffer[2] = 'T';
-							USB_In_Buffer[3] = 'O';
-							com_var = 2;
-						}else if(USB_Out_Buffer[13]=='1'&& USB_Out_Buffer[14]=='\n'){
-							LED1 = 2;
-							USB_In_Buffer[0] = '1';
-							com_var = 1;
-						}else if(USB_Out_Buffer[13]=='0'&& USB_Out_Buffer[14]=='\n'){
-							LED1 = 3;
-							USB_In_Buffer[0] = '0';
-							com_var = 1;
-						}	
-					}
-				}
-				if(USB_Out_Buffer[4]==':' && USB_Out_Buffer[5]=='T' && USB_Out_Buffer[6]=='C' && USB_Out_Buffer[7]=='2'){
-					if(USB_Out_Buffer[8]==':' && USB_Out_Buffer[9]=='L' && USB_Out_Buffer[10]=='E' && USB_Out_Buffer[11]=='D'&& USB_Out_Buffer[12]==' '){
-						if(USB_Out_Buffer[13]=='A' && USB_Out_Buffer[14]=='U' && USB_Out_Buffer[15]=='T' && USB_Out_Buffer[16]=='O'&& USB_Out_Buffer[17]=='\n'){
-							LED2 = 0;
-							USB_In_Buffer[0] = 'A';
-							USB_In_Buffer[1] = 'U';
-							USB_In_Buffer[2] = 'T';
-							USB_In_Buffer[3] = 'O';
-							com_var = 2;
-						}else if(USB_Out_Buffer[13]=='1'&& USB_Out_Buffer[14]=='\n'){
-							LED2 = 2;
-							USB_In_Buffer[0] = '1';
-							com_var = 1;
-						}else if(USB_Out_Buffer[13]=='0'&& USB_Out_Buffer[14]=='\n'){
-							LED2 = 3;
-							USB_In_Buffer[0] = '0';
-							com_var = 1;
-						}	
-					}
-				}
-			}
-			if(USB_Out_Buffer[0]==':' && USB_Out_Buffer[1]=='M' && USB_Out_Buffer[2]=='O' && USB_Out_Buffer[3]=='D' && USB_Out_Buffer[4]=='E'){
-				if(USB_Out_Buffer[5]==':' && USB_Out_Buffer[6]=='T' && USB_Out_Buffer[7]=='C' && USB_Out_Buffer[8]=='1'){
-					if(USB_Out_Buffer[9]==':' && USB_Out_Buffer[10]=='L' && USB_Out_Buffer[11]=='E' && USB_Out_Buffer[12]=='D'&& USB_Out_Buffer[13]=='?'&& USB_Out_Buffer[14]=='\n'){
-						if(LED1<2){
-							USB_In_Buffer[0] = 'A';
-							USB_In_Buffer[1] = 'U';
-							USB_In_Buffer[2] = 'T';
-							USB_In_Buffer[3] = 'O';
-							com_var = 2;
-						} else {
-							USB_In_Buffer[0] = 'M';
-							USB_In_Buffer[1] = 'A';
-							USB_In_Buffer[2] = 'N';
-							USB_In_Buffer[3] = 'U';
-							USB_In_Buffer[4] = 'A';
-							USB_In_Buffer[5] = 'L';
-							com_var = 3;
-						}
-					}	
-				}else if(USB_Out_Buffer[5]==':' && USB_Out_Buffer[6]=='T' && USB_Out_Buffer[7]=='C' && USB_Out_Buffer[8]=='2'){
-					if(USB_Out_Buffer[9]==':' && USB_Out_Buffer[10]=='L' && USB_Out_Buffer[11]=='E' && USB_Out_Buffer[12]=='D'&& USB_Out_Buffer[13]=='?'&& USB_Out_Buffer[14]=='\n'){
-						if(LED2<2){
-							USB_In_Buffer[0] = 'A';
-							USB_In_Buffer[1] = 'U';
-							USB_In_Buffer[2] = 'T';
-							USB_In_Buffer[3] = 'O';
-							com_var = 2;
-						} else {
-							USB_In_Buffer[0] = 'M';
-							USB_In_Buffer[1] = 'A';
-							USB_In_Buffer[2] = 'N';
-							USB_In_Buffer[3] = 'U';
-							USB_In_Buffer[4] = 'A';
-							USB_In_Buffer[5] = 'L';
-							com_var = 3;
-						}
-					}	
-				}
-			}
-			if(USB_Out_Buffer[0]==':' && USB_Out_Buffer[1]=='C' && USB_Out_Buffer[2]=='O' && USB_Out_Buffer[3]=='N' && USB_Out_Buffer[4]=='F'&& USB_Out_Buffer[5]=='I'&& USB_Out_Buffer[6]=='G'){
-				if(USB_Out_Buffer[7]==':' && USB_Out_Buffer[8]=='A' && USB_Out_Buffer[9]=='P' && USB_Out_Buffer[10]=='P'&& USB_Out_Buffer[11]=='?'&& USB_Out_Buffer[12]=='\n'){
-						USB_In_Buffer[0] = '1';
-						USB_In_Buffer[1] = '.';
-						USB_In_Buffer[2] = '0';
-						USB_In_Buffer[3] = '2';
-						com_var = 2;
-				}else if(USB_Out_Buffer[7]==':' && USB_Out_Buffer[8]=='H' && USB_Out_Buffer[9]=='W'&& USB_Out_Buffer[10]=='?'&& USB_Out_Buffer[11]=='\n'){
-						USB_In_Buffer[0] = '1';
-						USB_In_Buffer[1] = '.';
-						USB_In_Buffer[2] = '2';
-						com_var = 4;
-				}
-			}
-			if(USB_Out_Buffer[0]==':' && USB_Out_Buffer[1]=='h' && USB_Out_Buffer[2]=='e' && USB_Out_Buffer[3]=='l' && USB_Out_Buffer[4]=='l'&& USB_Out_Buffer[5]=='o'&& USB_Out_Buffer[6]=='?'&& USB_Out_Buffer[7]=='\n'){
-					USB_In_Buffer[0] = 'h';
-					USB_In_Buffer[1] = 'e';
-					USB_In_Buffer[2] = 'l';
-					USB_In_Buffer[3] = 'l';
-					USB_In_Buffer[4] = 'o';
-					com_var = 6;
-			}			
-			if(USB_Out_Buffer[0]=='*' && USB_Out_Buffer[1]=='I' && USB_Out_Buffer[2]=='D' && USB_Out_Buffer[3]=='N' && USB_Out_Buffer[4]=='?' && USB_Out_Buffer[5]=='\n'){
-				com_var = 5;
-			}
-			if(com_var == 0) {
-				convtemperature = bin2temp(SPI_lastmessage[meas_1],SPI_lastmessage[meas_2],meas_3);
-				for(g=0;g<10;g++){
-					USB_In_Buffer[g] == ' ';
-				}
-				length = ftoa(USB_In_Buffer,convtemperature);
-				USB_In_Buffer[length] = '\n';
-				putUSBUSART(USB_In_Buffer,length+1);
-			} else if(com_var==1) {
+			sendmessage(length);
+			break;
+		case 1:
+			if(index_data==1){
+				USB_In_Buffer[0] = USB_In_Buffer_2[0];
 				USB_In_Buffer[1] = '\n';
-				putUSBUSART(USB_In_Buffer,2);
-			} else if(com_var==2) {
+				sendmessage(2);
+			} else {
+				USB_In_Buffer_2[1] = '\n';
+				concadenatewords(USB_In_Buffer,USB_In_Buffer_2);
+				sendmessage(length);
+			}
+			break;
+		case 2:
+			if(index_data==1){
+				bufffer_transfer();
 				USB_In_Buffer[4] = '\n';
-				putUSBUSART(USB_In_Buffer,5);
-			} else if(com_var==3){
+				sendmessage(5);
+			} else {
+				USB_In_Buffer_2[4] = '\n';
+				concadenatewords(USB_In_Buffer,USB_In_Buffer_2);
+				sendmessage(length);
+			}
+			break;
+		case 3:
+			if(index_data==1){
+				bufffer_transfer();
 				USB_In_Buffer[6] = '\n';
-				putUSBUSART(USB_In_Buffer,7);
-			} else if(com_var==4){
-				USB_In_Buffer[3] = '\n';
-				putUSBUSART(USB_In_Buffer,4);
-			} else if(com_var==5){
-				putUSBUSART(USB_IDN_Buffer,55);
-			} else if(com_var==6){
+				sendmessage(7);
+			} else {
+				USB_In_Buffer_2[6] = '\n';
+				concadenatewords(USB_In_Buffer,USB_In_Buffer_2);
+				sendmessage(length);
+			}
+			break;
+		case 5:
+			putUSBUSART(USB_IDN_Buffer,55);
+			break;
+		case 6:
+			if(index_data==1){	
+				bufffer_transfer();
 				USB_In_Buffer[5] = '\n';
-				putUSBUSART(USB_In_Buffer,6);
-			} else if(com_var==9){
+				sendmessage(6);
+			} else {
+				USB_In_Buffer_2[5] = '\n';
+				concadenatewords(USB_In_Buffer,USB_In_Buffer_2);
+				sendmessage(length);
+			}
+			break;
+		case 9:
+			if(index_data==1){
 				USB_In_Buffer[0] = 'E';
 				USB_In_Buffer[1] = 'r';
 				USB_In_Buffer[2] = 'r';
 				USB_In_Buffer[3] = '\n';
-				putUSBUSART(USB_In_Buffer,4);
+				sendmessage(4);
+			} else {
+				USB_In_Buffer_2[0] = 'E';
+				USB_In_Buffer_2[1] = 'r';
+				USB_In_Buffer_2[2] = 'r';
+				USB_In_Buffer_2[3] = '\n';
+				concadenatewords(USB_In_Buffer,USB_In_Buffer_2);
+				sendmessage(length);
 			}
+			break;
+		default:
+			break;
+	}
+}
+void searchend(char number)
+{
+	index_data++;
+	if(USB_Out_Buffer[number]=='\n'){
+		index = 99;
+	} else if(USB_Out_Buffer[number]==';'){
+		if(USB_Out_Buffer[number+1]==':'){
+			index_two = number+1;
+			index = 0;
+			loop = 1;
+		} else {
+			index = number+1;
+		}
+	}
+}
+
+void ProcessIO(void)
+{   
+    BYTE numBytesRead;
+    // User Application USB tasks
+    if((USBDeviceState < CONFIGURED_STATE)||(USBSuspendControl==1)) return;
+    if(USBUSARTIsTxTrfReady())
+    {
+		numBytesRead = getsUSBUSART(USB_Out_Buffer,64);
+		if(numBytesRead != 0)
+		{
+			while(index<numBytesRead){
+				com_var=9;
+				if(USB_Out_Buffer[index_two]==':' && USB_Out_Buffer[index_two+1]=='M' && USB_Out_Buffer[index_two+2]=='E' && USB_Out_Buffer[index_two+3]=='A'&& USB_Out_Buffer[index_two+4]=='S' && USB_Out_Buffer[index_two+5]==':'){
+					for(i=0;i<2;i++){
+						offset = 4;
+						if(i==0){
+							module='1';
+							offset = 0;
+						} else module='2';
+						if(USB_Out_Buffer[index_two+6]=='T' && USB_Out_Buffer[index_two+7]=='C' && USB_Out_Buffer[index_two+8]==module && USB_Out_Buffer[index_two+9]==':'){
+							if(index==0)index=index_two+10;
+							if(USB_Out_Buffer[index]=='I' && USB_Out_Buffer[index+1]=='N' && USB_Out_Buffer[index+2]=='T' && USB_Out_Buffer[index+3]=='?'){
+								meas_1 = 7-offset;
+								meas_2 = 6-offset;
+								meas_3 = 1;
+								com_var = 0;
+								searchend(index+4);
+								break;
+							} else if(USB_Out_Buffer[index]=='E' && USB_Out_Buffer[index+1]=='X' && USB_Out_Buffer[index+2]=='T' && USB_Out_Buffer[index+3]=='?'){
+								meas_1 = 5-offset;
+								meas_2 = 4-offset;
+								meas_3 = 2;
+								com_var = 0;
+								searchend(index+4);
+								break;
+							} else if(USB_Out_Buffer[index]=='L' && USB_Out_Buffer[index+1]=='E' && USB_Out_Buffer[index+2]=='D' && USB_Out_Buffer[index+3]=='?'){
+								if(LED[i] == 1 || LED[i]  == 2){
+									USB_In_Buffer_2[0] = '1';
+								}else USB_In_Buffer_2[0] = '0';
+								searchend(index+4);
+								com_var = 1;
+								break;
+							}	
+						}
+					}
+				}
+				if(loop == 0 && USB_Out_Buffer[index_two]==':' && USB_Out_Buffer[index_two+1]=='S' && USB_Out_Buffer[index_two+2]=='E' && USB_Out_Buffer[index_two+3]=='T' && USB_Out_Buffer[index_two+4]==':'){
+					for(i=0;i<2;i++){
+						if(i==0)module='1';
+						else module='2';
+						if(USB_Out_Buffer[index_two+5]=='T' && USB_Out_Buffer[index_two+6]=='C' && USB_Out_Buffer[index_two+7]==module && USB_Out_Buffer[index_two+8]==':'){
+							if(index==0)index=index_two+9;
+							if(USB_Out_Buffer[index]=='L' && USB_Out_Buffer[index+1]=='E' && USB_Out_Buffer[index+2]=='D'&& USB_Out_Buffer[index+3]==' '){
+								if(USB_Out_Buffer[index+4]=='A' && USB_Out_Buffer[index+5]=='U' && USB_Out_Buffer[index+6]=='T' && USB_Out_Buffer[index+7]=='O'){
+									LED[i]  = 0;
+									USB_In_Buffer_2[0] = 'A';
+									USB_In_Buffer_2[1] = 'U';
+									USB_In_Buffer_2[2] = 'T';
+									USB_In_Buffer_2[3] = 'O';
+									com_var = 2;
+									searchend(index+8);
+									break;
+								}else if(USB_Out_Buffer[index+4]=='1'){
+									LED[i]  = 2;
+									USB_In_Buffer_2[0] = '1';
+									searchend(index+5);
+									com_var = 1;
+									break;
+								}else if(USB_Out_Buffer[index+4]=='0'){
+									LED[i]  = 3;
+									USB_In_Buffer_2[0] = '0';
+									com_var = 1;
+									searchend(index+5);
+									break;
+								}	
+							}
+						}
+					}
+				}
+				
+				if(loop == 0 && USB_Out_Buffer[index_two]==':' && USB_Out_Buffer[index_two+1]=='M' && USB_Out_Buffer[index_two+2]=='O' && USB_Out_Buffer[index_two+3]=='D' && USB_Out_Buffer[index_two+4]=='E'){
+					if(USB_Out_Buffer[index_two+5]==':' && USB_Out_Buffer[index_two+6]=='L' && USB_Out_Buffer[index_two+7]=='E' && USB_Out_Buffer[index_two+8]=='D' && USB_Out_Buffer[index_two+9]==':'){
+						if(index==0)index=index_two+10;
+						if(USB_Out_Buffer[index]=='T' && USB_Out_Buffer[index+1]=='C'){
+							for(i=0;i<2;i++){
+								if(i==0)module='1';
+								else module='2';								
+								if(USB_Out_Buffer[index+2]==module && USB_Out_Buffer[index+3]=='?'){
+									if(LED[i]<2){
+										USB_In_Buffer_2[0] = 'A';
+										USB_In_Buffer_2[1] = 'U';
+										USB_In_Buffer_2[2] = 'T';
+										USB_In_Buffer_2[3] = 'O';
+										com_var = 2;
+										searchend(index+4);
+										break;
+									} else {
+										USB_In_Buffer_2[0] = 'M';
+										USB_In_Buffer_2[1] = 'A';
+										USB_In_Buffer_2[2] = 'N';
+										USB_In_Buffer_2[3] = 'U';
+										USB_In_Buffer_2[4] = 'A';
+										USB_In_Buffer_2[5] = 'L';
+										com_var = 3;
+										searchend(index+4);
+										break;
+									}
+									
+								}
+							}
+						}
+					}
+				}
+				if(loop == 0 && USB_Out_Buffer[index_two]==':' && USB_Out_Buffer[index_two+1]=='C' && USB_Out_Buffer[index_two+2]=='O' && USB_Out_Buffer[index_two+3]=='N' && USB_Out_Buffer[index_two+4]=='F'&& USB_Out_Buffer[index_two+5]=='I'&& USB_Out_Buffer[index_two+6]=='G' && USB_Out_Buffer[index_two+7]==':'){
+					if(index==0)index=index_two+8;
+					if(USB_Out_Buffer[index]=='A' && USB_Out_Buffer[index+1]=='P' && USB_Out_Buffer[index+2]=='P'&& USB_Out_Buffer[index+3]=='?'){
+							USB_In_Buffer_2[0] = '1';
+							USB_In_Buffer_2[1] = '.';
+							USB_In_Buffer_2[2] = '0';
+							USB_In_Buffer_2[3] = '2';
+							com_var = 2;
+							searchend(index+4);
+					}else if(USB_Out_Buffer[index]=='H' && USB_Out_Buffer[index+1]=='W'&& USB_Out_Buffer[index+2]=='?'){
+							USB_In_Buffer_2[0] = '1';
+							USB_In_Buffer_2[1] = '.';
+							USB_In_Buffer_2[2] = '2';
+							USB_In_Buffer_2[3] = 'b';
+							com_var = 2;
+							searchend(index+3);
+					}
+				}
+				if(loop == 0 && USB_Out_Buffer[0]=='*' && USB_Out_Buffer[1]=='I' && USB_Out_Buffer[2]=='D' && USB_Out_Buffer[3]=='N' && USB_Out_Buffer[4]=='?' && USB_Out_Buffer[5]=='\n'){
+					com_var = 5;
+					index_data = 1;
+					index = 99;
+				}
+				if(loop == 0 && USB_Out_Buffer[index_two]==':' && USB_Out_Buffer[index_two+1]=='h' && USB_Out_Buffer[index_two+2]=='e' && USB_Out_Buffer[index_two+3]=='l'&& USB_Out_Buffer[index_two+4]=='l'&& USB_Out_Buffer[index_two+5]=='o'&& USB_Out_Buffer[index_two+6]=='?'){
+						USB_In_Buffer_2[0] = 'h';
+						USB_In_Buffer_2[1] = 'e';
+						USB_In_Buffer_2[2] = 'l';
+						USB_In_Buffer_2[3] = 'l';
+						USB_In_Buffer_2[4] = 'o';
+						com_var = 6;
+						searchend(index+7);
+				}
+				if(com_var==9){
+					index_data=1;
+					index=99;
+				}
+				SendDatatoUSB();
+				loop = 0;
+			}
+			index_data = 0;
+			index = 0;
+			index_two = 0;
 		}
 	}
     CDCTxService();
