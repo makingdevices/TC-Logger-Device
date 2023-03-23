@@ -81,7 +81,7 @@ https://makingdevices.com/links/
 char USB_In_Buffer[34];         //USB IN BUFFER
 char USB_In_Buffer_2[8];         //USB IN BUFFER TWO
 char index_data = 0; //Number of data to send
-char USB_IDN_Buffer[55] = {'C','D','C',' ','T','C',' ','L','O','G','G','E','R',' ','D','E','V','I','C','E',' ','B','Y',' ','M','A','K','I','N','G',' ','D','E','V','I','C','E','S',' ','H','W',':','1','.','2',' ','F','W',':','1','.','0','2','b','\n'};
+char USB_IDN_Buffer[55] = {'C','D','C',' ','T','C',' ','L','O','G','G','E','R',' ','D','E','V','I','C','E',' ','B','Y',' ','M','A','K','I','N','G',' ','D','E','V','I','C','E','S',' ','H','W',':','1','.','2','b',' ','F','W',':','1','.','0','2','\n'};
 char USB_Out_Buffer[64];		//USB OUT BUFFER
 char SPI_response[8];  
 char SPI_lastmessage[8];

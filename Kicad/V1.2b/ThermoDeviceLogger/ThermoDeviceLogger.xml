@@ -1,0 +1,1001 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>C:\Users\rubenelportero\Desktop\Making Devices\Projects\Thermo device logger\Kicad\V1.1\ThermoDeviceLogger\ThermoDeviceLogger.sch</source>
+    <date>27/10/2022 19:11:50</date>
+    <tool>Eeschema (5.1.12-1-g0a0a2da680)-1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Thermo Device Logger</title>
+        <company>Making Devices</company>
+        <rev>V0.1</rev>
+        <date>2021-05-27</date>
+        <source>ThermoDeviceLogger.sch</source>
+        <comment number="1" value="https://makingdevices.com/"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+    <sheet number="2" name="/ThermoCouple Modules/" tstamps="/60AFDA00/">
+      <title_block>
+        <title>Thermo Device Logger</title>
+        <company>Making Devices</company>
+        <rev>V0.1</rev>
+        <date>2021-05-27</date>
+        <source>ThermoCouple.sch</source>
+        <comment number="1" value="https://makingdevices.com/"/>
+        <comment number="2" value="Thermo Couple Module"/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="U1">
+      <value>PIC18F14K50</value>
+      <footprint>Package_SO:SSOP-20_5.3x7.2mm_P0.65mm</footprint>
+      <datasheet>http://ww1.microchip.com/downloads/en/devicedoc/41350c.pdf</datasheet>
+      <libsource lib="MCU_Microchip_PIC18" part="PIC18LF14K50-ESS" description="16K Flash, 768 SRAM, 256 EEPROM, USB, nanoWatt XLP, SSOP20"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>611D78C5</tstamp>
+    </comp>
+    <comp ref="Y1">
+      <value>12Mhz</value>
+      <footprint>CX2520DB12000D0GPSC1</footprint>
+      <datasheet>https://media.digikey.com/pdf/Data%20Sheets/AVX%20PDFs/CX2520DB_USY1M-H1-16428-00_Spec.pdf</datasheet>
+      <fields>
+        <field name="Description">Crystals AEC-Q200 12MHz 8pF 2.5x2mm</field>
+        <field name="Height">0.55</field>
+        <field name="Manufacturer_Name">KYOCERA</field>
+        <field name="Manufacturer_Part_Number">CX2520DB12000D0GPSC1</field>
+      </fields>
+      <libsource lib="Library_Loader" part="CX2520DB12000D0GPSC1" description="Crystals AEC-Q200 12MHz 8pF 2.5x2mm"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>611E8360</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>22pF</value>
+      <footprint>CAPC2012X140N</footprint>
+      <datasheet>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</datasheet>
+      <fields>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <libsource lib="Library_Loader" part="C0805C475M8RACTU" description="Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>611EEAFC</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>22pF</value>
+      <footprint>CAPC2012X140N</footprint>
+      <datasheet>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</datasheet>
+      <fields>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <libsource lib="Library_Loader" part="C0805C475M8RACTU" description="Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>611EFDE5</tstamp>
+    </comp>
+    <comp ref="IC1">
+      <value>TC1108-3.3VDBTR</value>
+      <footprint>SOT230P700X180-4N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/8234309P</datasheet>
+      <fields>
+        <field name="Allied_Number">70451504</field>
+        <field name="Description">Microchip TC1108-3.3VDBTR, LDO Voltage Regulator, 300mA, 3.3 V +/-0.5%, 2.7  6 Vin, 3-Pin SOT-223</field>
+        <field name="Height">1.8</field>
+        <field name="Manufacturer_Name">Microchip</field>
+        <field name="Manufacturer_Part_Number">TC1108-3.3VDBTR</field>
+        <field name="RS Part Number">8234309P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/8234309P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="TC1108-3.3VDBTR" description="Microchip TC1108-3.3VDBTR, LDO Voltage Regulator, 300mA, 3.3 V +/-0.5%, 2.7  6 Vin, 3-Pin SOT-223"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>611F931D</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>1uF</value>
+      <footprint>CAPC2012X140N</footprint>
+      <datasheet>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</datasheet>
+      <fields>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <libsource lib="Library_Loader" part="C0805C475M8RACTU" description="Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>611F9EEE</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>1uF</value>
+      <footprint>CAPC2012X140N</footprint>
+      <datasheet>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</datasheet>
+      <fields>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <libsource lib="Library_Loader" part="C0805C475M8RACTU" description="Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>611FB1BB</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>10k</value>
+      <footprint>RESC2012X75N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7708607P</datasheet>
+      <fields>
+        <field name="Description">Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C</field>
+        <field name="Height">0.75</field>
+        <field name="Manufacturer_Name">Panasonic</field>
+        <field name="Manufacturer_Part_Number">ERJP6WF1303V</field>
+        <field name="RS Part Number">7708607P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7708607P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ERJP6WF1303V" description="Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6121478B</tstamp>
+    </comp>
+    <comp ref="J2">
+      <value>TC2030-MCP-NL</value>
+      <footprint>TC2030-MCP-NL</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/8252561</datasheet>
+      <fields>
+        <field name="Description">TC2030-MCP-NL PCB Footprint (no legs)</field>
+        <field name="Manufacturer_Name">Microchip</field>
+        <field name="Manufacturer_Part_Number">TC2030-MCP-NL</field>
+        <field name="RS Part Number">8252561</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/8252561</field>
+      </fields>
+      <libsource lib="Library_Loader" part="TC2030-MCP-NL" description="TC2030-MCP-NL PCB Footprint (no legs)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>61218202</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>1uF</value>
+      <footprint>CAPC2012X140N</footprint>
+      <datasheet>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</datasheet>
+      <fields>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <libsource lib="Library_Loader" part="C0805C475M8RACTU" description="Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6122728D</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>220</value>
+      <footprint>RESC2012X75N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7708607P</datasheet>
+      <fields>
+        <field name="Description">Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C</field>
+        <field name="Height">0.75</field>
+        <field name="Manufacturer_Name">Panasonic</field>
+        <field name="Manufacturer_Part_Number">ERJP6WF1303V</field>
+        <field name="RS Part Number">7708607P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7708607P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ERJP6WF1303V" description="Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6123CF68</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>220</value>
+      <footprint>RESC2012X75N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7708607P</datasheet>
+      <fields>
+        <field name="Description">Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C</field>
+        <field name="Height">0.75</field>
+        <field name="Manufacturer_Name">Panasonic</field>
+        <field name="Manufacturer_Part_Number">ERJP6WF1303V</field>
+        <field name="RS Part Number">7708607P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7708607P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ERJP6WF1303V" description="Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6123E138</tstamp>
+    </comp>
+    <comp ref="LED1">
+      <value>Green</value>
+      <footprint>LEDC2012X90N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/1332888P</datasheet>
+      <fields>
+        <field name="Description">EXCELED series chip LED: ROHM\'s chip LED lineup consists of standard type,top-view type, side-view type and reverse-mount type.</field>
+        <field name="Height">0.9</field>
+        <field name="Manufacturer_Name">ROHM Semiconductor</field>
+        <field name="Manufacturer_Part_Number">SML-H12V8TT86</field>
+        <field name="RS Part Number">1332888P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/1332888P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="SML-H12V8TT86" description="EXCELED series chip LED: ROHM's chip LED lineup consists of standard type,top-view type, side-view type and reverse-mount type."/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>61243180</tstamp>
+    </comp>
+    <comp ref="LED2">
+      <value>Green</value>
+      <footprint>LEDC2012X90N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/1332888P</datasheet>
+      <fields>
+        <field name="Description">EXCELED series chip LED: ROHM\'s chip LED lineup consists of standard type,top-view type, side-view type and reverse-mount type.</field>
+        <field name="Height">0.9</field>
+        <field name="Manufacturer_Name">ROHM Semiconductor</field>
+        <field name="Manufacturer_Part_Number">SML-H12V8TT86</field>
+        <field name="RS Part Number">1332888P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/1332888P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="SML-H12V8TT86" description="EXCELED series chip LED: ROHM's chip LED lineup consists of standard type,top-view type, side-view type and reverse-mount type."/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>612482DC</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>1uF</value>
+      <footprint>CAPC2012X140N</footprint>
+      <datasheet>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</datasheet>
+      <fields>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <libsource lib="Library_Loader" part="C0805C475M8RACTU" description="Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6125711E</tstamp>
+    </comp>
+    <comp ref="J3">
+      <value>4-terminal</value>
+      <footprint>1751264</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/8024852</datasheet>
+      <fields>
+        <field name="Description">Fixed Terminal Blocks 4P 3.5mm 90DEG</field>
+        <field name="Height">8.5</field>
+        <field name="Manufacturer_Name">Phoenix Contact</field>
+        <field name="Manufacturer_Part_Number">1751264</field>
+        <field name="RS Part Number">8024852</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/8024852</field>
+      </fields>
+      <libsource lib="Library_Loader" part="1751264" description="Fixed Terminal Blocks 4P 3.5mm 90DEG"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>612913B9</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Type - C</value>
+      <footprint>2169900003</footprint>
+      <datasheet>https://www.molex.com/pdm_docs/sd/2169900003_sd.pdf</datasheet>
+      <fields>
+        <field name="Description">USB Connectors Mid-Mnt SMT CH0.58 16Ckt Type C Rec.</field>
+        <field name="Height">3.36</field>
+        <field name="Manufacturer_Name">Molex</field>
+        <field name="Manufacturer_Part_Number">216990-0003</field>
+        <field name="Mouser Part Number">538-216990-0003</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Molex/216990-0003?qs=DRkmTr78QASn0GILUGAYCA%3D%3D</field>
+      </fields>
+      <libsource lib="Library_Loader" part="216990-0003" description="USB Connectors Mid-Mnt SMT CH0.58 16Ckt Type C Rec."/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>6350945C</tstamp>
+    </comp>
+    <comp ref="IC2">
+      <value>MAX31855KASA+</value>
+      <footprint>SOIC127P600X175-8N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/1901414P</datasheet>
+      <fields>
+        <field name="Description">MAX31855KASA+, 14 bit Temperature Sensor +/-2 C SPI 3  3.6 V 8-Pin SOIC</field>
+        <field name="Height">1.75</field>
+        <field name="Manufacturer_Name">Maxim Integrated</field>
+        <field name="Manufacturer_Part_Number">MAX31855KASA+</field>
+        <field name="RS Part Number">1901414P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/1901414P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="MAX31855KASA+" description="MAX31855KASA+, 14 bit Temperature Sensor +/-2 C SPI 3  3.6 V 8-Pin SOIC"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611D796C</tstamp>
+    </comp>
+    <comp ref="IC3">
+      <value>MAX31855KASA+</value>
+      <footprint>SOIC127P600X175-8N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/1901414P</datasheet>
+      <fields>
+        <field name="Description">MAX31855KASA+, 14 bit Temperature Sensor +/-2 C SPI 3  3.6 V 8-Pin SOIC</field>
+        <field name="Height">1.75</field>
+        <field name="Manufacturer_Name">Maxim Integrated</field>
+        <field name="Manufacturer_Part_Number">MAX31855KASA+</field>
+        <field name="RS Part Number">1901414P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/1901414P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="MAX31855KASA+" description="MAX31855KASA+, 14 bit Temperature Sensor +/-2 C SPI 3  3.6 V 8-Pin SOIC"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611D8506</tstamp>
+    </comp>
+    <comp ref="LFB2">
+      <value>Ferrite</value>
+      <footprint>CAPC2012X90N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7879929P</datasheet>
+      <fields>
+        <field name="Description">SMD EMI Suppression Ferrite Beads WE-CBF</field>
+        <field name="Height">0.9</field>
+        <field name="Manufacturer_Name">Wurth Elektronik</field>
+        <field name="Manufacturer_Part_Number">742792005</field>
+        <field name="RS Part Number">7879929P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7879929P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="742792005" description="SMD EMI Suppression Ferrite Beads WE-CBF"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611DAC69</tstamp>
+    </comp>
+    <comp ref="LFB1">
+      <value>Ferrite</value>
+      <footprint>CAPC2012X90N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7879929P</datasheet>
+      <fields>
+        <field name="Description">SMD EMI Suppression Ferrite Beads WE-CBF</field>
+        <field name="Height">0.9</field>
+        <field name="Manufacturer_Name">Wurth Elektronik</field>
+        <field name="Manufacturer_Part_Number">742792005</field>
+        <field name="RS Part Number">7879929P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7879929P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="742792005" description="SMD EMI Suppression Ferrite Beads WE-CBF"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611DBCC7</tstamp>
+    </comp>
+    <comp ref="FB1">
+      <value>742792005</value>
+      <footprint>CAPC2012X90N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7879929P</datasheet>
+      <fields>
+        <field name="Description">SMD EMI Suppression Ferrite Beads WE-CBF</field>
+        <field name="Height">0.9</field>
+        <field name="Manufacturer_Name">Wurth Elektronik</field>
+        <field name="Manufacturer_Part_Number">742792005</field>
+        <field name="RS Part Number">7879929P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7879929P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="742792005" description="SMD EMI Suppression Ferrite Beads WE-CBF"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611DE3B5</tstamp>
+    </comp>
+    <comp ref="FB2">
+      <value>742792005</value>
+      <footprint>CAPC2012X90N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7879929P</datasheet>
+      <fields>
+        <field name="Description">SMD EMI Suppression Ferrite Beads WE-CBF</field>
+        <field name="Height">0.9</field>
+        <field name="Manufacturer_Name">Wurth Elektronik</field>
+        <field name="Manufacturer_Part_Number">742792005</field>
+        <field name="RS Part Number">7879929P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7879929P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="742792005" description="SMD EMI Suppression Ferrite Beads WE-CBF"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611DF27E</tstamp>
+    </comp>
+    <comp ref="D3">
+      <value>ZLLS410TA</value>
+      <footprint>SOD2513X120N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7515203P</datasheet>
+      <fields>
+        <field name="Description">Diodes Inc ZLLS410TA, SMT Schottky Diode, 10V 750mA, 3ns, 2-Pin SOD-323</field>
+        <field name="Height">1.2</field>
+        <field name="Manufacturer_Name">Diodes Inc.</field>
+        <field name="Manufacturer_Part_Number">ZLLS410TA</field>
+        <field name="RS Part Number">7515203P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7515203P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ZLLS410TA" description="Diodes Inc ZLLS410TA, SMT Schottky Diode, 10V 750mA, 3ns, 2-Pin SOD-323"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611E1D22</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>ZLLS410TA</value>
+      <footprint>SOD2513X120N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7515203P</datasheet>
+      <fields>
+        <field name="Description">Diodes Inc ZLLS410TA, SMT Schottky Diode, 10V 750mA, 3ns, 2-Pin SOD-323</field>
+        <field name="Height">1.2</field>
+        <field name="Manufacturer_Name">Diodes Inc.</field>
+        <field name="Manufacturer_Part_Number">ZLLS410TA</field>
+        <field name="RS Part Number">7515203P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7515203P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ZLLS410TA" description="Diodes Inc ZLLS410TA, SMT Schottky Diode, 10V 750mA, 3ns, 2-Pin SOD-323"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611E3073</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>ZLLS410TA</value>
+      <footprint>SOD2513X120N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7515203P</datasheet>
+      <fields>
+        <field name="Description">Diodes Inc ZLLS410TA, SMT Schottky Diode, 10V 750mA, 3ns, 2-Pin SOD-323</field>
+        <field name="Height">1.2</field>
+        <field name="Manufacturer_Name">Diodes Inc.</field>
+        <field name="Manufacturer_Part_Number">ZLLS410TA</field>
+        <field name="RS Part Number">7515203P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7515203P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ZLLS410TA" description="Diodes Inc ZLLS410TA, SMT Schottky Diode, 10V 750mA, 3ns, 2-Pin SOD-323"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611E3F22</tstamp>
+    </comp>
+    <comp ref="R6">
+      <value>10k</value>
+      <footprint>RESC2012X75N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7708607P</datasheet>
+      <fields>
+        <field name="Description">Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C</field>
+        <field name="Height">0.75</field>
+        <field name="Manufacturer_Name">Panasonic</field>
+        <field name="Manufacturer_Part_Number">ERJP6WF1303V</field>
+        <field name="RS Part Number">7708607P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7708607P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ERJP6WF1303V" description="Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611E8466</tstamp>
+    </comp>
+    <comp ref="R5">
+      <value>10k</value>
+      <footprint>RESC2012X75N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7708607P</datasheet>
+      <fields>
+        <field name="Description">Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C</field>
+        <field name="Height">0.75</field>
+        <field name="Manufacturer_Name">Panasonic</field>
+        <field name="Manufacturer_Part_Number">ERJP6WF1303V</field>
+        <field name="RS Part Number">7708607P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7708607P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ERJP6WF1303V" description="Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611E940C</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>10k</value>
+      <footprint>RESC2012X75N</footprint>
+      <datasheet>http://uk.rs-online.com/web/p/products/7708607P</datasheet>
+      <fields>
+        <field name="Description">Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C</field>
+        <field name="Height">0.75</field>
+        <field name="Manufacturer_Name">Panasonic</field>
+        <field name="Manufacturer_Part_Number">ERJP6WF1303V</field>
+        <field name="RS Part Number">7708607P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7708607P</field>
+      </fields>
+      <libsource lib="Library_Loader" part="ERJP6WF1303V" description="Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611EA2E3</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>100nF</value>
+      <footprint>CAPC2012X140N</footprint>
+      <datasheet>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</datasheet>
+      <fields>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <libsource lib="Library_Loader" part="C0805C475M8RACTU" description="Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611ED141</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>100nF</value>
+      <footprint>CAPC2012X140N</footprint>
+      <datasheet>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</datasheet>
+      <fields>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <libsource lib="Library_Loader" part="C0805C475M8RACTU" description="Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R"/>
+      <sheetpath names="/ThermoCouple Modules/" tstamps="/60AFDA00/"/>
+      <tstamp>611EE2D4</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Library_Loader" part="1751264">
+      <description>Fixed Terminal Blocks 4P 3.5mm 90DEG</description>
+      <docs>http://uk.rs-online.com/web/p/products/8024852</docs>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">1751264</field>
+        <field name="Footprint">1751264</field>
+        <field name="Datasheet">http://uk.rs-online.com/web/p/products/8024852</field>
+        <field name="Description">Fixed Terminal Blocks 4P 3.5mm 90DEG</field>
+        <field name="Height">8.5</field>
+        <field name="RS Part Number">8024852</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/8024852</field>
+        <field name="Manufacturer_Name">Phoenix Contact</field>
+        <field name="Manufacturer_Part_Number">1751264</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+        <pin num="4" name="4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="216990-0003">
+      <description>USB Connectors Mid-Mnt SMT CH0.58 16Ckt Type C Rec.</description>
+      <docs>https://www.molex.com/pdm_docs/sd/2169900003_sd.pdf</docs>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">216990-0003</field>
+        <field name="Footprint">2169900003</field>
+        <field name="Datasheet">https://www.molex.com/pdm_docs/sd/2169900003_sd.pdf</field>
+        <field name="Description">USB Connectors Mid-Mnt SMT CH0.58 16Ckt Type C Rec.</field>
+        <field name="Height">3.36</field>
+        <field name="Mouser Part Number">538-216990-0003</field>
+        <field name="Mouser Price/Stock">https://www.mouser.co.uk/ProductDetail/Molex/216990-0003?qs=DRkmTr78QASn0GILUGAYCA%3D%3D</field>
+        <field name="Manufacturer_Name">Molex</field>
+        <field name="Manufacturer_Part_Number">216990-0003</field>
+      </fields>
+      <pins>
+        <pin num="A1" name="GND_1" type="passive"/>
+        <pin num="A4" name="VBUS_1" type="passive"/>
+        <pin num="A5" name="CC1" type="passive"/>
+        <pin num="A6" name="DP1" type="passive"/>
+        <pin num="A7" name="DN1" type="passive"/>
+        <pin num="A8" name="SBU1" type="passive"/>
+        <pin num="A9" name="VBUS_2" type="passive"/>
+        <pin num="A12" name="GND_2" type="passive"/>
+        <pin num="B5" name="CC2" type="passive"/>
+        <pin num="B6" name="DP2" type="passive"/>
+        <pin num="B7" name="DN2" type="passive"/>
+        <pin num="B8" name="SBU2" type="passive"/>
+        <pin num="MH1" name="MH1" type="passive"/>
+        <pin num="MH2" name="MH2" type="passive"/>
+        <pin num="MH3" name="MH3" type="passive"/>
+        <pin num="MH4" name="MH4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="742792005">
+      <description>SMD EMI Suppression Ferrite Beads WE-CBF</description>
+      <docs>http://uk.rs-online.com/web/p/products/7879929P</docs>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">742792005</field>
+        <field name="Footprint">CAPC2012X90N</field>
+        <field name="Datasheet">http://uk.rs-online.com/web/p/products/7879929P</field>
+        <field name="Description">SMD EMI Suppression Ferrite Beads WE-CBF</field>
+        <field name="Height">0.9</field>
+        <field name="RS Part Number">7879929P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7879929P</field>
+        <field name="Manufacturer_Name">Wurth Elektronik</field>
+        <field name="Manufacturer_Part_Number">742792005</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="C0805C475M8RACTU">
+      <description>Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</description>
+      <docs>https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</docs>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C0805C475M8RACTU</field>
+        <field name="Footprint">CAPC2012X140N</field>
+        <field name="Datasheet">https://datasheet.datasheetarchive.com/originals/distributors/Datasheets-DGA8/2444426.pdf</field>
+        <field name="Description">Cap Ceramic 4.7uF 10V X7R 20% Pad SMD 0805 125C T/R</field>
+        <field name="Height">1.4</field>
+        <field name="Manufacturer_Name">Kemet</field>
+        <field name="Manufacturer_Part_Number">C0805C475M8RACTU</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="CX2520DB12000D0GPSC1">
+      <description>Crystals AEC-Q200 12MHz 8pF 2.5x2mm</description>
+      <docs>https://media.digikey.com/pdf/Data%20Sheets/AVX%20PDFs/CX2520DB_USY1M-H1-16428-00_Spec.pdf</docs>
+      <fields>
+        <field name="Reference">Y</field>
+        <field name="Value">CX2520DB12000D0GPSC1</field>
+        <field name="Footprint">CX2520DB12000D0GPSC1</field>
+        <field name="Datasheet">https://media.digikey.com/pdf/Data%20Sheets/AVX%20PDFs/CX2520DB_USY1M-H1-16428-00_Spec.pdf</field>
+        <field name="Description">Crystals AEC-Q200 12MHz 8pF 2.5x2mm</field>
+        <field name="Height">0.55</field>
+        <field name="Manufacturer_Name">KYOCERA</field>
+        <field name="Manufacturer_Part_Number">CX2520DB12000D0GPSC1</field>
+      </fields>
+      <pins>
+        <pin num="1" name="CRYSTAL_1" type="passive"/>
+        <pin num="2" name="GND_1" type="passive"/>
+        <pin num="3" name="CRYSTAL_2" type="passive"/>
+        <pin num="4" name="GND_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="ERJP6WF1303V">
+      <description>Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C</description>
+      <docs>http://uk.rs-online.com/web/p/products/7708607P</docs>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">ERJP6WF1303V</field>
+        <field name="Footprint">RESC2012X75N</field>
+        <field name="Datasheet">http://uk.rs-online.com/web/p/products/7708607P</field>
+        <field name="Description">Panasonic ERJP6W Series Thick Film Surface Mount Fixed Resistor 0805 Case 130k +/-1% 0.5W +/-200ppm/C</field>
+        <field name="Height">0.75</field>
+        <field name="RS Part Number">7708607P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7708607P</field>
+        <field name="Manufacturer_Name">Panasonic</field>
+        <field name="Manufacturer_Part_Number">ERJP6WF1303V</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="MAX31855KASA+">
+      <description>MAX31855KASA+, 14 bit Temperature Sensor +/-2 C SPI 3  3.6 V 8-Pin SOIC</description>
+      <docs>http://uk.rs-online.com/web/p/products/1901414P</docs>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">MAX31855KASA+</field>
+        <field name="Footprint">SOIC127P600X175-8N</field>
+        <field name="Datasheet">http://uk.rs-online.com/web/p/products/1901414P</field>
+        <field name="Description">MAX31855KASA+, 14 bit Temperature Sensor +/-2 C SPI 3  3.6 V 8-Pin SOIC</field>
+        <field name="Height">1.75</field>
+        <field name="RS Part Number">1901414P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/1901414P</field>
+        <field name="Manufacturer_Name">Maxim Integrated</field>
+        <field name="Manufacturer_Part_Number">MAX31855KASA+</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="passive"/>
+        <pin num="2" name="T-" type="passive"/>
+        <pin num="3" name="T+" type="passive"/>
+        <pin num="4" name="VCC" type="passive"/>
+        <pin num="5" name="SCK" type="passive"/>
+        <pin num="6" name="~CS" type="passive"/>
+        <pin num="7" name="SO" type="passive"/>
+        <pin num="8" name="DNC" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="SML-H12V8TT86">
+      <description>EXCELED series chip LED: ROHM's chip LED lineup consists of standard type,top-view type, side-view type and reverse-mount type.</description>
+      <docs>http://uk.rs-online.com/web/p/products/1332888P</docs>
+      <fields>
+        <field name="Reference">LED</field>
+        <field name="Value">SML-H12V8TT86</field>
+        <field name="Footprint">LEDC2012X90N</field>
+        <field name="Datasheet">http://uk.rs-online.com/web/p/products/1332888P</field>
+        <field name="Description">EXCELED series chip LED: ROHM\'s chip LED lineup consists of standard type,top-view type, side-view type and reverse-mount type.</field>
+        <field name="Height">0.9</field>
+        <field name="RS Part Number">1332888P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/1332888P</field>
+        <field name="Manufacturer_Name">ROHM Semiconductor</field>
+        <field name="Manufacturer_Part_Number">SML-H12V8TT86</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="TC1108-3.3VDBTR">
+      <description>Microchip TC1108-3.3VDBTR, LDO Voltage Regulator, 300mA, 3.3 V +/-0.5%, 2.7  6 Vin, 3-Pin SOT-223</description>
+      <docs>http://uk.rs-online.com/web/p/products/8234309P</docs>
+      <fields>
+        <field name="Reference">IC</field>
+        <field name="Value">TC1108-3.3VDBTR</field>
+        <field name="Footprint">SOT230P700X180-4N</field>
+        <field name="Datasheet">http://uk.rs-online.com/web/p/products/8234309P</field>
+        <field name="Description">Microchip TC1108-3.3VDBTR, LDO Voltage Regulator, 300mA, 3.3 V +/-0.5%, 2.7  6 Vin, 3-Pin SOT-223</field>
+        <field name="Height">1.8</field>
+        <field name="RS Part Number">8234309P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/8234309P</field>
+        <field name="Manufacturer_Name">Microchip</field>
+        <field name="Manufacturer_Part_Number">TC1108-3.3VDBTR</field>
+        <field name="Allied_Number">70451504</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="passive"/>
+        <pin num="2" name="GND_1" type="passive"/>
+        <pin num="3" name="VOUT" type="passive"/>
+        <pin num="4" name="GND_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="TC2030-MCP-NL">
+      <description>TC2030-MCP-NL PCB Footprint (no legs)</description>
+      <docs>http://uk.rs-online.com/web/p/products/8252561</docs>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">TC2030-MCP-NL</field>
+        <field name="Footprint">TC2030-MCP-NL</field>
+        <field name="Datasheet">http://uk.rs-online.com/web/p/products/8252561</field>
+        <field name="Description">TC2030-MCP-NL PCB Footprint (no legs)</field>
+        <field name="RS Part Number">8252561</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/8252561</field>
+        <field name="Manufacturer_Name">Microchip</field>
+        <field name="Manufacturer_Part_Number">TC2030-MCP-NL</field>
+      </fields>
+      <pins>
+        <pin num="1" name="-MCLR/VPP" type="passive"/>
+        <pin num="2" name="VDD" type="passive"/>
+        <pin num="3" name="GND" type="passive"/>
+        <pin num="4" name="PGD_(ICSPDAT)" type="passive"/>
+        <pin num="5" name="PGC_(ICSPCLK)" type="passive"/>
+        <pin num="6" name="UNUSED/LVP" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Library_Loader" part="ZLLS410TA">
+      <description>Diodes Inc ZLLS410TA, SMT Schottky Diode, 10V 750mA, 3ns, 2-Pin SOD-323</description>
+      <docs>http://uk.rs-online.com/web/p/products/7515203P</docs>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">ZLLS410TA</field>
+        <field name="Footprint">SOD2513X120N</field>
+        <field name="Datasheet">http://uk.rs-online.com/web/p/products/7515203P</field>
+        <field name="Description">Diodes Inc ZLLS410TA, SMT Schottky Diode, 10V 750mA, 3ns, 2-Pin SOD-323</field>
+        <field name="Height">1.2</field>
+        <field name="RS Part Number">7515203P</field>
+        <field name="RS Price/Stock">http://uk.rs-online.com/web/p/products/7515203P</field>
+        <field name="Manufacturer_Name">Diodes Inc.</field>
+        <field name="Manufacturer_Part_Number">ZLLS410TA</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="MCU_Microchip_PIC18" part="PIC18F13K50-ESS">
+      <aliases>
+        <alias>PIC18LF13K50-ESS</alias>
+        <alias>PIC18LF14K50-ESS</alias>
+        <alias>PIC18F14K50-ESS</alias>
+      </aliases>
+      <description>8K Flash, 512 SRAM, 256 EEPROM, USB, nanoWatt XLP, SSOP20</description>
+      <docs>http://ww1.microchip.com/downloads/en/devicedoc/41350c.pdf</docs>
+      <footprints>
+        <fp>SSOP*5.3x7.2mm*P0.65mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">PIC18F13K50-ESS</field>
+        <field name="Footprint">Package_SO:SSOP-20_5.3x7.2mm_P0.65mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VDD" type="power_in"/>
+        <pin num="2" name="RA5/IOCA5/OSC1/CLKIN" type="BiDi"/>
+        <pin num="3" name="RA4/IOCA3/AN3/OSC2/CLKOUT" type="BiDi"/>
+        <pin num="4" name="RA3/IOCA3/~MCLR~/Vpp" type="input"/>
+        <pin num="5" name="T0CKI/CCP1/P1A/RC5" type="BiDi"/>
+        <pin num="6" name="SRQ/C12OUT/P1B/RC4" type="BiDi"/>
+        <pin num="7" name="PGM/C12IN3-/P1C/AN7/RC3" type="BiDi"/>
+        <pin num="8" name="T1OSCI/T13CKI/SS/AN8/RC6" type="BiDi"/>
+        <pin num="9" name="T1OSCO/SDO/AN9/RC7" type="BiDi"/>
+        <pin num="10" name="RB7/IOCB7/TX/CK" type="BiDi"/>
+        <pin num="11" name="RB6/IOCB6/SCK/SCL" type="BiDi"/>
+        <pin num="12" name="RB5/IOCB5/AN11/RX/DT" type="BiDi"/>
+        <pin num="13" name="RB4/IOCB4/AN10/SDI/SDA" type="BiDi"/>
+        <pin num="14" name="INT2/CVRef/C12IN2-/P1D/AN6/RC2" type="BiDi"/>
+        <pin num="15" name="INT1/C12IN1-/VREF-AN5/RC1" type="BiDi"/>
+        <pin num="16" name="INT0/C12IN+/VREF+/AN4/RC0" type="BiDi"/>
+        <pin num="17" name="VUSB" type="passive"/>
+        <pin num="18" name="RA1/IOCA1/D-/PGC" type="BiDi"/>
+        <pin num="19" name="RA0/IOCA0/D+/PGD" type="BiDi"/>
+        <pin num="20" name="VSS" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Library_Loader">
+      <uri>D:/SamacSys_PCB_Library/KiCad/SamacSys_Parts.lib</uri>
+    </library>
+    <library logical="MCU_Microchip_PIC18">
+      <uri>C:\Program Files\KiCad\share\kicad\library/MCU_Microchip_PIC18.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="Net-(U1-Pad8)">
+      <node ref="U1" pin="8"/>
+    </net>
+    <net code="2" name="GND">
+      <node ref="Y1" pin="4"/>
+      <node ref="C6" pin="1"/>
+      <node ref="C5" pin="2"/>
+      <node ref="J1" pin="MH4"/>
+      <node ref="Y1" pin="2"/>
+      <node ref="IC1" pin="2"/>
+      <node ref="IC1" pin="4"/>
+      <node ref="C2" pin="2"/>
+      <node ref="C1" pin="2"/>
+      <node ref="J1" pin="A1"/>
+      <node ref="J1" pin="A12"/>
+      <node ref="J1" pin="MH1"/>
+      <node ref="J1" pin="MH2"/>
+      <node ref="J1" pin="MH3"/>
+      <node ref="C7" pin="1"/>
+      <node ref="C8" pin="1"/>
+      <node ref="IC3" pin="1"/>
+      <node ref="U1" pin="20"/>
+      <node ref="IC2" pin="1"/>
+      <node ref="J2" pin="3"/>
+      <node ref="C3" pin="1"/>
+      <node ref="LED2" pin="1"/>
+      <node ref="LED1" pin="1"/>
+      <node ref="C4" pin="1"/>
+    </net>
+    <net code="3" name="Net-(C4-Pad2)">
+      <node ref="U1" pin="17"/>
+      <node ref="C4" pin="2"/>
+    </net>
+    <net code="4" name="Net-(U1-Pad9)">
+      <node ref="U1" pin="9"/>
+    </net>
+    <net code="5" name="Net-(LED2-Pad2)">
+      <node ref="LED2" pin="2"/>
+      <node ref="R3" pin="2"/>
+    </net>
+    <net code="6" name="Net-(U1-Pad5)">
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="7" name="Net-(U1-Pad6)">
+      <node ref="U1" pin="6"/>
+    </net>
+    <net code="8" name="Net-(U1-Pad12)">
+      <node ref="U1" pin="12"/>
+    </net>
+    <net code="9" name="Net-(U1-Pad10)">
+      <node ref="U1" pin="10"/>
+    </net>
+    <net code="10" name="/ThermoCouple Modules/T+tcm1">
+      <node ref="J3" pin="1"/>
+      <node ref="LFB1" pin="1"/>
+    </net>
+    <net code="11" name="/ThermoCouple Modules/T-tcm1">
+      <node ref="J3" pin="2"/>
+      <node ref="LFB2" pin="1"/>
+    </net>
+    <net code="12" name="/ThermoCouple Modules/T+tcm2">
+      <node ref="FB1" pin="1"/>
+      <node ref="J3" pin="3"/>
+    </net>
+    <net code="13" name="/ThermoCouple Modules/T-tcm2">
+      <node ref="J3" pin="4"/>
+      <node ref="FB2" pin="1"/>
+    </net>
+    <net code="14" name="/CS_1">
+      <node ref="U1" pin="16"/>
+      <node ref="D1" pin="1"/>
+    </net>
+    <net code="15" name="/CS_2">
+      <node ref="D2" pin="1"/>
+      <node ref="U1" pin="15"/>
+    </net>
+    <net code="16" name="Net-(R2-Pad1)">
+      <node ref="U1" pin="7"/>
+      <node ref="R2" pin="1"/>
+    </net>
+    <net code="17" name="Net-(R3-Pad1)">
+      <node ref="R3" pin="1"/>
+      <node ref="U1" pin="14"/>
+    </net>
+    <net code="18" name="Net-(LED1-Pad2)">
+      <node ref="LED1" pin="2"/>
+      <node ref="R2" pin="2"/>
+    </net>
+    <net code="19" name="Net-(J1-PadB8)">
+      <node ref="J1" pin="B8"/>
+    </net>
+    <net code="20" name="Net-(J1-PadB5)">
+      <node ref="J1" pin="B5"/>
+    </net>
+    <net code="21" name="Net-(J1-PadA5)">
+      <node ref="J1" pin="A5"/>
+    </net>
+    <net code="22" name="Net-(J1-PadA8)">
+      <node ref="J1" pin="A8"/>
+    </net>
+    <net code="23" name="/Cyrstal1">
+      <node ref="U1" pin="3"/>
+      <node ref="C5" pin="1"/>
+      <node ref="Y1" pin="1"/>
+    </net>
+    <net code="24" name="/PGD">
+      <node ref="J1" pin="B6"/>
+      <node ref="J1" pin="A6"/>
+      <node ref="U1" pin="19"/>
+      <node ref="J2" pin="4"/>
+    </net>
+    <net code="25" name="/PGC">
+      <node ref="J2" pin="5"/>
+      <node ref="U1" pin="18"/>
+      <node ref="J1" pin="B7"/>
+      <node ref="J1" pin="A7"/>
+    </net>
+    <net code="26" name="/Crystal2">
+      <node ref="Y1" pin="3"/>
+      <node ref="C6" pin="2"/>
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="27" name="+5V">
+      <node ref="R1" pin="1"/>
+      <node ref="C1" pin="1"/>
+      <node ref="IC1" pin="1"/>
+      <node ref="C3" pin="2"/>
+      <node ref="U1" pin="1"/>
+      <node ref="J2" pin="2"/>
+      <node ref="J1" pin="A9"/>
+      <node ref="J1" pin="A4"/>
+    </net>
+    <net code="28" name="/MISO">
+      <node ref="IC3" pin="7"/>
+      <node ref="IC2" pin="7"/>
+      <node ref="U1" pin="13"/>
+    </net>
+    <net code="29" name="/SCK">
+      <node ref="D3" pin="1"/>
+      <node ref="U1" pin="11"/>
+    </net>
+    <net code="30" name="Net-(J2-Pad6)">
+      <node ref="J2" pin="6"/>
+    </net>
+    <net code="31" name="/MCLR">
+      <node ref="U1" pin="4"/>
+      <node ref="R1" pin="2"/>
+      <node ref="J2" pin="1"/>
+    </net>
+    <net code="32" name="/3.3V">
+      <node ref="IC2" pin="4"/>
+      <node ref="C2" pin="1"/>
+      <node ref="IC1" pin="3"/>
+      <node ref="IC3" pin="4"/>
+      <node ref="C8" pin="2"/>
+      <node ref="C7" pin="2"/>
+      <node ref="R4" pin="1"/>
+      <node ref="R5" pin="1"/>
+      <node ref="R6" pin="1"/>
+    </net>
+    <net code="33" name="Net-(D2-Pad2)">
+      <node ref="IC3" pin="6"/>
+      <node ref="R4" pin="2"/>
+      <node ref="D2" pin="2"/>
+    </net>
+    <net code="34" name="Net-(IC3-Pad8)">
+      <node ref="IC3" pin="8"/>
+    </net>
+    <net code="35" name="Net-(FB1-Pad2)">
+      <node ref="IC3" pin="3"/>
+      <node ref="FB1" pin="2"/>
+    </net>
+    <net code="36" name="Net-(FB2-Pad2)">
+      <node ref="IC3" pin="2"/>
+      <node ref="FB2" pin="2"/>
+    </net>
+    <net code="37" name="Net-(IC2-Pad8)">
+      <node ref="IC2" pin="8"/>
+    </net>
+    <net code="38" name="Net-(D3-Pad2)">
+      <node ref="IC2" pin="5"/>
+      <node ref="IC3" pin="5"/>
+      <node ref="D3" pin="2"/>
+      <node ref="R6" pin="2"/>
+    </net>
+    <net code="39" name="Net-(IC2-Pad3)">
+      <node ref="LFB1" pin="2"/>
+      <node ref="IC2" pin="3"/>
+    </net>
+    <net code="40" name="Net-(D1-Pad2)">
+      <node ref="IC2" pin="6"/>
+      <node ref="R5" pin="2"/>
+      <node ref="D1" pin="2"/>
+    </net>
+    <net code="41" name="Net-(IC2-Pad2)">
+      <node ref="LFB2" pin="2"/>
+      <node ref="IC2" pin="2"/>
+    </net>
+  </nets>
+</export>
