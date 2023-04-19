@@ -63,3 +63,10 @@ print("Random message:")
 print(TC_LOGGER.query(':hello?'))
 print(TC_LOGGER.query(':hey'))
 
+print(" ")
+print("***")
+print("******")
+print("TEST ENDED OK")
+print("******")
+print("***")
+

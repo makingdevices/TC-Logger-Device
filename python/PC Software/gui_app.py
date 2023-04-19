@@ -14,6 +14,18 @@ import serial, time
 
 COMS = []
 
+### Thermo Couple Logger Device
+## MakingDevices - 2022/23
+#
+import pyvisa, time
+
+rm = pyvisa.ResourceManager()
+devlist = rm.list_resources()
+
+# You may need to configure further the resource by setting explicitly the
+# baud rate, parity, termination character, etc before being able to communicate
+# Those depend on your instrument.
+
 # -------------------------
 #   TASK CONTROL   --   GLOBAL VARIABLES
 # -------------------------
@@ -165,8 +177,9 @@ class MyMainWindow(QMainWindow):
             rm = pyvisa.ResourceManager()
             TC_LOGGER = rm.open_resource(comport)
             TC_LOGGER.baudrate=115200
-            TC_LOGGER.write_termination = ''
-            TC_LOGGER.read_termination = ''
+            TC_LOGGER.timeout = 1
+            TC_LOGGER.write_termination = '\n'
+            TC_LOGGER.read_termination = '\n'
             connection_avail = 1
             self.tc1_graph.setEnabled(True)
             self.tc2_graph.setEnabled(True)
@@ -504,26 +517,14 @@ def Event_Task():
         tic = time.perf_counter()
         if(connection_avail == 1):
             try:
-                #if(device == None):
-                #    device = serial.Serial(port=comport, baudrate=115200, timeout=0.0001, write_timeout=0.0001)
+                if(device == None):
+                    GUI.fn_com_port_bt()
+                    connection_avail = 0
                 
-                #device.write(':MEAS:TC1:EXT?'.encode('utf-8'))
-                #tc1_external = float(device.readline())
-
-                TC_LOGGER.write(":SET:TC1:LED 0")
-                print(TC_LOGGER.read())
-                print(TC_LOGGER.query(':MEAS:TC1:EXT?'))
-                
-                #device.write(':MEAS:TC1:INT?'.encode('utf-8'))
-                #tc1_internal = float(device.readline())
-
-                #device.write(':MEAS:TC2:EXT?'.encode('utf-8'))
-                #tc2_external = float(device.readline())
-                #device.write(':SET:TC1:LED 1'.encode('utf-8'))
-                #tc2_internal = float(device.readline())
-
-                #if(device!= None):device.close()
-                #device = None
+                tc1_external = float(TC_LOGGER.query(':MEAS:TC1:EXT?'))
+                tc1_internal = float(TC_LOGGER.query(':MEAS:TC1:INT?'))
+                tc2_external = float(TC_LOGGER.query(':MEAS:TC2:EXT?'))
+                tc2_internal = float(TC_LOGGER.query(':MEAS:TC2:INT?'))
 
                 interrupt_data = 1
             except:
