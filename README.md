@@ -111,7 +111,7 @@ Instructions of use:
 ## Roadmap
 
 - [x] Finish the firmware for the PIC18F14K50
-- [ ] Validate firmware
+- [x] Validate firmware
 - [ ] Finish PC software
     - [ ] Implement SCPI commands 
     - [ ] Add data records 
@@ -161,6 +161,8 @@ Distributed under three licenses:
 - [Hardware](/License/HW_cern_ohl_s_v2.pdf)
 - [Software](/License/SW_GPLv3.0.txt)
 - [Documentation](/License/Documentation_CC-BY-SA-4.0.txt)
+
+OSHW LICENSE: [ES000034](https://certification.oshwa.org/es000034.html)
 
 [![GPL v3 License][license-shield]][license-url] 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
