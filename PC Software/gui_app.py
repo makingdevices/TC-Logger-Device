@@ -2,26 +2,20 @@
 ## MakingDevices - 2022/23
 #
 
-import sys, time
+import sys, time, datetime, csv
 from PyQt5 import uic, QtCore
 from PyQt5.QtCore import QThread
 import matplotlib.pyplot as plt
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import * 
 import serial.tools.list_ports
 import pyvisa
 
-import serial, time
-
 COMS = []
 
-### Thermo Couple Logger Device
-## MakingDevices - 2022/23
-#
 import pyvisa, time
 
 rm = pyvisa.ResourceManager()
-devlist = rm.list_resources()
-
+#devlist = rm.list_resources(query='USB?*')
 # You may need to configure further the resource by setting explicitly the
 # baud rate, parity, termination character, etc before being able to communicate
 # Those depend on your instrument.
@@ -45,7 +39,6 @@ toc_sample = 0
 TC_LOGGER = None
 connection_avail = 0
 remove_line = [1,1,1,1]
-device = serial.Serial()
 
 ## ---------------------------
 ##  GRAPH CLASS & RELATED DEFINITIONS
@@ -138,6 +131,17 @@ def serial_ports():
     return ports_avail
 
 # ----------------------------------
+#   INFO CLASS & RELATED DEFINITIONS
+# ----------------------------------
+
+class AnotherWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        #uic.loadUi("gui_app_2.ui", self)
+        print("I AM ALIVE")
+
+# ----------------------------------
 #   GUI CLASS & RELATED DEFINITIONS
 # ----------------------------------
 
@@ -152,9 +156,14 @@ class MyMainWindow(QMainWindow):
         self.tc1_graph_2.stateChanged.connect(self.graph3_activation_checkbox) # CheckBox for the graph tc2 Internal
         self.tc2_graph_2.stateChanged.connect(self.graph4_activation_checkbox) # CheckBox for the graph tc2 External
 
-        self.com_port_bt.clicked.connect(self.fn_com_port_bt)
+        self.com_port_info.clicked.connect(self.fn_com_port_info) #Info page
+
+        self.com_port_bt.clicked.connect(self.fn_com_port_bt) #Connect/disconnect button
+        self.bt_recording_data.clicked.connect(self.fn_bt_recording_data) #Recording data
 
         self.graph1_activation = 0  #Var to know if the graph is activated
+
+        self.recording_data = 0 #Var to know if the data is being saved
 
         n_data = 1      #Number of samples to graph
 
@@ -167,14 +176,52 @@ class MyMainWindow(QMainWindow):
         self.timer1_start()   #Start the timer
         self.update_gui()     #Update the GUI
 
+    def fn_com_port_info(self):
+        self.info_window = AnotherWindow()
+        self.info_window.show()
+
+    def fn_bt_recording_data(self):
+        if self.recording_data == 0:
+            choice = QMessageBox.question(self, 'Recording data!',
+                                          "Do you want to start recording the data?",
+                                          QMessageBox.Yes | QMessageBox.No)
+            if choice == QMessageBox.Yes:
+                now = datetime.datetime.now()
+                self.file_name = now.strftime("%d%m%Y_%H%M%S")
+                # 2D list of variables (tabular data with rows and columns)
+                file_index = [
+                    ['Time', 'Status TC1', 'Internal T TC1', 'External T TC1', 'Status TC2', 'Internal T TC2','External T TC2','Mark']
+                ]
+                self.recording_data = 1
+                # Example.csv gets created in the current working directory
+                try:
+                    with open('./data/log_' + self.file_name + '.csv', 'a', newline='') as csvfile:
+                        my_writer = csv.writer(csvfile, delimiter=';')
+                        my_writer.writerows(file_index)
+                except:
+                    print("Unable to open .csv file")
+                self.bt_recording_data.setText("Stop Recording Data")
+                self.record_data_label.setText("Recording: log_"+self.file_name+".csv")
+            else:
+                pass
+        elif self.recording_data == 1:
+            choice = QMessageBox.question(self, 'Stop recording data!',
+                                          "Do you want to stop recording the data?",
+                                          QMessageBox.Yes | QMessageBox.No)
+            if choice == QMessageBox.Yes:
+                print("Stop recording on data folder")
+                self.recording_data = 0
+                self.record_data_label.setText("")
+                self.bt_recording_data.setText("Record Data")
+            else:
+                pass
+
     def fn_com_port_bt(self):
         global connection_avail, device,comport
         if(connection_avail == 0):
             global TC_LOGGER
             self.com_port_bt.setText("Disconnect!")
             comport = self.com_port_usb.currentText()
-            #device = serial.Serial(port=comport, baudrate=115200, timeout=0.001, write_timeout=0.001)
-            rm = pyvisa.ResourceManager()
             TC_LOGGER = rm.open_resource(comport)
             TC_LOGGER.baudrate=115200
             TC_LOGGER.timeout = 1
@@ -507,7 +554,7 @@ class AThread(QThread):  #Thread in parallel
             Event_Task()  #We launch Event_Task every 10ms in parallel
 
 def Event_Task():
-    global COMS,Loop_number,comport, interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal, tic, toc, connection_avail, device
+    global COMS,Loop_number,comport, interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal, tic, toc, connection_avail, comport,TC_LOGGER, rm
     if(Loop_number > 3 and connection_avail==0):
         COMS = serial_ports()
         Loop_number = 0
@@ -517,10 +564,7 @@ def Event_Task():
         tic = time.perf_counter()
         if(connection_avail == 1):
             try:
-                if(device == None):
-                    GUI.fn_com_port_bt()
-                    connection_avail = 0
-                
+
                 tc1_external = float(TC_LOGGER.query(':MEAS:TC1:EXT?'))
                 tc1_internal = float(TC_LOGGER.query(':MEAS:TC1:INT?'))
                 tc2_external = float(TC_LOGGER.query(':MEAS:TC2:EXT?'))
@@ -528,9 +572,18 @@ def Event_Task():
 
                 interrupt_data = 1
             except:
-                if(device!= None):device.close()
-                device = None
+                TC_LOGGER = None
                 print("Trying to reconnect...")
+                COMS = serial_ports()
+                if(len(COMS) > 0):
+                    if COMS[0] == comport: 
+                        print("USB Ready")
+                        TC_LOGGER = rm.open_resource(comport)
+                        TC_LOGGER.baudrate=115200
+                        TC_LOGGER.timeout = 1
+                        TC_LOGGER.write_termination = '\n'
+                        TC_LOGGER.read_termination = '\n'
+                        print("Connected!")
             
 # -----------------
 #   MAIN PROGRAM
