@@ -2,10 +2,12 @@
 ## MakingDevices - 2022/23
 #
 
+from itertools import count
 import sys, time, datetime, csv
-from PyQt5 import uic, QtCore
+from PyQt5 import uic, QtCore,QtWidgets
 from PyQt5.QtCore import QThread
 import matplotlib.pyplot as plt
+import matplotlib.dates as dates
 from PyQt5.QtWidgets import * 
 import serial.tools.list_ports
 import pyvisa
@@ -20,6 +22,9 @@ rm = pyvisa.ResourceManager()
 # baud rate, parity, termination character, etc before being able to communicate
 # Those depend on your instrument.
 
+QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True) #enable highdpi scaling
+QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use highdpi icons
+
 # -------------------------
 #   TASK CONTROL   --   GLOBAL VARIABLES
 # -------------------------
@@ -29,6 +34,11 @@ tc1_internal = 0
 tc1_external = 0
 tc2_internal = 0
 tc2_external = 0
+tc1_internal_buffer = 0
+tc1_external_buffer = 0
+tc2_internal_buffer = 0
+tc2_external_buffer = 0
+count_packages = 0
 comport = 0
 x_axis = 100
 interrupt_data = 0
@@ -39,6 +49,19 @@ toc_sample = 0
 TC_LOGGER = None
 connection_avail = 0
 remove_line = [1,1,1,1]
+comm_time = 0.25
+sampling_rate = 1
+sampling_number = 0
+csv_mark = 0
+sampling_choice = 0
+last_sample = 0
+xdata_1 = 0
+origin_xdata_1 = 0
+graph_choice = 6 
+com_description = 0
+board_info_bool = 0
+board_HW = 0
+board_SW = 0
 
 ## ---------------------------
 ##  GRAPH CLASS & RELATED DEFINITIONS
@@ -123,10 +146,12 @@ class BlitManager:
 def serial_ports():
     """ Lists serial port names, descriptions and HW IDs
     """
+    global com_description
     ports_avail = []
     ports = serial.tools.list_ports.comports()
     for port, desc, hwid in sorted(ports):
         if(hwid[12:16] == "04D8" and hwid[17:21] == "00AA"):
+            com_description = desc
             ports_avail.append(port)
     return ports_avail
 
@@ -137,9 +162,14 @@ def serial_ports():
 class AnotherWindow(QWidget):
     def __init__(self):
         super().__init__()
-
-        #uic.loadUi("gui_app_2.ui", self)
-        print("I AM ALIVE")
+        global comport, com_description, board_HW, board_SW
+        uic.loadUi("gui_app_2.ui", self)
+        self.COM_board.setText(str(comport))
+        self.vendor_USB.setText("04D8")
+        self.product_USB.setText("00AA")
+        self.label_14.setText(str(com_description))
+        self.HW_board.setText(str(board_HW))
+        self.SW_board.setText(str(board_SW))
 
 # ----------------------------------
 #   GUI CLASS & RELATED DEFINITIONS
@@ -149,7 +179,6 @@ class MyMainWindow(QMainWindow):
        
     def __init__(self):
         super().__init__()
-
         uic.loadUi("gui_app.ui", self)
         self.tc1_graph.stateChanged.connect(self.graph1_activation_checkbox) # CheckBox for the graph tc1 Internal
         self.tc2_graph.stateChanged.connect(self.graph2_activation_checkbox) # CheckBox for the graph tc1 External
@@ -160,14 +189,17 @@ class MyMainWindow(QMainWindow):
 
         self.com_port_bt.clicked.connect(self.fn_com_port_bt) #Connect/disconnect button
         self.bt_recording_data.clicked.connect(self.fn_bt_recording_data) #Recording data
+        self.bt_recording_data_mark.clicked.connect(self.fn_bt_recording_data_mark) #Recording data
+
+        self.tc1_sampling_rate_2.currentIndexChanged.connect(self.fn_graph_sampling_changed)
 
         self.graph1_activation = 0  #Var to know if the graph is activated
 
         self.recording_data = 0 #Var to know if the data is being saved
 
         n_data = 1      #Number of samples to graph
-
-        self.xdata_1 = [1]  #Get the X data. (x=0 at the beggining)
+        now = datetime.datetime.now()
+        self.xdata_1_time = [now]
         self.ydata_1 = [0]  #internal T1
         self.ydata_2 = [0] #External T1
         self.ydata_3 = [0] #Internal T2
@@ -176,9 +208,74 @@ class MyMainWindow(QMainWindow):
         self.timer1_start()   #Start the timer
         self.update_gui()     #Update the GUI
 
+    def graph_resize_event(self):
+        global xdata_1,origin_xdata_1
+        if((self.graph1_activation == 1)):
+            if(self.tc1_sampling_rate_2.currentIndex()==5):  #Complete graph
+                now = datetime.datetime.now()     
+                xdata_1 = dates.date2num(now) + (1/1440)*10  
+                self.ax.set_xlim(origin_xdata_1, xdata_1)
+            
+            if(self.tc1_sampling_rate_2.currentIndex()==5):  #30 mins graph
+                now = datetime.datetime.now()     
+                if(dates.date2num(now) - origin_xdata_1 > (1/1440)*30):  #If we have more than 30 minutes of data... 
+                    xdata_1 = dates.date2num(now) + (1/1440)*8  
+                    self.ax.set_xlim(xdata_1 - (1/1440)*30 , xdata_1)
+                else:
+                    self.ax.set_xlim(origin_xdata_1, dates.date2num(now) + (1/1440)*10)
+
+            if(self.tc1_sampling_rate_2.currentIndex()==4):  #24 hours graph
+                now = datetime.datetime.now()     
+                if(dates.date2num(now) - origin_xdata_1 > 1):  #If we have more than 1 day of data... 
+                    xdata_1 = dates.date2num(now) + (1/1440)*30  
+                    self.ax.set_xlim(xdata_1 - 1 , xdata_1)
+                else:
+                    self.ax.set_xlim(origin_xdata_1, dates.date2num(now) + (1/1440)*30)
+
+            if(self.tc1_sampling_rate_2.currentIndex()==3):  #8 hours graph
+                now = datetime.datetime.now()     
+                if(dates.date2num(now) - origin_xdata_1 > (1/1440)*60*8):  #If we have more than 8 hours of data... 
+                    xdata_1 = dates.date2num(now) + (1/1440)*30  
+                    self.ax.set_xlim(xdata_1 - (1/1440)*60*8 , xdata_1)
+                else:
+                    self.ax.set_xlim(origin_xdata_1, dates.date2num(now) + (1/1440)*15)
+
+            if(self.tc1_sampling_rate_2.currentIndex()==2):  #1 hour graph
+                now = datetime.datetime.now()     
+                if(dates.date2num(now) - origin_xdata_1 > (1/1440)*60):  #If we have more than 1 hour of data... 
+                    xdata_1 = dates.date2num(now) + (1/1440)*15 
+                    self.ax.set_xlim(xdata_1 - (1/1440)*60 , xdata_1)
+                else:
+                    self.ax.set_xlim(origin_xdata_1, dates.date2num(now) + (1/1440)*10)
+
+
+            if(self.tc1_sampling_rate_2.currentIndex()==1):  #30 mins graph
+                now = datetime.datetime.now()     
+                if(dates.date2num(now) - origin_xdata_1 > (1/1440)*30):  #If we have more than 30 minutes of data... 
+                    xdata_1 = dates.date2num(now) + (1/1440)*8  
+                    self.ax.set_xlim(xdata_1 - (1/1440)*30 , xdata_1)
+                else:
+                    self.ax.set_xlim(origin_xdata_1, dates.date2num(now) + (1/1440)*5)
+
+            if(self.tc1_sampling_rate_2.currentIndex()==0):  # 5 mins graph
+                now = datetime.datetime.now()     
+                xdata_1 = dates.date2num(now) + (1/1440)*4  
+                self.ax.set_xlim(dates.date2num(now)-(1/1440)*1, xdata_1)
+
+            self.fig.canvas.resize_event()
+            self.bm.update()                               #BlitManager class prints everything
+            self.fig.canvas.mpl_connect('close_event', self.handle_close)
+    
+    def fn_graph_sampling_changed(self):    
+        self.graph_resize_event()
+    
     def fn_com_port_info(self):
         self.info_window = AnotherWindow()
         self.info_window.show()
+
+    def fn_bt_recording_data_mark(self):
+        global csv_mark
+        csv_mark = 1 #We print the mark
 
     def fn_bt_recording_data(self):
         if self.recording_data == 0:
@@ -217,7 +314,7 @@ class MyMainWindow(QMainWindow):
                 pass
 
     def fn_com_port_bt(self):
-        global connection_avail, device,comport
+        global connection_avail, device,comport,origin_xdata_1,xdata_1, board_info_bool,remove_line
         if(connection_avail == 0):
             global TC_LOGGER
             self.com_port_bt.setText("Disconnect!")
@@ -232,6 +329,16 @@ class MyMainWindow(QMainWindow):
             self.tc2_graph.setEnabled(True)
             self.tc1_graph_2.setEnabled(True)
             self.tc2_graph_2.setEnabled(True)
+            self.com_port_info.setEnabled(True)
+            self.bt_recording_data.setEnabled(True)
+            self.bt_recording_data_mark.setEnabled(True)
+            self.tc1_sampling_rate.setEnabled(True)
+            self.tc1_sampling_rate_2.setEnabled(True)
+
+
+            now = datetime.datetime.now()
+            origin_xdata_1 = (dates.date2num(now))  #Get the X data. (x=0 at the beggining)
+            xdata_1 = origin_xdata_1 + (1/1440)*10
             return
 
         if(connection_avail == 1):
@@ -240,6 +347,21 @@ class MyMainWindow(QMainWindow):
             self.tc2_graph.setEnabled(False)
             self.tc1_graph_2.setEnabled(False)
             self.tc2_graph_2.setEnabled(False)
+            self.com_port_info.setEnabled(False)
+            self.bt_recording_data.setEnabled(False)
+            self.bt_recording_data_mark.setEnabled(False)
+            self.tc1_sampling_rate.setEnabled(False)
+            self.tc1_sampling_rate_2.setEnabled(False)
+            self.tc1_graph.setChecked(False)
+            self.tc2_graph.setChecked(False)
+            self.tc1_graph_2.setChecked(False)
+            self.tc2_graph_2.setChecked(False)
+            remove_line[0] = 1
+            remove_line[1] = 1
+            remove_line[2] = 1
+            remove_line[3] = 1
+            self.graph1_activation = 0  #We change the variable to desactivated
+            board_info_bool = 0
             self.com_port_bt.setText("Connect!")
 
     def update_COM(self):
@@ -253,7 +375,7 @@ class MyMainWindow(QMainWindow):
                     self.com_port_usb.addItem(COMS[i])
 
     def graph1_activation_checkbox(self, state):
-        global x_axis,remove_line
+        global x_axis,remove_line,origin_xdata_1,xdata_1
         ###
         ## If the checkbox change of the state, the following code execute:
         #
@@ -263,12 +385,12 @@ class MyMainWindow(QMainWindow):
                 # make a new figure
                 self.fig, self.ax = plt.subplots()            #New graph
                 self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
-                self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
-                #self.ax.get_xaxis().set_animated(True)
+                self.ax.set_xlim(origin_xdata_1 , xdata_1)                #Axis X in matplotlib DATE FORMAT
+                #self.ax.get_xaxis().set_animated(True)                                   #1/1440 * (TIME IN MINUTES)
                 self.ax.set_title("Temperature Plot")   #Title
                 self.graph1_activation = 1  #We change the variable to activated
-
-            (self.ln,) = self.ax.plot(self.xdata_1, self.ydata_1, animated=True, label="Internal T1")   #We create the lines with the data 
+            #Yself.ax.xaxis.axis_date
+            (self.ln,) = self.ax.plot(self.xdata_1_time, self.ydata_1, animated=True, label="Internal T1")   #We create the lines with the data 
             plot_list = [self.ln]
             if(remove_line[1]==0):
                 plot_list.append(self.ln_2)
@@ -281,6 +403,7 @@ class MyMainWindow(QMainWindow):
             #(self.ln_4,) = self.ax.plot(self.xdata_1, self.ydata_4, animated=True, label="External T2")  
             self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
             plt.legend()
+            plt.xticks(rotation=45, ha='right')
             plt.show(block=False)    #We show to the user the plot
             plt.pause(.1)            
         else:
@@ -299,23 +422,22 @@ class MyMainWindow(QMainWindow):
             plt.pause(.1)   
             self.bm.update()   
             self.fig.canvas.resize_event()
-            #if(remove_line[0]==1 and remove_line[1] ==1 and remove_line[2]==1 and remove_line[3]==1):
-                #self.graph1_activation = 0  #We change the variable to desactivated
+
 
     def graph2_activation_checkbox(self, state):
-        global remove_line
+        global remove_line,origin_xdata_1,xdata_1
         if state == QtCore.Qt.Checked:  #If checked
             remove_line[1] = 0
             if(self.graph1_activation==0):
                 # make a new figure
                 self.fig, self.ax = plt.subplots()            #New graph
                 self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
-                self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
+                self.ax.set_xlim(origin_xdata_1 , xdata_1)   
                 #self.ax.get_xaxis().set_animated(True)
                 self.ax.set_title("Temperature Plot")   #Title
                 self.graph1_activation = 1
 
-            (self.ln_2,) = self.ax.plot(self.xdata_1, self.ydata_2, animated=True, label="External T1")
+            (self.ln_2,) = self.ax.plot(self.xdata_1_time, self.ydata_2, animated=True, label="External T1")
             plot_list = [self.ln_2]
             if(remove_line[0]==0):
                 plot_list.append(self.ln)
@@ -326,6 +448,7 @@ class MyMainWindow(QMainWindow):
 
             self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
             plt.legend()
+            plt.xticks(rotation=45, ha='right')
             plt.show(block=False)    #We show to the user the plot
             plt.pause(.1)   
             self.bm.update()   
@@ -350,18 +473,18 @@ class MyMainWindow(QMainWindow):
                 #self.graph1_activation = 0  #We change the variable to desactivated
             
     def graph3_activation_checkbox(self, state):
-            global remove_line
+            global remove_line,origin_xdata_1,xdata_1
             if state == QtCore.Qt.Checked:  #If checked
                 remove_line[2] = 0
                 if(self.graph1_activation==0):
                     # make a new figure
                     self.fig, self.ax = plt.subplots()            #New graph
                     self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
-                    self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
+                    self.ax.set_xlim(origin_xdata_1 , xdata_1)   
                     self.ax.set_title("Temperature Plot")   #Title
                     self.graph1_activation = 1
 
-                (self.ln_3,) = self.ax.plot(self.xdata_1, self.ydata_3, animated=True, label="Internal T2")
+                (self.ln_3,) = self.ax.plot(self.xdata_1_time, self.ydata_3, animated=True, label="Internal T2")
                 plot_list = [self.ln_3]
                 if(remove_line[0]==0):
                     plot_list.append(self.ln)
@@ -372,6 +495,7 @@ class MyMainWindow(QMainWindow):
 
                 self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
                 plt.legend()
+                plt.xticks(rotation=45, ha='right')
                 plt.show(block=False)    #We show to the user the plot
                 plt.pause(.1)   
                 self.bm.update()   
@@ -396,18 +520,18 @@ class MyMainWindow(QMainWindow):
                     #self.graph1_activation = 0  #We change the variable to desactivated
 
     def graph4_activation_checkbox(self, state):
-                global remove_line
+                global remove_line,origin_xdata_1,xdata_1
                 if state == QtCore.Qt.Checked:  #If checked
                     remove_line[3] = 0
                     if(self.graph1_activation==0):
                         # make a new figure
                         self.fig, self.ax = plt.subplots()            #New graph
                         self.ax.set_ylim(0,100)                  #Axis Y from 0 to 200
-                        self.ax.set_xlim(0, x_axis)                #Axis X fro 0 to 1000
+                        self.ax.set_xlim(origin_xdata_1 , xdata_1)   
                         self.ax.set_title("Temperature Plot")   #Title
                         self.graph1_activation = 1
 
-                    (self.ln_4,) = self.ax.plot(self.xdata_1, self.ydata_4, animated=True, label="External T2")  
+                    (self.ln_4,) = self.ax.plot(self.xdata_1_time, self.ydata_4, animated=True, label="External T2")  
                     plot_list = [self.ln_4]
                     if(remove_line[0]==0):
                         plot_list.append(self.ln)
@@ -418,6 +542,7 @@ class MyMainWindow(QMainWindow):
 
                     self.bm = BlitManager(self.fig.canvas, plot_list)      #Execute the class BlitManager to take control over the lines
                     plt.legend()
+                    plt.xticks(rotation=45, ha='right')
                     plt.show(block=False)    #We show to the user the plot
                     plt.pause(.1)   
                     self.bm.update()   
@@ -442,13 +567,20 @@ class MyMainWindow(QMainWindow):
                         #self.graph1_activation = 0  #We change the variable to desactivated
 
     def update_gui(self):  #Update GUI (Without human interaction)
-        global COMS, tc1_internal,tc1_external, x_axis, interrupt_data,tc2_internal,tc2_external,tic_sample,toc_sample,connection_avail,remove_line
+        global origin_xdata_1,xdata_1,graph_choice,COMS, tc1_internal,tc1_external, x_axis, interrupt_data,tc2_internal,tc2_external,last_sample,tic_sample,toc_sample,connection_avail,remove_line,csv_mark,sampling_choice, count_packages,sampling_choice,sampling_number,sampling_rate
         if (connection_avail==0):
             self.update_COM()
-
         tic_sample = time.perf_counter()
+        if (count_packages<1000):
+            self.dl_debug.setText(f"Packages: {count_packages}" + f" Sampling: {last_sample:0.2f}s // "+"SN: "+str(sampling_number)+" SR: "+str(sampling_rate)+" SC: "+str(sampling_choice))
+        else:
+            self.dl_debug.setText(f"Packages: {count_packages/1000:0.2f}k" + f" Sampling: {last_sample:0.2f}s // "+"SN: "+str(sampling_number)+" SR: "+str(sampling_rate)+" SC: "+str(sampling_choice))
+
+        sampling_choice = self.tc1_sampling_rate.currentIndex()
+        graph_choice = self.tc1_sampling_rate_2.currentIndex()
         if(interrupt_data == 1):
-            self.xdata_1.append(self.xdata_1[-1] + 1)  #We load the new data
+            now = datetime.datetime.now()
+            self.xdata_1_time.append(now)  #We load the new data
             if(tc1_internal > -100):
                 self.ydata_1.append(tc1_internal)         
                 self.ydata_2.append(tc1_external)
@@ -480,8 +612,7 @@ class MyMainWindow(QMainWindow):
                 self.tc2_graph_2.setEnabled(False)
             interrupt_data = 0
 
-            print(f"Sampling time {tic_sample - toc_sample:0.4f} seconds")
-
+            last_sample = tic_sample - toc_sample
             toc_sample = time.perf_counter()
             if(tc1_internal == -300):
                 self.tc1_status.setText("Not connected")
@@ -505,24 +636,47 @@ class MyMainWindow(QMainWindow):
                 self.tc2_status.setText("Working")
             self.tc2_int_temperature.setText(str(tc2_internal))           #print internal Temp
             self.tc2_ext_temperature.setText(str(tc2_external))           #print external Temp
+            if(self.recording_data==1):
+                now = datetime.datetime.now()
+                self.file_name_updated = now.strftime("%d%m%Y_%H%M%S")
+                file_index = [
+                    [self.file_name_updated, self.tc1_status.text(), str(tc1_external), str(tc1_internal),  self.tc2_status.text(), str(tc2_internal),str(tc2_external),csv_mark]
+                ]
+                if(csv_mark==1): csv_mark = 0
+                # Example.csv gets created in the current working directory
+                try:
+                    with open('./data/log_' + self.file_name + '.csv', 'a', newline='') as csvfile:
+                        my_writer = csv.writer(csvfile, delimiter=';')
+                        my_writer.writerows(file_index)
+                except:
+                    print("Unable to open .csv file")
 
         if (self.graph1_activation == 1):                  #If the graph is activated...
             if(remove_line[0]==0):
-                self.ln.set_xdata(self.xdata_1)
+                self.ln.set_xdata(self.xdata_1_time)
                 self.ln.set_ydata(self.ydata_1)                #Load the new values of Y...
             if(remove_line[1]==0):
-                self.ln_2.set_xdata(self.xdata_1)
+                self.ln_2.set_xdata(self.xdata_1_time)
                 self.ln_2.set_ydata(self.ydata_2)
             if(remove_line[2]==0):                
-                self.ln_3.set_xdata(self.xdata_1)
+                self.ln_3.set_xdata(self.xdata_1_time)
                 self.ln_3.set_ydata(self.ydata_3)
             if(remove_line[3]==0):
-                self.ln_4.set_xdata(self.xdata_1)
-                self.ln_4.set_ydata(self.ydata_4)                
-            if(self.xdata_1[-1] + 20 > x_axis):
-                x_axis = x_axis + 100
-                self.ax.set_xlim(0, x_axis)
-                self.fig.canvas.resize_event()
+                self.ln_4.set_xdata(self.xdata_1_time)
+                self.ln_4.set_ydata(self.ydata_4)        
+            
+            now = datetime.datetime.now()        
+            if(dates.date2num(now) + ((1/1440)*2) > xdata_1): 
+                self.graph_resize_event()
+                #print("aumentamos grafica")
+                #print(dates.date2num(now))
+                #if(graph_choice == 5):
+                    #xdata_1 = xdata_1 +  (1/1440)*10  #We add 10 minutes more
+                    #self.ax.set_xlim(origin_xdata_1, xdata_1)
+                #elif(graph_choice == 0 ):
+                    #xdata_1 = xdata_1 +  (1/1440)*1  #We add 1 minutes more
+                    #self.ax.set_xlim(xdata_1 - (1/1440)*5, xdata_1)
+                #self.fig.canvas.resize_event()
                     # tell the blitting manager to do its thing
             self.bm.update()                               #BlitManager class prints everything
             self.fig.canvas.mpl_connect('close_event', self.handle_close)
@@ -554,23 +708,56 @@ class AThread(QThread):  #Thread in parallel
             Event_Task()  #We launch Event_Task every 10ms in parallel
 
 def Event_Task():
-    global COMS,Loop_number,comport, interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal, tic, toc, connection_avail, comport,TC_LOGGER, rm
+    global COMS,Loop_number,board_HW, board_SW, board_info_bool,comport, last_sample,interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal,tc1_external_buffer, tc1_internal_buffer, tc2_external_buffer, count_packages,tc2_internal_buffer,tic, toc, connection_avail, comport,TC_LOGGER, rm, csv_mark,sampling_rate, sampling_number,sampling_choice
     if(Loop_number > 3 and connection_avail==0):
         COMS = serial_ports()
         Loop_number = 0
+    if(sampling_choice == 0): comm_time = 0.15
+    else: comm_time = 0.25
+    sampling_rate = 1
+    if(sampling_choice==1): sampling_rate = 1
+    elif(sampling_choice==2): sampling_rate = 2
+    elif(sampling_choice==3): sampling_rate = 4
+    elif(sampling_choice==4): sampling_rate = 20
+    elif(sampling_choice==5): sampling_rate = 40
+    elif(sampling_choice==6): sampling_rate = 240
+    elif(sampling_choice==7): sampling_rate = 480
+    elif(sampling_choice==8): sampling_rate = 720
+    elif(sampling_choice==9): sampling_rate = 1200
+    elif(sampling_choice==10): sampling_rate = 2400
     toc = time.perf_counter()
-    if((toc-tic)>=0.15):
-        Loop_number += 0.15
+    if((toc-tic)>comm_time): #Communication time with USB. Recommended: 250ms. Experimental: 150ms
+        Loop_number += toc-tic
         tic = time.perf_counter()
         if(connection_avail == 1):
             try:
+                if(board_info_bool==0):
+                    board_HW = TC_LOGGER.query(':CONFIG:HW?')
+                    board_SW =  TC_LOGGER.query(':CONFIG:APP?')
+                    board_info_bool = 1
 
-                tc1_external = float(TC_LOGGER.query(':MEAS:TC1:EXT?'))
-                tc1_internal = float(TC_LOGGER.query(':MEAS:TC1:INT?'))
-                tc2_external = float(TC_LOGGER.query(':MEAS:TC2:EXT?'))
-                tc2_internal = float(TC_LOGGER.query(':MEAS:TC2:INT?'))
+                if(sampling_number == 0):
+                    tc1_external_buffer = 0
+                    tc1_internal_buffer = 0
+                    tc2_external_buffer = 0
+                    tc2_internal_buffer = 0
 
-                interrupt_data = 1
+                tc1_external_buffer  += float(TC_LOGGER.query(':MEAS:TC1:EXT?'))
+                tc1_internal_buffer  += float(TC_LOGGER.query(':MEAS:TC1:INT?'))
+                tc2_external_buffer  += float(TC_LOGGER.query(':MEAS:TC2:EXT?'))
+                tc2_internal_buffer  += float(TC_LOGGER.query(':MEAS:TC2:INT?'))
+
+                sampling_number += 1
+                count_packages +=1
+
+                if(sampling_number >= sampling_rate):
+                    tc1_external = round(tc1_external_buffer / sampling_number, 2)
+                    tc1_internal = round(tc1_internal_buffer / sampling_number, 2)
+                    tc2_external = round(tc2_external_buffer / sampling_number, 2)
+                    tc2_internal = round(tc2_internal_buffer / sampling_number, 2)
+                    sampling_number = 0
+                    interrupt_data = 1
+
             except:
                 TC_LOGGER = None
                 print("Trying to reconnect...")
