@@ -38,7 +38,7 @@
    <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
-   <string>ThermoLogger v1</string>
+   <string>ThermoLogger v1.1</string>
   </property>
   <property name="animated">
    <bool>true</bool>
