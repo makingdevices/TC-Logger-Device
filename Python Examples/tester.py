@@ -11,7 +11,7 @@ print(rm)
 devlist = rm.list_resources()
 print(devlist)  # device list feedback is ('ASRL7::INSTR', 'ASRL8::INSTR', 'ASRL9::INSTR')
 #We open the TC LOGGER in "COM9", feel free to change into the COM of your computer
-TC_LOGGER = rm.open_resource('COM9') ## YOU MUST EDIT THE COM PORT
+TC_LOGGER = rm.open_resource('COM3') ## YOU MUST EDIT THE COM PORT
 TC_LOGGER.timeout = 1 #1 sec of timeout
 TC_LOGGER.write_termination = '\n' #termination of the communication
 TC_LOGGER.read_termination = '\n' #termination of the communication

@@ -1,0 +1,1041 @@
+MPLINK 5.00, LINKER
+Linker Map File - Created Sun Sep 24 17:07:29 2023
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+               _entry_scn       code   0x000000    program   0x000006
+           .code___init.o       code   0x000006    program   0x000002
+    HIGH_INTERRUPT_VECTOR       code   0x000008    program   0x000006
+.idata_usb_function_cdc.o_i    romdata   0x00000e    program   0x000000
+.romdata_usb_function_cdc.o    romdata   0x00000e    program   0x000000
+    .idata_usb_device.o_i    romdata   0x00000e    program   0x000000
+    .romdata_usb_device.o    romdata   0x00000e    program   0x000000
+      .idata_fxd1616u.o_i    romdata   0x00000e    program   0x000000
+      .romdata_fxd1616u.o    romdata   0x00000e    program   0x000000
+      .idata_spi_open.o_i    romdata   0x00000e    program   0x000000
+      .romdata_spi_open.o    romdata   0x00000e    program   0x000000
+      .idata_spi_read.o_i    romdata   0x00000e    program   0x000000
+      .romdata_spi_read.o    romdata   0x00000e    program   0x000000
+          .romdata_main.o    romdata   0x00000e    program   0x000000
+        .idata___init.o_i    romdata   0x00000e    program   0x000000
+  .code_usb_descriptors.o       code   0x00000e    program   0x000000
+        .romdata___init.o    romdata   0x00000e    program   0x000000
+.idata_usb_descriptors.o_i    romdata   0x00000e    program   0x000000
+            .code_c018i.o       code   0x00000e    program   0x000000
+         .romdata_c018i.o    romdata   0x00000e    program   0x000000
+         .idata_c018i.o_i    romdata   0x00000e    program   0x000000
+     LOW_INTERRUPT_VECTOR       code   0x000018    program   0x000006
+                   .cinit    romdata   0x00002a    program   0x00000e
+    REMAPPED_RESET_VECTOR       code   0x000040    program   0x000006
+      AppSignatureSection    romdata   0x000046    program   0x000002
+REMAPPED_HIGH_INTERRUPT_VECTOR       code   0x000048    program   0x000006
+REMAPPED_LOW_INTERRUPT_VECTOR       code   0x000050    program   0x000006
+AppVersionAndSignatureSection    romdata   0x000056    program   0x000002
+ .code_usb_function_cdc.o       code   0x000058    program   0x0004d8
+          .idata_main.o_i    romdata   0x000530    program   0x000048
+             .code_main.o       code   0x001000    program   0x001ab0
+       .code_usb_device.o       code   0x002ab0    program   0x00127a
+.romdata_usb_descriptors.o    romdata   0x003d2a    program   0x0000ad
+               _cinit_scn       code   0x003dd8    program   0x00009e
+         .code_spi_open.o       code   0x003e76    program   0x000068
+                     PROG       code   0x003ede    program   0x00004c
+                   STRING       code   0x003f2a    program   0x000034
+         .code_spi_read.o       code   0x003f5e    program   0x00002e
+         .code_fxd1616u.o       code   0x003f8c    program   0x00002c
+                    .code       code   0x003fb8    program   0x000020
+             _startup_scn       code   0x003fd8    program   0x00001c
+    .config_300000_main.o    romdata   0x300000    program   0x000001
+    .config_300001_main.o    romdata   0x300001    program   0x000001
+    .config_300002_main.o    romdata   0x300002    program   0x000001
+    .config_300003_main.o    romdata   0x300003    program   0x000001
+    .config_300005_main.o    romdata   0x300005    program   0x000001
+    .config_300006_main.o    romdata   0x300006    program   0x000001
+    .config_300008_main.o    romdata   0x300008    program   0x000001
+    .config_300009_main.o    romdata   0x300009    program   0x000001
+    .config_30000a_main.o    romdata   0x30000a    program   0x000001
+    .config_30000b_main.o    romdata   0x30000b    program   0x000001
+    .config_30000c_main.o    romdata   0x30000c    program   0x000001
+    .config_30000d_main.o    romdata   0x30000d    program   0x000001
+                MATH_DATA      udata   0x000000       data   0x000010
+                 .tmpdata      udata   0x000010       data   0x000004
+            .idata_main.o      idata   0x000060       data   0x000048
+      .udata_usb_device.o      udata   0x0000a8       data   0x000035
+.udata_usb_function_cdc.o      udata   0x0000dd       data   0x000019
+           .udata_c018i.o      udata   0x0000f6       data   0x00000a
+                   .stack      udata   0x000100       data   0x000070
+            .udata_main.o      udata   0x000170       data   0x000083
+           .idata_c018i.o      idata   0x0001f3       data   0x000000
+          .idata___init.o      idata   0x0001f3       data   0x000000
+          .udata___init.o      udata   0x0001f3       data   0x000000
+        .idata_spi_read.o      idata   0x0001f3       data   0x000000
+        .udata_spi_read.o      udata   0x0001f3       data   0x000000
+        .idata_spi_open.o      idata   0x0001f3       data   0x000000
+        .udata_spi_open.o      udata   0x0001f3       data   0x000000
+        .idata_fxd1616u.o      idata   0x0001f3       data   0x000000
+        .udata_fxd1616u.o      udata   0x0001f3       data   0x000000
+      .idata_usb_device.o      idata   0x0001f3       data   0x000000
+ .udata_usb_descriptors.o      udata   0x0001f3       data   0x000000
+.idata_usb_function_cdc.o      idata   0x0001f3       data   0x000000
+ .idata_usb_descriptors.o      idata   0x0001f3       data   0x000000
+                  USB_BDT      udata   0x000200       data   0x000040
+                  usbram2      udata   0x000240       data   0x000091
+              SFR_BANKED0      udata   0x000f53       data   0x00000d
+            SFR_UNBANKED0      udata   0x000f60       data   0x0000a0
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00000d      
+                            0x000018    0x00001d      
+                            0x00002a    0x000037      
+                            0x000040    0x00004d      
+                            0x000050    0x000577      
+                            0x001000    0x003dd6      
+                            0x003dd8    0x003ff3      
+                            0x300000    0x300003      
+                            0x300005    0x300006      
+                            0x300008    0x30000d      
+            13655 out of 16408 program addresses used, program memory utilization is 83%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+               AppVersion   0x000056    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                CDCInitEP   0x0000f4    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+             CDCTxService   0x0003e2    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                   D1616S   0x003f00    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                D1616SNEG   0x003f0e    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                 D1616SOK   0x003f0a    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                  D1616SX   0x003f20    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                  DA1616S   0x003ef0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                 FXD1616S   0x003ede    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                 FXD1616U   0x003f8c    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
+                 High_ISR   0x000008    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+         InitializeSystem   0x00195e    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        Interrupts_enable   0x001232    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                  Low_ISR   0x000018    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                  OpenSPI   0x003e76    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\SPI\spi_open.c
+                ProcessIO   0x001e30    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                  ReadSPI   0x003f5e    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\SPI\spi_read.c
+        Remapped_High_ISR   0x000048    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+         Remapped_Low_ISR   0x000050    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+            SendDatatoUSB   0x001c4c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+     SignaturePlaceholder   0x000046    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       USBCBCheckOtherReq   0x0029ca    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        USBCBErrorHandler   0x0029c8    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              USBCBInitEP   0x0029d0    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+          USBCBSendResume   0x0029d4    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+    USBCBStdSetDscHandler   0x0029ce    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+             USBCBSuspend   0x0029c2    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+     USBCBWakeFromSuspend   0x0029c4    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        USBCB_SOF_Handler   0x0029c6    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       USBCDCEventHandler   0x00015c    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+              USBCancelIO   0x002f74    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+       USBCheckCDCRequest   0x000058    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+       USBCheckStdRequest   0x0039fc    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+     USBConfigureEndpoint   0x00317c    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+  USBCtrlEPAllowDataStage   0x003100    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBCtrlEPAllowStatusStage   0x00305e    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+         USBCtrlEPService   0x0037d0    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+ USBCtrlEPServiceComplete   0x003228    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBCtrlTrfInHandler   0x003948    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+     USBCtrlTrfOutHandler   0x0038fe    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBCtrlTrfRxService   0x0033a8    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+   USBCtrlTrfSetupHandler   0x0038a0    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBCtrlTrfTxService   0x0032ea    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+          USBDeviceAttach   0x00302e    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+          USBDeviceDetach   0x003024    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+            USBDeviceInit   0x002ab0    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+           USBDeviceTasks   0x002bd0    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+        USBEnableEndpoint   0x002d38    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+         USBStallEndpoint   0x002e98    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+          USBStallHandler   0x003744    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+  USBStdFeatureReqHandler   0x003aba    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBStdGetDscHandler   0x0035c8    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+   USBStdGetStatusHandler   0x003682    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBStdSetCfgHandler   0x0034e6    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+               USBSuspend   0x003778    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+     USBTransferOnePacket   0x002da6    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+       USBWakeFromSuspend   0x0037a2    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+               USB_CD_Ptr   0x003dcf    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x003dd1    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+USER_USB_CALLBACK_EVENT_HANDLER   0x002a1c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                 UserInit   0x001964    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+  YourHighPriorityISRCode   0x001000    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+   YourLowPriorityISRCode   0x001210    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              _2jContinue   0x003f4a    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x003f54    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+       ___return_lbl00000   0x000004    program     static                          
+       ___return_lbl00000   0x003fb6    program     static                          
+       ___return_lbl00000   0x00000c    program     static                          
+       ___return_lbl00001   0x003ff2    program     static                          
+       ___return_lbl00001   0x00001c    program     static                          
+       ___return_lbl00002   0x000044    program     static                          
+       ___return_lbl00002   0x003e74    program     static                          
+       ___return_lbl00003   0x00004c    program     static                          
+       ___return_lbl00004   0x000054    program     static                          
+               __config_0   0x300000    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_1   0x300001    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              __config_10   0x30000c    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              __config_11   0x30000d    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_2   0x300002    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_3   0x300003    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_4   0x300005    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_5   0x300006    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_6   0x300008    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_7   0x300009    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_8   0x30000a    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_9   0x30000b    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   __init   0x000006    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
+             __tmplbl_138   0x0029b8    program     static                          
+             __tmplbl_139   0x0029b8    program     static                          
+             __tmplbl_140   0x0029b4    program     static                          
+             __tmplbl_141   0x0029b4    program     static                          
+             __tmplbl_142   0x0029ae    program     static                          
+             __tmplbl_194   0x001e88    program     static                          
+            __zero_memory   0x003fb8    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                _do_cinit   0x003dd8    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                   _entry   0x000000    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                   _reset   0x000040    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                 _startup   0x003fd8    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 bin2temp   0x001290    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+         bufffer_transfer   0x00199c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              cleanbuffer   0x0019b6    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                cleanmeas   0x001a44    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                compare_l   0x003fce    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+         concadenatewords   0x001a4e    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        configDescriptor1   0x003d3c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                copy_loop   0x003e4a    program     static                          
+            copy_one_byte   0x003e50    program     static                          
+               device_dsc   0x003d2a    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                     done   0x003e74    program     static                          
+             done_copying   0x003e5e    program     static                          
+                  endloop   0x003fb2    program     static                          
+                     ftoa   0x00155e    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+             getsUSBUSART   0x0001e6    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                     jEnd   0x003f5c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                    jLoop   0x003f3e    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                     loop   0x003fe8    program     static                          
+                     loop   0x003f96    program     static                          
+                   loop_h   0x003fc6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   loop_l   0x003fd0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     main   0x00125c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   memset   0x003f2a    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+              putUSBUSART   0x0002a6    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+            putrsUSBUSART   0x00035c    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+             putsUSBUSART   0x0002d8    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                    sd000   0x003d7f    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                    sd001   0x003d83    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                    sd002   0x003da3    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                searchend   0x001db6    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              sendmessage   0x001966    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                     test   0x003df2    program     static                          
+               zero_block   0x003fc6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADCON0   0x000fc2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               ADCON0bits   0x000fc2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADCON1   0x000fc1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               ADCON1bits   0x000fc1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADCON2   0x000fc0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               ADCON2bits   0x000fc0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    ADRES   0x000fc3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADRESH   0x000fc4       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADRESL   0x000fc3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    ANSEL   0x000f7e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ANSELH   0x000f7f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               ANSELHbits   0x000f7f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                ANSELbits   0x000f7e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  BAUDCON   0x000fb8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              BAUDCONbits   0x000fb8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  BAUDCTL   0x000fb8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              BAUDCTLbits   0x000fb8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      BDT   0x000200       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                      BSR   0x000fe0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              BaudRateGen   0x0000ea       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+       BothEP0OutUOWNsSet   0x0000d0       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                  CCP1CON   0x000fbd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CCP1CONbits   0x000fbd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    CCPR1   0x000fbe       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   CCPR1H   0x000fbf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   CCPR1L   0x000fbe       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+          CDCDataInHandle   0x0000e7       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+         CDCDataOutHandle   0x0000e5       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                  CM1CON0   0x000f6d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CM1CON0bits   0x000f6d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  CM2CON0   0x000f6b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CM2CON0bits   0x000f6b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  CM2CON1   0x000f6c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CM2CON1bits   0x000f6c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CtrlTrfData   0x000238       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                     DDRA   0x000f92       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 DDRAbits   0x000f92       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     DDRB   0x000f93       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 DDRBbits   0x000f93       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     DDRC   0x000f94       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 DDRCbits   0x000f94       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  ECCP1AS   0x000fb6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              ECCP1ASbits   0x000fb6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    EEADR   0x000fa9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                EEADRbits   0x000fa9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   EECON1   0x000fa6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               EECON1bits   0x000fa6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   EECON2   0x000fa7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   EEDATA   0x000fa8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     FSR0   0x000fe9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR0H   0x000fea       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR0L   0x000fe9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     FSR1   0x000fe1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR1H   0x000fe2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR1L   0x000fe1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     FSR2   0x000fd9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR2H   0x000fda       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR2L   0x000fd9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    INDF0   0x000fef       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    INDF1   0x000fe7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    INDF2   0x000fdf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   INTCON   0x000ff2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  INTCON2   0x000ff1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              INTCON2bits   0x000ff1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  INTCON3   0x000ff0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              INTCON3bits   0x000ff0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               INTCONbits   0x000ff2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     IOCA   0x000f79       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 IOCAbits   0x000f79       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     IOCB   0x000f7a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 IOCBbits   0x000f7a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     IPR1   0x000f9f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 IPR1bits   0x000f9f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     IPR2   0x000fa2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 IPR2bits   0x000fa2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     LATA   0x000f89       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 LATAbits   0x000f89       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     LATB   0x000f8a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 LATBbits   0x000f8a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     LATC   0x000f8b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 LATCbits   0x000f8b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      LED   0x000099       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   OSCCON   0x000fd3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  OSCCON2   0x000fd2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              OSCCON2bits   0x000fd2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               OSCCONbits   0x000fd3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  OSCTUNE   0x000f9b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              OSCTUNEbits   0x000f9b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                       PC   0x000ff9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      PCL   0x000ff9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PCLATH   0x000ffa       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PCLATU   0x000ffb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PIE1   0x000f9d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 PIE1bits   0x000f9d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PIE2   0x000fa0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 PIE2bits   0x000fa0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PIR1   0x000f9e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 PIR1bits   0x000f9e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PIR2   0x000fa1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 PIR2bits   0x000fa1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PLUSW0   0x000feb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PLUSW1   0x000fe3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PLUSW2   0x000fdb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PORTA   0x000f80       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                PORTAbits   0x000f80       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PORTB   0x000f81       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                PORTBbits   0x000f81       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PORTC   0x000f82       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                PORTCbits   0x000f82       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTDEC0   0x000fed       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTDEC1   0x000fe5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTDEC2   0x000fdd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTINC0   0x000fee       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTINC1   0x000fe6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTINC2   0x000fde       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      PR2   0x000fcb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PREINC0   0x000fec       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PREINC1   0x000fe4       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PREINC2   0x000fdc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PROD   0x000ff3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PRODH   0x000ff4       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PRODL   0x000ff3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PSTRCON   0x000fb9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              PSTRCONbits   0x000fb9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PWM1CON   0x000fb7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              PWM1CONbits   0x000fb7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     RCON   0x000fd0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 RCONbits   0x000fd0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    RCREG   0x000fae       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    RCSTA   0x000fab       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                RCSTAbits   0x000fab       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  REFCON0   0x000fba       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              REFCON0bits   0x000fba       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  REFCON1   0x000fbb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              REFCON1bits   0x000fbb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  REFCON2   0x000fbc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              REFCON2bits   0x000fbc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+             RemoteWakeup   0x0000cc       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                     SIGN   0x000000       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                   SLRCON   0x000f76       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               SLRCONbits   0x000f76       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    SPBRG   0x000faf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SPBRGH   0x000fb0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+          SPI_lastmessage   0x0001e2       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+             SPI_response   0x0001da       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   SRCON0   0x000f68       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               SRCON0bits   0x000f68       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SRCON1   0x000f69       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               SRCON1bits   0x000f69       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SSPADD   0x000fc8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SSPBUF   0x000fc9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  SSPCON1   0x000fc6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              SSPCON1bits   0x000fc6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  SSPCON2   0x000fc5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              SSPCON2bits   0x000fc5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SSPMSK   0x000f6f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               SSPMSKbits   0x000f6f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  SSPSTAT   0x000fc7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              SSPSTATbits   0x000fc7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   STATUS   0x000fd8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               STATUSbits   0x000fd8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   STKPTR   0x000ffc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               STKPTRbits   0x000ffc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 SetupPkt   0x000230       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                    T0CON   0x000fd5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                T0CONbits   0x000fd5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    T1CON   0x000fcd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                T1CONbits   0x000fcd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    T2CON   0x000fca       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                T2CONbits   0x000fca       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    T3CON   0x000fb1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                T3CONbits   0x000fb1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   TABLAT   0x000ff5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   TBLPTR   0x000ff6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  TBLPTRH   0x000ff7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  TBLPTRL   0x000ff6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  TBLPTRU   0x000ff8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR0H   0x000fd7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR0L   0x000fd6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR1H   0x000fcf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR1L   0x000fce       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     TMR2   0x000fcc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR3H   0x000fb3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR3L   0x000fb2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      TOS   0x000ffd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     TOSH   0x000ffe       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     TOSL   0x000ffd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     TOSU   0x000fff       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TRISA   0x000f92       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                TRISAbits   0x000f92       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TRISB   0x000f93       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                TRISBbits   0x000f93       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TRISC   0x000f94       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                TRISCbits   0x000f94       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TXREG   0x000fad       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TXSTA   0x000fac       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                TXSTAbits   0x000fac       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    UADDR   0x000f5c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                UADDRbits   0x000f5c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UCFG   0x000f61       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UCFGbits   0x000f61       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UCON   0x000f64       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UCONbits   0x000f64       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEIE   0x000f5b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEIEbits   0x000f5b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEIR   0x000f5f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEIRbits   0x000f5f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP0   0x000f53       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP0bits   0x000f53       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP1   0x000f54       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP1bits   0x000f54       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP2   0x000f55       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP2bits   0x000f55       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP3   0x000f56       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP3bits   0x000f56       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP4   0x000f57       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP4bits   0x000f57       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP5   0x000f58       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP5bits   0x000f58       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP6   0x000f59       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP6bits   0x000f59       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP7   0x000f5a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP7bits   0x000f5a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    UFRMH   0x000f5e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                UFRMHbits   0x000f5e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    UFRML   0x000f5d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                UFRMLbits   0x000f5d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      UIE   0x000f60       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  UIEbits   0x000f60       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      UIR   0x000f62       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  UIRbits   0x000f62       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+   USBActiveConfiguration   0x0000a9       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+    USBAlternateInterface   0x0000aa       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+        USBBusIsSuspended   0x0000cd       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBDeferINDataStagePackets   0x0000db       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBDeferOUTDataStagePackets   0x0000dc       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBDeferStatusStagePacket   0x0000d8       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+           USBDeviceState   0x0000a8       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBStatusStageEnabledFlag1   0x0000d9       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBStatusStageEnabledFlag2   0x0000da       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBStatusStageTimeoutCounter   0x0000d7       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+           USB_IDN_Buffer   0x000061       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+            USB_In_Buffer   0x000170       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+          USB_In_Buffer_2   0x000192       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+           USB_Out_Buffer   0x00019a       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                    USTAT   0x000f63       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                USTATbits   0x000f63       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                USTATcopy   0x0000ce       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                 VREFCON0   0x000fba       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+             VREFCON0bits   0x000fba       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 VREFCON1   0x000fbb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+             VREFCON1bits   0x000fbb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 VREFCON2   0x000fbc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+             VREFCON2bits   0x000fbc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                        W   0x000fe8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   WDTCON   0x000fd1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               WDTCONbits   0x000fd1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     WPUA   0x000f77       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 WPUAbits   0x000f77       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     WPUB   0x000f78       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 WPUBbits   0x000f78       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     WREG   0x000fe8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 __AARGB0   0x000009       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB1   0x000008       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB2   0x000007       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB3   0x000006       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB4   0x000005       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB5   0x000004       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB6   0x000003       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB7   0x000002       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                   __AEXP   0x00000a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __BARGB0   0x00000e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                 __BARGB1   0x00000d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                 __BARGB2   0x00000c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                 __BARGB3   0x00000b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                   __BEXP   0x00000f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                __FPFLAGS   0x000001       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x000001       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                  __REMB0   0x000005       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB1   0x000004       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB2   0x000003       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB3   0x000002       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __tmp_0   0x000010       data     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                  __tmp_0   0x000010       data     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                  __tmp_0   0x000010       data     static C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+              cdc_data_rx   0x000280       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+              cdc_data_tx   0x000240       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+             cdc_mem_type   0x0000e4       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+               cdc_notice   0x0002c7       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+               cdc_rx_len   0x0000dd       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+            cdc_trf_state   0x0000de       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+               cdc_tx_len   0x0000e3       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                  com_var   0x00009f       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+     controlTransferState   0x0000bd       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+    control_signal_bitmap   0x0000e9       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+          convtemperature   0x00009b       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+  convtemperature_decimal   0x00009d       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                curr_byte   0x0000f9       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               curr_entry   0x0000fb       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 data_ptr   0x0000fd       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+              delay_count   0x0001f1       data     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+dummy_encapsulated_cmd_response   0x0000ee       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+          endpoint_number   0x0000cf       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+               ep_data_in   0x0000d1       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+              ep_data_out   0x0000d4       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                        i   0x0001ed       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                  inPipes   0x0000be       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                    index   0x0000a0       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               index_data   0x000060       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                index_two   0x0000a1       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   length   0x0001ea       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+             length_first   0x0000a6       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+            length_second   0x0000a7       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              line_coding   0x0002c0       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                     loop   0x0000a5       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   meas_1   0x0000a2       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   meas_2   0x0000a3       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   meas_3   0x0000a4       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   module   0x0001f0       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   offset   0x0001ef       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                 outPipes   0x0000c3       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+   pBDTEntryEP0OutCurrent   0x0000ac       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      pBDTEntryEP0OutNext   0x0000ae       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+              pBDTEntryIn   0x0000b6       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+             pBDTEntryOut   0x0000b0       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                  pCDCDst   0x0000e1       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                  pCDCSrc   0x0000df       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                     pDst   0x0000ca       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                     prom   0x0000f6       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                      rem   0x0001eb       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        shortPacketStatus   0x0000bc       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                spi_state   0x000098       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   _entry   0x000000    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+       ___return_lbl00000   0x000004    program     static                          
+                   __init   0x000006    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\__init.c
+                 High_ISR   0x000008    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       ___return_lbl00000   0x00000c    program     static                          
+                  Low_ISR   0x000018    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       ___return_lbl00001   0x00001c    program     static                          
+                   _reset   0x000040    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       ___return_lbl00002   0x000044    program     static                          
+     SignaturePlaceholder   0x000046    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        Remapped_High_ISR   0x000048    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       ___return_lbl00003   0x00004c    program     static                          
+         Remapped_Low_ISR   0x000050    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       ___return_lbl00004   0x000054    program     static                          
+               AppVersion   0x000056    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       USBCheckCDCRequest   0x000058    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                CDCInitEP   0x0000f4    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+       USBCDCEventHandler   0x00015c    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+             getsUSBUSART   0x0001e6    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+              putUSBUSART   0x0002a6    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+             putsUSBUSART   0x0002d8    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+            putrsUSBUSART   0x00035c    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+             CDCTxService   0x0003e2    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+  YourHighPriorityISRCode   0x001000    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+   YourLowPriorityISRCode   0x001210    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        Interrupts_enable   0x001232    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                     main   0x00125c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                 bin2temp   0x001290    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                     ftoa   0x00155e    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+         InitializeSystem   0x00195e    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                 UserInit   0x001964    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              sendmessage   0x001966    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+         bufffer_transfer   0x00199c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              cleanbuffer   0x0019b6    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                cleanmeas   0x001a44    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+         concadenatewords   0x001a4e    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+            SendDatatoUSB   0x001c4c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                searchend   0x001db6    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                ProcessIO   0x001e30    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+             __tmplbl_194   0x001e88    program     static                          
+             __tmplbl_142   0x0029ae    program     static                          
+             __tmplbl_140   0x0029b4    program     static                          
+             __tmplbl_141   0x0029b4    program     static                          
+             __tmplbl_138   0x0029b8    program     static                          
+             __tmplbl_139   0x0029b8    program     static                          
+             USBCBSuspend   0x0029c2    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+     USBCBWakeFromSuspend   0x0029c4    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        USBCB_SOF_Handler   0x0029c6    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+        USBCBErrorHandler   0x0029c8    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+       USBCBCheckOtherReq   0x0029ca    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+    USBCBStdSetDscHandler   0x0029ce    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              USBCBInitEP   0x0029d0    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+          USBCBSendResume   0x0029d4    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+USER_USB_CALLBACK_EVENT_HANDLER   0x002a1c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+            USBDeviceInit   0x002ab0    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+           USBDeviceTasks   0x002bd0    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+        USBEnableEndpoint   0x002d38    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+     USBTransferOnePacket   0x002da6    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+         USBStallEndpoint   0x002e98    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+              USBCancelIO   0x002f74    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+          USBDeviceDetach   0x003024    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+          USBDeviceAttach   0x00302e    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBCtrlEPAllowStatusStage   0x00305e    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+  USBCtrlEPAllowDataStage   0x003100    program     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+     USBConfigureEndpoint   0x00317c    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+ USBCtrlEPServiceComplete   0x003228    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBCtrlTrfTxService   0x0032ea    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBCtrlTrfRxService   0x0033a8    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBStdSetCfgHandler   0x0034e6    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBStdGetDscHandler   0x0035c8    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+   USBStdGetStatusHandler   0x003682    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+          USBStallHandler   0x003744    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+               USBSuspend   0x003778    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+       USBWakeFromSuspend   0x0037a2    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+         USBCtrlEPService   0x0037d0    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+   USBCtrlTrfSetupHandler   0x0038a0    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+     USBCtrlTrfOutHandler   0x0038fe    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      USBCtrlTrfInHandler   0x003948    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+       USBCheckStdRequest   0x0039fc    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+  USBStdFeatureReqHandler   0x003aba    program     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+               device_dsc   0x003d2a    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+        configDescriptor1   0x003d3c    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                    sd000   0x003d7f    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                    sd001   0x003d83    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                    sd002   0x003da3    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+               USB_CD_Ptr   0x003dcf    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+               USB_SD_Ptr   0x003dd1    program     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\usb_descriptors.c
+                _do_cinit   0x003dd8    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     test   0x003df2    program     static                          
+                copy_loop   0x003e4a    program     static                          
+            copy_one_byte   0x003e50    program     static                          
+             done_copying   0x003e5e    program     static                          
+                     done   0x003e74    program     static                          
+       ___return_lbl00002   0x003e74    program     static                          
+                  OpenSPI   0x003e76    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\SPI\spi_open.c
+                 FXD1616S   0x003ede    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                  DA1616S   0x003ef0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                   D1616S   0x003f00    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                 D1616SOK   0x003f0a    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                D1616SNEG   0x003f0e    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                  D1616SX   0x003f20    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616s.asm
+                   memset   0x003f2a    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                    jLoop   0x003f3e    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+              _2jContinue   0x003f4a    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                   _3jEnd   0x003f54    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                     jEnd   0x003f5c    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\stdclib\memset.asm
+                  ReadSPI   0x003f5e    program     extern E:\3.46\pic18-lt\cxx-framework\src\pmc_common\SPI\spi_read.c
+                 FXD1616U   0x003f8c    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\fxd1616u.c
+                     loop   0x003f96    program     static                          
+                  endloop   0x003fb2    program     static                          
+       ___return_lbl00000   0x003fb6    program     static                          
+            __zero_memory   0x003fb8    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   loop_h   0x003fc6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               zero_block   0x003fc6    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                compare_l   0x003fce    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   loop_l   0x003fd0    program     static E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 _startup   0x003fd8    program     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                     loop   0x003fe8    program     static                          
+       ___return_lbl00001   0x003ff2    program     static                          
+               __config_0   0x300000    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_1   0x300001    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_2   0x300002    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_3   0x300003    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_4   0x300005    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_5   0x300006    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_6   0x300008    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_7   0x300009    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_8   0x30000a    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+               __config_9   0x30000b    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              __config_10   0x30000c    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              __config_11   0x30000d    program     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                     SIGN   0x000000       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                __FPFLAGS   0x000001       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+            __FPFLAGSbits   0x000001       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\cmath18.asm
+                  __REMB3   0x000002       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB7   0x000002       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB2   0x000003       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB6   0x000003       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB5   0x000004       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB1   0x000004       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB4   0x000005       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                  __REMB0   0x000005       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB3   0x000006       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB2   0x000007       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB1   0x000008       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __AARGB0   0x000009       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                   __AEXP   0x00000a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\aarg.asm
+                 __BARGB3   0x00000b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                 __BARGB2   0x00000c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                 __BARGB1   0x00000d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                 __BARGB0   0x00000e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                   __BEXP   0x00000f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\math\barg.asm
+                  __tmp_0   0x000010       data     static C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                  __tmp_0   0x000010       data     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                  __tmp_0   0x000010       data     static C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+               index_data   0x000060       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+           USB_IDN_Buffer   0x000061       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                spi_state   0x000098       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                      LED   0x000099       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+          convtemperature   0x00009b       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+  convtemperature_decimal   0x00009d       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                  com_var   0x00009f       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                    index   0x0000a0       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                index_two   0x0000a1       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   meas_1   0x0000a2       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   meas_2   0x0000a3       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   meas_3   0x0000a4       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                     loop   0x0000a5       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+             length_first   0x0000a6       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+            length_second   0x0000a7       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+           USBDeviceState   0x0000a8       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+   USBActiveConfiguration   0x0000a9       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+    USBAlternateInterface   0x0000aa       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+   pBDTEntryEP0OutCurrent   0x0000ac       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+      pBDTEntryEP0OutNext   0x0000ae       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+             pBDTEntryOut   0x0000b0       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+              pBDTEntryIn   0x0000b6       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+        shortPacketStatus   0x0000bc       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+     controlTransferState   0x0000bd       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                  inPipes   0x0000be       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                 outPipes   0x0000c3       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                     pDst   0x0000ca       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+             RemoteWakeup   0x0000cc       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+        USBBusIsSuspended   0x0000cd       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                USTATcopy   0x0000ce       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+          endpoint_number   0x0000cf       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+       BothEP0OutUOWNsSet   0x0000d0       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+               ep_data_in   0x0000d1       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+              ep_data_out   0x0000d4       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBStatusStageTimeoutCounter   0x0000d7       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBDeferStatusStagePacket   0x0000d8       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBStatusStageEnabledFlag1   0x0000d9       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBStatusStageEnabledFlag2   0x0000da       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBDeferINDataStagePackets   0x0000db       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+USBDeferOUTDataStagePackets   0x0000dc       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+               cdc_rx_len   0x0000dd       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+            cdc_trf_state   0x0000de       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                  pCDCSrc   0x0000df       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                  pCDCDst   0x0000e1       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+               cdc_tx_len   0x0000e3       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+             cdc_mem_type   0x0000e4       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+         CDCDataOutHandle   0x0000e5       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+          CDCDataInHandle   0x0000e7       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+    control_signal_bitmap   0x0000e9       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+              BaudRateGen   0x0000ea       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+dummy_encapsulated_cmd_response   0x0000ee       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                     prom   0x0000f6       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                curr_byte   0x0000f9       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+               curr_entry   0x0000fb       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+                 data_ptr   0x0000fd       data     static E:\3.46\pic18-lt\cxx-framework\src\traditional\startup\c018i.c
+            USB_In_Buffer   0x000170       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+          USB_In_Buffer_2   0x000192       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+           USB_Out_Buffer   0x00019a       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+             SPI_response   0x0001da       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+          SPI_lastmessage   0x0001e2       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   length   0x0001ea       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                      rem   0x0001eb       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                        i   0x0001ed       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   offset   0x0001ef       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                   module   0x0001f0       data     extern C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+              delay_count   0x0001f1       data     static C:\microchip_solutions_v2013-06-15\USB\Device - CDC - Basic Demo - ThermoLogger\Firmware\main.c
+                      BDT   0x000200       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+                 SetupPkt   0x000230       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+              CtrlTrfData   0x000238       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\usb_device.c
+              cdc_data_tx   0x000240       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+              cdc_data_rx   0x000280       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+              line_coding   0x0002c0       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+               cdc_notice   0x0002c7       data     extern C:\microchip_solutions_v2013-06-15\Microchip\USB\CDC Device Driver\usb_function_cdc.c
+                 UEP0bits   0x000f53       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP0   0x000f53       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP1bits   0x000f54       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP1   0x000f54       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP2   0x000f55       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP2bits   0x000f55       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP3   0x000f56       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP3bits   0x000f56       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP4   0x000f57       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP4bits   0x000f57       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP5   0x000f58       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP5bits   0x000f58       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP6   0x000f59       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP6bits   0x000f59       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEP7   0x000f5a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEP7bits   0x000f5a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEIEbits   0x000f5b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEIE   0x000f5b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    UADDR   0x000f5c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                UADDRbits   0x000f5c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    UFRML   0x000f5d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                UFRMLbits   0x000f5d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    UFRMH   0x000f5e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                UFRMHbits   0x000f5e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UEIRbits   0x000f5f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UEIR   0x000f5f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  UIEbits   0x000f60       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      UIE   0x000f60       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UCFG   0x000f61       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UCFGbits   0x000f61       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      UIR   0x000f62       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  UIRbits   0x000f62       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    USTAT   0x000f63       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                USTATbits   0x000f63       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 UCONbits   0x000f64       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     UCON   0x000f64       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               SRCON0bits   0x000f68       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SRCON0   0x000f68       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               SRCON1bits   0x000f69       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SRCON1   0x000f69       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CM2CON0bits   0x000f6b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  CM2CON0   0x000f6b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  CM2CON1   0x000f6c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CM2CON1bits   0x000f6c       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  CM1CON0   0x000f6d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CM1CON0bits   0x000f6d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               SSPMSKbits   0x000f6f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SSPMSK   0x000f6f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               SLRCONbits   0x000f76       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SLRCON   0x000f76       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     WPUA   0x000f77       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 WPUAbits   0x000f77       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     WPUB   0x000f78       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 WPUBbits   0x000f78       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 IOCAbits   0x000f79       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     IOCA   0x000f79       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 IOCBbits   0x000f7a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     IOCB   0x000f7a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    ANSEL   0x000f7e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                ANSELbits   0x000f7e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ANSELH   0x000f7f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               ANSELHbits   0x000f7f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                PORTAbits   0x000f80       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PORTA   0x000f80       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                PORTBbits   0x000f81       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PORTB   0x000f81       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PORTC   0x000f82       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                PORTCbits   0x000f82       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 LATAbits   0x000f89       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     LATA   0x000f89       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 LATBbits   0x000f8a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     LATB   0x000f8a       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 LATCbits   0x000f8b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     LATC   0x000f8b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                TRISAbits   0x000f92       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TRISA   0x000f92       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 DDRAbits   0x000f92       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     DDRA   0x000f92       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 DDRBbits   0x000f93       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     DDRB   0x000f93       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                TRISBbits   0x000f93       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TRISB   0x000f93       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 DDRCbits   0x000f94       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     DDRC   0x000f94       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                TRISCbits   0x000f94       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TRISC   0x000f94       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              OSCTUNEbits   0x000f9b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  OSCTUNE   0x000f9b       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 PIE1bits   0x000f9d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PIE1   0x000f9d       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 PIR1bits   0x000f9e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PIR1   0x000f9e       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     IPR1   0x000f9f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 IPR1bits   0x000f9f       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 PIE2bits   0x000fa0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PIE2   0x000fa0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PIR2   0x000fa1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 PIR2bits   0x000fa1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 IPR2bits   0x000fa2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     IPR2   0x000fa2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   EECON1   0x000fa6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               EECON1bits   0x000fa6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   EECON2   0x000fa7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   EEDATA   0x000fa8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    EEADR   0x000fa9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                EEADRbits   0x000fa9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    RCSTA   0x000fab       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                RCSTAbits   0x000fab       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                TXSTAbits   0x000fac       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TXSTA   0x000fac       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TXREG   0x000fad       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    RCREG   0x000fae       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    SPBRG   0x000faf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SPBRGH   0x000fb0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    T3CON   0x000fb1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                T3CONbits   0x000fb1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR3L   0x000fb2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR3H   0x000fb3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  ECCP1AS   0x000fb6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              ECCP1ASbits   0x000fb6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              PWM1CONbits   0x000fb7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PWM1CON   0x000fb7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  BAUDCTL   0x000fb8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              BAUDCTLbits   0x000fb8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  BAUDCON   0x000fb8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              BAUDCONbits   0x000fb8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PSTRCON   0x000fb9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              PSTRCONbits   0x000fb9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 VREFCON0   0x000fba       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+             VREFCON0bits   0x000fba       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  REFCON0   0x000fba       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              REFCON0bits   0x000fba       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 VREFCON1   0x000fbb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+             VREFCON1bits   0x000fbb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  REFCON1   0x000fbb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              REFCON1bits   0x000fbb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  REFCON2   0x000fbc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              REFCON2bits   0x000fbc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+             VREFCON2bits   0x000fbc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 VREFCON2   0x000fbc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  CCP1CON   0x000fbd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              CCP1CONbits   0x000fbd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    CCPR1   0x000fbe       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   CCPR1L   0x000fbe       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   CCPR1H   0x000fbf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               ADCON2bits   0x000fc0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADCON2   0x000fc0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               ADCON1bits   0x000fc1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADCON1   0x000fc1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADCON0   0x000fc2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               ADCON0bits   0x000fc2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    ADRES   0x000fc3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADRESL   0x000fc3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   ADRESH   0x000fc4       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  SSPCON2   0x000fc5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              SSPCON2bits   0x000fc5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  SSPCON1   0x000fc6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              SSPCON1bits   0x000fc6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  SSPSTAT   0x000fc7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              SSPSTATbits   0x000fc7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SSPADD   0x000fc8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   SSPBUF   0x000fc9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                T2CONbits   0x000fca       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    T2CON   0x000fca       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      PR2   0x000fcb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     TMR2   0x000fcc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                T1CONbits   0x000fcd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    T1CON   0x000fcd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR1L   0x000fce       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR1H   0x000fcf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     RCON   0x000fd0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 RCONbits   0x000fd0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   WDTCON   0x000fd1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               WDTCONbits   0x000fd1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  OSCCON2   0x000fd2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              OSCCON2bits   0x000fd2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   OSCCON   0x000fd3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               OSCCONbits   0x000fd3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    T0CON   0x000fd5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                T0CONbits   0x000fd5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR0L   0x000fd6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    TMR0H   0x000fd7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   STATUS   0x000fd8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               STATUSbits   0x000fd8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR2L   0x000fd9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     FSR2   0x000fd9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR2H   0x000fda       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PLUSW2   0x000fdb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PREINC2   0x000fdc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTDEC2   0x000fdd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTINC2   0x000fde       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    INDF2   0x000fdf       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      BSR   0x000fe0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR1L   0x000fe1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     FSR1   0x000fe1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR1H   0x000fe2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PLUSW1   0x000fe3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PREINC1   0x000fe4       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTDEC1   0x000fe5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTINC1   0x000fe6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    INDF1   0x000fe7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     WREG   0x000fe8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                        W   0x000fe8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     FSR0   0x000fe9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR0L   0x000fe9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    FSR0H   0x000fea       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PLUSW0   0x000feb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  PREINC0   0x000fec       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTDEC0   0x000fed       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                 POSTINC0   0x000fee       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    INDF0   0x000fef       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              INTCON3bits   0x000ff0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  INTCON3   0x000ff0       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+              INTCON2bits   0x000ff1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  INTCON2   0x000ff1       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               INTCONbits   0x000ff2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   INTCON   0x000ff2       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PRODL   0x000ff3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     PROD   0x000ff3       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                    PRODH   0x000ff4       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   TABLAT   0x000ff5       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   TBLPTR   0x000ff6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  TBLPTRL   0x000ff6       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  TBLPTRH   0x000ff7       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                  TBLPTRU   0x000ff8       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      PCL   0x000ff9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                       PC   0x000ff9       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PCLATH   0x000ffa       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   PCLATU   0x000ffb       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+               STKPTRbits   0x000ffc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                   STKPTR   0x000ffc       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                      TOS   0x000ffd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     TOSL   0x000ffd       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     TOSH   0x000ffe       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+                     TOSU   0x000fff       data     extern E:\3.46\pic18-lt\cxx-framework\src\traditional\proc\p18f14k50.asm
+
+

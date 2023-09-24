@@ -3,6 +3,7 @@
 #
 
 import sys, time, datetime, csv
+from turtle import delay
 from PyQt5 import uic, QtCore,QtWidgets
 from PyQt5.QtCore import QThread
 import matplotlib.pyplot as plt
@@ -24,6 +25,7 @@ QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use h
 #   TASK CONTROL   --   GLOBAL VARIABLES
 # -------------------------
 event = '_IDLE_'
+state = 'OK'
 Loop_number = 0
 tc1_internal = 0
 tc1_external = 0
@@ -556,7 +558,9 @@ class MyMainWindow(QMainWindow):
         if (connection_avail==0):
             self.update_COM()
         tic_sample = time.perf_counter()
-        if (count_packages<1000):
+        if(state == 'CONECTION_LOST'):
+            self.dl_debug.setText("CONECTION_LOST")
+        elif (count_packages<1000):
             self.dl_debug.setText(f"Packages: {count_packages}" + f" Sampling: {last_sample:0.2f}s // "+"SN: "+str(sampling_number)+" SR: "+str(sampling_rate)+" SC: "+str(sampling_choice))
         else:
             self.dl_debug.setText(f"Packages: {count_packages/1000:0.2f}k" + f" Sampling: {last_sample:0.2f}s // "+"SN: "+str(sampling_number)+" SR: "+str(sampling_rate)+" SC: "+str(sampling_choice))
@@ -566,7 +570,7 @@ class MyMainWindow(QMainWindow):
         if(interrupt_data == 1):
             now = datetime.datetime.now()
             self.xdata_1_time.append(now)  #We load the new data
-            if(tc1_internal > -100):
+            if(tc1_internal > -300):
                 self.ydata_1.append(tc1_internal)         
                 self.ydata_2.append(tc1_external)
                 self.tc1_int_temperature.setEnabled(True)
@@ -581,7 +585,7 @@ class MyMainWindow(QMainWindow):
                 self.tc1_graph.setEnabled(False)
                 self.tc2_graph.setEnabled(False)
             
-            if(tc2_internal > -100):
+            if(tc2_internal > -300):
                 self.ydata_3.append(tc2_internal)
                 self.ydata_4.append(tc2_external)
                 self.tc2_int_temperature.setEnabled(True)
@@ -683,7 +687,7 @@ class AThread(QThread):  #Thread in parallel
             Event_Task()  #We launch Event_Task every 10ms in parallel
 
 def Event_Task():
-    global COMS,Loop_number,board_HW, board_SW, board_info_bool,comport, last_sample,interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal,tc1_external_buffer, tc1_internal_buffer, tc2_external_buffer, count_packages,tc2_internal_buffer,tic, toc, connection_avail, comport,TC_LOGGER, rm, csv_mark,sampling_rate, sampling_number,sampling_choice
+    global COMS,state,Loop_number,board_HW, board_SW, board_info_bool,comport, last_sample,interrupt_data, tc1_external, tc1_internal, tc2_external, tc2_internal,tc1_external_buffer, tc1_internal_buffer, tc2_external_buffer, count_packages,tc2_internal_buffer,tic, toc, connection_avail, comport,TC_LOGGER, rm, csv_mark,sampling_rate, sampling_number,sampling_choice
     if(Loop_number > 3 and connection_avail==0):
         COMS = serial_ports()
         Loop_number = 0
@@ -708,7 +712,9 @@ def Event_Task():
             try:
                 if(board_info_bool==0):
                     board_HW = TC_LOGGER.query(':CONFIG:HW?')
+                    time.sleep(0.03)
                     board_SW =  TC_LOGGER.query(':CONFIG:APP?')
+                    time.sleep(0.03)
                     board_info_bool = 1
 
                 if(sampling_number == 0):
@@ -718,13 +724,16 @@ def Event_Task():
                     tc2_internal_buffer = 0
 
                 tc1_external_buffer  += float(TC_LOGGER.query(':MEAS:TC1:EXT?'))
+                time.sleep(0.03)
                 tc1_internal_buffer  += float(TC_LOGGER.query(':MEAS:TC1:INT?'))
+                time.sleep(0.03)
                 tc2_external_buffer  += float(TC_LOGGER.query(':MEAS:TC2:EXT?'))
+                time.sleep(0.03)
                 tc2_internal_buffer  += float(TC_LOGGER.query(':MEAS:TC2:INT?'))
-
+                time.sleep(0.03)
                 sampling_number += 1
                 count_packages +=1
-
+                state = 'OK'
                 if(sampling_number >= sampling_rate):
                     tc1_external = round(tc1_external_buffer / sampling_number, 2)
                     tc1_internal = round(tc1_internal_buffer / sampling_number, 2)
@@ -736,13 +745,14 @@ def Event_Task():
             except:
                 TC_LOGGER = None
                 print("Trying to reconnect...")
+                state = 'CONECTION_LOST'
                 COMS = serial_ports()
                 if(len(COMS) > 0):
                     if COMS[0] == comport: 
                         print("USB Ready")
                         TC_LOGGER = rm.open_resource(comport)
                         TC_LOGGER.baudrate=115200
-                        TC_LOGGER.timeout = 1
+                        TC_LOGGER.timeout = 2
                         TC_LOGGER.write_termination = '\n'
                         TC_LOGGER.read_termination = '\n'
                         print("Connected!")
