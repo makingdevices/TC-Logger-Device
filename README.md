@@ -74,7 +74,6 @@
 
 TC Logger Device is a simple thermocouple USB reader: help you to measure any proccess you need using the USB protocol an a simple software developed in Python. The project was chosen to test the USB communication, explore the interface PC-Embedded system. The project is able to use two thermocouple at the same time and share the data to the computer at a speed of 5Hz. (5 samples per second). The main microprocessor is the PIC18F14K50.
 
-This device is under development, so I do encourage you to not assembly, order any PCB or use any software from this repository until the project is finished.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -92,7 +91,7 @@ This device is under development, so I do encourage you to not assembly, order a
 ## Build one
 NOT RECOMMENDED AS THE DEVICE IS UNDER DEVELOPMENT
 
-1. Get the gerber files for the latest version: [V1.2](https://github.com/makingdevices/Thermo-device-logger/tree/main/Gerber/v1.2) 
+1. Get the gerber files for the latest version: [V1.2b](https://github.com/makingdevices/TC-Logger-Device/blob/main/Gerber/v1.2b/ThermoDeviceLogger-v_1.2b.zip) 
 2. Send them to a PCB manufacturer ([Our Sponsor is PCBWAY][sponsor-url])
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -112,16 +111,16 @@ Instructions of use:
 
 - [x] Finish the firmware for the PIC18F14K50
 - [x] Validate firmware
-- [ ] Finish PC software
-    - [ ] Implement SCPI commands 
-    - [ ] Add data records 
+- [x] Finish PC software
+    - [x] Implement SCPI commands 
+    - [x] Add data records 
     - [X] Improve thermocouple graphs
-    - [ ] Add Device Info page
+    - [x] Add Device Info page
 
 
 See the [open issues](https://github.com/makingdevices/Thermo-device-logger/issues) for a full list of proposed features (and known issues).
 
-State: Project <b>UNFINISHED</b> - 06/01/2023
+State: Project <b>FINISHED</b> - 26/09/2023
 
 Priority: <b>High</b>
 
