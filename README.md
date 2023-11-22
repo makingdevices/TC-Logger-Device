@@ -89,10 +89,11 @@ TC Logger Device is a simple thermocouple USB reader: help you to measure any pr
 <!-- GETTING STARTED -->
 
 ## Build one
-NOT RECOMMENDED AS THE DEVICE IS UNDER DEVELOPMENT
+The project is finished and no further development will be made. The device is safe, stable and It was tested. 
 
 1. Get the gerber files for the latest version: [V1.2b](https://github.com/makingdevices/TC-Logger-Device/blob/main/Gerber/v1.2b/ThermoDeviceLogger-v_1.2b.zip) 
 2. Send them to a PCB manufacturer ([Our Sponsor is PCBWAY][sponsor-url])
+3. You can read the user manual: [V1.0](https://github.com/makingdevices/TC-Logger-Device/blob/main/Output_PDF/Manual_ThermoLoggerv1_0.pdf) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -103,6 +104,8 @@ Instructions of use:
 
 - The LED will light up if a thermocouple is not detected.
 - Use the Python software to communicate with the board.
+
+You can read the user manual: [V1.0](https://github.com/makingdevices/TC-Logger-Device/blob/main/Output_PDF/Manual_ThermoLoggerv1_0.pdf) 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
