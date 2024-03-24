@@ -184,10 +184,13 @@ Other Links: [LinkTree](https://makingdevices.com/links/)
 <!-- Sponsor -->
 ## Sponsor
 
-PCBWay is the most professional PCB manufacturer for prototyping and low-volume production to work with in the world. With more than a decade in the field, They are committed to meeting the needs of their customers from different industries in terms of quality, delivery, cost-effectiveness and any other demanding requests. As Sponsor of Making Devices, they will be in charge of all the PCBs for MDV, allowing both of us to grow together in a long term partnership. We hope you take them into account for your both personal and professional prototypes or products.
+[PCBWAY](https://www.pcbway.com/?from=makingdevices) is the most professional PCB manufacturer for prototyping and low-volume production to work with in the world. With more than a decade in the field, They are committed to meeting the needs of their customers from different industries in terms of quality, delivery, cost-effectiveness and any other demanding requests. As Sponsor of Making Devices, they will be in charge of all the PCBs for MDV, allowing both of us to grow together in a long term partnership. We hope you take them into account for your both personal and professional prototypes or products.
 
 [![Sponsor Shot][sponsor-pcb-1]][sponsor-url]
 [![Sponsor Shot][sponsor-pcb-2]][sponsor-url]
+
+Should you want to colaborate with MakingDevices, you can buy a [TC Logger Device fully assembled and ready to use](https://www.pcbway.com/project/gifts_detail/TC_Logger_Device_5464ceb2.html)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
